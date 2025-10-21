@@ -1174,15 +1174,17 @@
                 : document.getElementById('useCorsProxy').checked;
             
             let attempts = [
-                { url: rawUrl, cors: false, metadata: ['ogg'] }, // Try without CORS proxy first, OGG only
-                { url: rawUrl, cors: false, metadata: [] },      // Try without CORS proxy, no metadata
-                { url: rawUrl, cors: true, metadata: ['ogg'] },  // Try with CORS proxy, OGG only
-                { url: rawUrl, cors: true, metadata: [] }        // Try with CORS proxy, no metadata
+                { url: rawUrl, cors: false, metadata: ['icy', 'ogg'] }, // Try full metadata first
+                { url: rawUrl, cors: false, metadata: ['ogg'] },         // Try OGG only
+                { url: rawUrl, cors: false, metadata: [] },              // Try no metadata
+                { url: rawUrl, cors: true, metadata: ['ogg'] },          // Try with CORS proxy, OGG only
+                { url: rawUrl, cors: true, metadata: [] }                // Try with CORS proxy, no metadata
             ];
             
             // If user explicitly enabled CORS proxy, prioritize those attempts
             if (useCorsProxy) {
                 attempts = [
+                    { url: rawUrl, cors: true, metadata: ['icy', 'ogg'] },
                     { url: rawUrl, cors: true, metadata: ['ogg'] },
                     { url: rawUrl, cors: true, metadata: [] },
                     { url: rawUrl, cors: false, metadata: ['ogg'] },
@@ -1200,9 +1202,11 @@
                 
                 try {
                     if (i > 0) {
+                        const metadataDesc = attempt.metadata.includes('icy') ? 'full metadata' :
+                                           attempt.metadata.includes('ogg') ? 'OGG metadata' : 'no metadata';
                         const statusMsg = attempt.cors 
-                            ? `Retrying with CORS proxy (${attempt.metadata.length > 0 ? 'with metadata' : 'no metadata'})...`
-                            : `Retrying without CORS proxy (${attempt.metadata.length > 0 ? 'with metadata' : 'no metadata'})...`;
+                            ? `Retrying with CORS proxy (${metadataDesc})...`
+                            : `Retrying (${metadataDesc})...`;
                         updateStatus(statusMsg, 'loading');
                         console.log(`Attempt ${i + 1}/${attempts.length}: ${statusMsg}`);
                     }
