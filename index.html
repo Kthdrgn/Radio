@@ -77,73 +77,78 @@
             border-color: #667eea;
         }
         
-        /* Station Browser Button Styles */
-        .station-browser-btn {
+        /* Station selector button */
+        .station-selector-btn {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
+            font-size: 14px;
             background: white;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s;
             text-align: left;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #333;
+            transition: border-color 0.3s;
         }
         
-        .station-browser-btn:hover {
+        .station-selector-btn:hover {
             border-color: #667eea;
-            background: #f0f7ff;
         }
         
-        .station-browser-btn .placeholder {
+        .station-selector-btn .placeholder {
             color: #999;
         }
         
-        .station-browser-btn .arrow {
-            font-size: 18px;
-            color: #667eea;
+        .station-selector-btn .selected-station {
+            color: #333;
+            font-weight: 500;
         }
         
-        /* Modal Overlay Styles */
-        .modal-overlay {
+        .station-selector-btn .arrow {
+            color: #667eea;
+            font-size: 18px;
+        }
+        
+        /* Station overlay */
+        .station-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
-            animation: fadeIn 0.2s ease-in;
+            animation: fadeIn 0.3s ease;
         }
         
-        .modal-overlay.active {
+        .station-overlay.active {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         
-        .modal-content {
+        .station-modal {
             background: white;
             border-radius: 20px;
-            width: 100%;
-            max-width: 800px;
-            max-height: 90vh;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
             display: flex;
             flex-direction: column;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease-out;
+            animation: slideUp 0.3s ease;
         }
         
         @keyframes slideUp {
@@ -157,7 +162,7 @@
             }
         }
         
-        .modal-header {
+        .station-modal-header {
             padding: 25px 30px;
             border-bottom: 2px solid #f0f0f0;
             display: flex;
@@ -165,21 +170,20 @@
             align-items: center;
         }
         
-        .modal-header h2 {
+        .station-modal-header h2 {
             color: #333;
-            font-size: 24px;
+            font-size: 22px;
         }
         
-        .close-btn {
+        .close-modal {
             background: none;
             border: none;
             font-size: 28px;
-            cursor: pointer;
             color: #999;
-            line-height: 1;
+            cursor: pointer;
             padding: 0;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -187,29 +191,26 @@
             transition: all 0.2s;
         }
         
-        .close-btn:hover {
+        .close-modal:hover {
             background: #f0f0f0;
             color: #333;
         }
         
-        .modal-controls {
+        .station-modal-controls {
             padding: 20px 30px;
-            background: #f8f9fa;
+            border-bottom: 2px solid #f0f0f0;
             display: flex;
+            flex-direction: column;
             gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
         }
         
         .search-box {
-            flex: 1;
-            min-width: 200px;
             position: relative;
         }
         
         .search-box input {
             width: 100%;
-            padding: 10px 35px 10px 12px;
+            padding: 12px 40px 12px 15px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
@@ -221,12 +222,13 @@
             border-color: #667eea;
         }
         
-        .search-icon {
+        .search-box .search-icon {
             position: absolute;
-            right: 10px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #999;
+            font-size: 18px;
             pointer-events: none;
         }
         
@@ -236,115 +238,86 @@
             align-items: center;
         }
         
-        .sort-label {
-            font-size: 14px;
+        .sort-controls label {
             color: #666;
+            font-size: 14px;
             font-weight: 500;
         }
         
-        .sort-btn {
-            padding: 8px 15px;
+        .sort-controls select {
+            flex: 1;
+            padding: 10px;
             border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            background: white;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            transition: border-color 0.3s;
         }
         
-        .sort-btn:hover {
-            border-color: #667eea;
-            background: #f0f7ff;
-        }
-        
-        .sort-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .sort-controls select:focus {
+            outline: none;
             border-color: #667eea;
         }
         
         .station-list {
             flex: 1;
             overflow-y: auto;
-            padding: 10px 30px 30px;
+            padding: 10px;
         }
         
         .station-item {
-            padding: 15px;
-            border: 2px solid #e0e0e0;
+            padding: 15px 20px;
             border-radius: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
             transition: all 0.2s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border: 2px solid transparent;
         }
         
         .station-item:hover {
-            border-color: #667eea;
-            background: #f0f7ff;
-            transform: translateX(5px);
+            background: #f8f9fa;
+            border-color: #e0e0e0;
         }
         
         .station-item.selected {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: #667eea;
             color: white;
         }
         
-        .station-info {
-            flex: 1;
-        }
-        
-        .station-name {
+        .station-item-name {
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 4px;
         }
         
-        .station-meta {
+        .station-item.selected .station-item-name {
+            color: white;
+        }
+        
+        .station-item-genre {
             font-size: 13px;
-            opacity: 0.8;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            color: #999;
         }
         
-        .station-genre {
-            font-weight: 500;
+        .station-item.selected .station-item-genre {
+            color: rgba(255, 255, 255, 0.9);
         }
         
-        .station-bitrate {
-            display: flex;
-            gap: 8px;
+        .station-item-bitrates {
+            font-size: 12px;
+            color: #bbb;
+            margin-top: 4px;
         }
         
-        .bitrate-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-        }
-        
-        .station-item:not(.selected) .bitrate-badge {
-            background: #f0f0f0;
-            color: #666;
+        .station-item.selected .station-item-bitrates {
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .no-results {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: #999;
-        }
-        
-        .no-results-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-style: italic;
         }
         
         .quality-selector {
@@ -525,6 +498,7 @@
         }
         
         .btn-stop:hover:not(:disabled) {
+            background: #d32f2f;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
         }
@@ -532,13 +506,12 @@
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none !important;
         }
         
         .status {
             text-align: center;
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 20px;
+            padding: 12px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
@@ -550,13 +523,8 @@
         }
         
         .status.stopped {
-            background: #ffebee;
-            color: #c62828;
-        }
-        
-        .status.loading {
-            background: #fff3e0;
-            color: #ef6c00;
+            background: #fce4ec;
+            color: #c2185b;
         }
         
         .status.error {
@@ -564,26 +532,30 @@
             color: #c62828;
         }
         
-        .mode-switch {
+        .status.loading {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .mode-toggle {
             display: flex;
-            gap: 10px;
+            background: #f0f0f0;
+            border-radius: 25px;
+            padding: 4px;
             margin-bottom: 20px;
-            padding: 5px;
-            background: #f8f9fa;
-            border-radius: 10px;
         }
         
         .mode-btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 20px;
             background: transparent;
             cursor: pointer;
             font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 500;
             color: #666;
+            transition: all 0.3s;
         }
         
         .mode-btn.active {
@@ -592,11 +564,11 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
-        .mode-section {
+        .mode-content {
             display: none;
         }
         
-        .mode-section.active {
+        .mode-content.active {
             display: block;
         }
         
@@ -617,36 +589,6 @@
             cursor: pointer;
             font-size: 13px;
         }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .modal-content {
-                max-height: 95vh;
-            }
-            
-            .modal-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box {
-                width: 100%;
-            }
-            
-            .sort-controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .metadata-display {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .metadata-text {
-                text-align: center !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -656,68 +598,62 @@
             <div class="station-count" id="stationCount">Loading stations...</div>
         </div>
         
-        <!-- Mode Switch -->
-        <div class="mode-switch">
-            <button class="mode-btn active" id="stationModeBtn">Station Database</button>
-            <button class="mode-btn" id="customModeBtn">Custom URL</button>
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="station">Station Database</button>
+            <button class="mode-btn" data-mode="custom">Custom URL</button>
         </div>
         
-        <!-- Station Mode Section -->
-        <div class="mode-section active" id="stationMode">
+        <!-- Station Mode -->
+        <div id="stationMode" class="mode-content active">
             <div class="input-group">
                 <label>Select Station</label>
-                <button class="station-browser-btn" id="stationBrowserBtn">
-                    <span class="placeholder" id="selectedStationText">Click to browse stations</span>
+                <button class="station-selector-btn" id="stationSelectorBtn">
+                    <span class="placeholder">Click to browse stations...</span>
                     <span class="arrow">▼</span>
                 </button>
             </div>
             
-            <!-- Quality Selection (for stations) -->
             <div class="input-group">
                 <label>Stream Quality</label>
-                <div class="quality-selector" id="qualitySelectorStation">
-                    <button class="quality-btn active" data-quality="medium">Medium</button>
+                <div class="quality-selector" id="qualitySelector">
                     <button class="quality-btn" data-quality="low">Low</button>
+                    <button class="quality-btn active" data-quality="standard">Standard</button>
                     <button class="quality-btn" data-quality="high">High</button>
                 </div>
             </div>
             
-            <!-- CORS Proxy Option -->
             <div class="checkbox-group">
                 <input type="checkbox" id="useCorsProxyStation">
-                <label for="useCorsProxyStation">Use CORS Proxy (if station has CORS issues)</label>
+                <label for="useCorsProxyStation">Use CORS Proxy (if station blocked by browser)</label>
             </div>
         </div>
         
-        <!-- Custom URL Mode Section -->
-        <div class="mode-section" id="customMode">
+        <!-- Custom URL Mode -->
+        <div id="customMode" class="mode-content">
             <div class="input-group">
-                <label for="streamUrl">Stream URL</label>
-                <input type="text" id="streamUrl" placeholder="Enter Icecast/Shoutcast stream URL">
+                <label>Stream URL</label>
+                <input type="text" id="streamUrl" placeholder="https://example.com/stream.mp3">
             </div>
             
-            <!-- CORS Proxy Option -->
             <div class="checkbox-group">
                 <input type="checkbox" id="useCorsProxy">
-                <label for="useCorsProxy">Use CORS Proxy (if stream has CORS issues)</label>
+                <label for="useCorsProxy">Use CORS Proxy (if stream blocked by browser)</label>
             </div>
         </div>
         
-        <!-- Artwork API Settings -->
+        <!-- Artwork API Selection -->
         <div class="input-group">
-            <label for="artworkApi">Album Artwork Source</label>
+            <label>Album Artwork Source</label>
             <select id="artworkApi">
-                <option value="itunes">iTunes (No API Key Required)</option>
                 <option value="lastfm">Last.fm (Requires API Key)</option>
-                <option value="none">No Artwork</option>
+                <option value="itunes">iTunes Search (No Key Required)</option>
             </select>
-        </div>
-        
-        <div class="input-group" id="apiKeyGroup" style="display: none;">
-            <label for="apiKey">Last.fm API Key</label>
-            <input type="text" id="apiKey" placeholder="Enter your Last.fm API key">
-            <div class="api-info">
-                Get your free API key at <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a>
+            <div id="apiKeyGroup" class="input-group" style="margin-top: 10px;">
+                <input type="text" id="apiKey" placeholder="Enter Last.fm API key">
+                <div class="api-info">
+                    Get a free API key at <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm</a>
+                </div>
             </div>
         </div>
         
@@ -732,31 +668,37 @@
         <!-- Controls -->
         <div class="controls">
             <button class="btn btn-play" id="playBtn">▶ Play</button>
-            <button class="btn btn-stop" id="stopBtn" disabled>⬛ Stop</button>
+            <button class="btn btn-stop" id="stopBtn" disabled>⏹ Stop</button>
         </div>
         
-        <div class="status" id="status"></div>
+        <!-- Status -->
+        <div class="status" id="status">Ready</div>
     </div>
-
-    <!-- Station Browser Modal -->
-    <div class="modal-overlay" id="stationModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Browse Stations</h2>
-                <button class="close-btn" id="closeModalBtn">&times;</button>
+    
+    <!-- Station Overlay -->
+    <div class="station-overlay" id="stationOverlay">
+        <div class="station-modal">
+            <div class="station-modal-header">
+                <h2>Select a Station</h2>
+                <button class="close-modal" id="closeModal">×</button>
             </div>
             
-            <div class="modal-controls">
+            <div class="station-modal-controls">
                 <div class="search-box">
                     <input type="text" id="stationSearch" placeholder="Search stations...">
                     <span class="search-icon">🔍</span>
                 </div>
                 
                 <div class="sort-controls">
-                    <span class="sort-label">Sort:</span>
-                    <button class="sort-btn active" data-sort="name">A-Z</button>
-                    <button class="sort-btn" data-sort="genre">Genre</button>
-                    <button class="sort-btn" data-sort="bitrate">Bitrate</button>
+                    <label>Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="genre-asc">Genre (A-Z)</option>
+                        <option value="genre-desc">Genre (Z-A)</option>
+                        <option value="bitrate-high">Bitrate (High to Low)</option>
+                        <option value="bitrate-low">Bitrate (Low to High)</option>
+                    </select>
                 </div>
             </div>
             
@@ -767,264 +709,274 @@
     </div>
     
     <script>
-        // Get DOM elements
-        const stationModeBtn = document.getElementById('stationModeBtn');
-        const customModeBtn = document.getElementById('customModeBtn');
-        const stationModeSection = document.getElementById('stationMode');
-        const customModeSection = document.getElementById('customMode');
-        const stationBrowserBtn = document.getElementById('stationBrowserBtn');
-        const selectedStationText = document.getElementById('selectedStationText');
-        const stationModal = document.getElementById('stationModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        // Elements
+        const stationCount = document.getElementById('stationCount');
+        const stationSelectorBtn = document.getElementById('stationSelectorBtn');
+        const stationOverlay = document.getElementById('stationOverlay');
+        const closeModal = document.getElementById('closeModal');
         const stationList = document.getElementById('stationList');
         const stationSearch = document.getElementById('stationSearch');
-        const sortButtons = document.querySelectorAll('.sort-btn');
+        const sortSelect = document.getElementById('sortSelect');
         const streamUrlInput = document.getElementById('streamUrl');
         const playBtn = document.getElementById('playBtn');
         const stopBtn = document.getElementById('stopBtn');
         const metadataDiv = document.getElementById('metadata');
         const statusDiv = document.getElementById('status');
-        const artworkApiSelect = document.getElementById('artworkApi');
-        const apiKeyGroup = document.getElementById('apiKeyGroup');
         const apiKeyInput = document.getElementById('apiKey');
-        const qualitySelectorStation = document.getElementById('qualitySelectorStation');
-        const stationCountDiv = document.getElementById('stationCount');
+        const apiKeyGroup = document.getElementById('apiKeyGroup');
+        const artworkApiSelect = document.getElementById('artworkApi');
         
-        // State variables
-        let player = null;
+        // Mode toggle
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        const stationMode = document.getElementById('stationMode');
+        const customMode = document.getElementById('customMode');
+        
+        // Quality buttons
+        const qualityBtns = document.querySelectorAll('.quality-btn');
+        
+        // State
         let stations = [];
         let filteredStations = [];
         let currentStation = null;
-        let selectedQuality = 'medium';
+        let player = null;
         let isStationMode = true;
-        let currentSort = 'name';
+        let selectedQuality = 'standard';
         
-        // Mode switching
-        stationModeBtn.addEventListener('click', () => {
-            isStationMode = true;
-            stationModeBtn.classList.add('active');
-            customModeBtn.classList.remove('active');
-            stationModeSection.classList.add('active');
-            customModeSection.classList.remove('active');
-        });
-        
-        customModeBtn.addEventListener('click', () => {
-            isStationMode = false;
-            customModeBtn.classList.add('active');
-            stationModeBtn.classList.remove('active');
-            customModeSection.classList.add('active');
-            stationModeSection.classList.remove('active');
-        });
-        
-        // Modal controls
-        stationBrowserBtn.addEventListener('click', () => {
-            stationModal.classList.add('active');
-            renderStations();
-        });
-        
-        closeModalBtn.addEventListener('click', () => {
-            stationModal.classList.remove('active');
-        });
-        
-        stationModal.addEventListener('click', (e) => {
-            if (e.target === stationModal) {
-                stationModal.classList.remove('active');
-            }
-        });
-        
-        // Search functionality
-        stationSearch.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            filteredStations = stations.filter(station => 
-                station.name.toLowerCase().includes(searchTerm) ||
-                station.genre.toLowerCase().includes(searchTerm) ||
-                station.country.toLowerCase().includes(searchTerm)
-            );
-            renderStations();
-        });
-        
-        // Sort functionality
-        sortButtons.forEach(btn => {
+        // Mode toggle handler
+        modeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                sortButtons.forEach(b => b.classList.remove('active'));
+                modeBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentSort = btn.dataset.sort;
-                sortStations();
-                renderStations();
+                
+                const mode = btn.dataset.mode;
+                isStationMode = mode === 'station';
+                
+                if (isStationMode) {
+                    stationMode.classList.add('active');
+                    customMode.classList.remove('active');
+                } else {
+                    stationMode.classList.remove('active');
+                    customMode.classList.add('active');
+                }
+                
+                // Stop current playback when switching modes
+                if (player) {
+                    player.stop();
+                }
             });
         });
         
-        // Quality selection for stations
-        qualitySelectorStation.addEventListener('click', (e) => {
-            if (e.target.classList.contains('quality-btn') && !e.target.disabled) {
-                qualitySelectorStation.querySelectorAll('.quality-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                e.target.classList.add('active');
-                selectedQuality = e.target.dataset.quality;
-                updateQualityAvailability();
-            }
+        // Quality selector handler
+        qualityBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                qualityBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedQuality = btn.dataset.quality;
+                updateQualityButtons();
+            });
         });
+        
+        // Update quality buttons based on current station
+        function updateQualityButtons() {
+            if (!currentStation) {
+                qualityBtns.forEach(btn => btn.disabled = false);
+                return;
+            }
+            
+            qualityBtns.forEach(btn => {
+                const quality = btn.dataset.quality;
+                if (quality === 'low') {
+                    btn.disabled = !currentStation.url_low;
+                } else if (quality === 'high') {
+                    btn.disabled = !currentStation.url_high;
+                } else {
+                    btn.disabled = false;
+                }
+            });
+        }
         
         // Show/hide API key input based on selection
         artworkApiSelect.addEventListener('change', () => {
-            apiKeyGroup.style.display = artworkApiSelect.value === 'lastfm' ? 'block' : 'none';
+            if (artworkApiSelect.value === 'lastfm') {
+                apiKeyGroup.style.display = 'block';
+            } else {
+                apiKeyGroup.style.display = 'none';
+            }
         });
         
-        // Load stations from API
-        async function loadStations() {
-            try {
-                const response = await fetch('https://de1.api.radio-browser.info/json/stations/search?limit=500&order=votes&reverse=true&hidebroken=true');
-                stations = await response.json();
-                filteredStations = [...stations];
-                
-                stationCountDiv.textContent = `${stations.length} stations available`;
-                sortStations();
-                
-            } catch (error) {
-                console.error('Error loading stations:', error);
-                stationCountDiv.textContent = 'Error loading stations';
-            }
+        // Initially hide API key if iTunes is selected
+        if (artworkApiSelect.value !== 'lastfm') {
+            apiKeyGroup.style.display = 'none';
         }
         
-        // Sort stations
-        function sortStations() {
+        // Station overlay handlers
+        stationSelectorBtn.addEventListener('click', () => {
+            stationOverlay.classList.add('active');
+            renderStations();
+            if (stationSearch.value) {
+                stationSearch.focus();
+            }
+        });
+        
+        closeModal.addEventListener('click', () => {
+            stationOverlay.classList.remove('active');
+        });
+        
+        stationOverlay.addEventListener('click', (e) => {
+            if (e.target === stationOverlay) {
+                stationOverlay.classList.remove('active');
+            }
+        });
+        
+        // Search handler
+        stationSearch.addEventListener('input', () => {
+            filterAndSortStations();
+            renderStations();
+        });
+        
+        // Sort handler
+        sortSelect.addEventListener('change', () => {
+            filterAndSortStations();
+            renderStations();
+        });
+        
+        // Filter and sort stations
+        function filterAndSortStations() {
+            const searchTerm = stationSearch.value.toLowerCase();
+            
+            // Filter
+            filteredStations = stations.filter(station => {
+                return station.name.toLowerCase().includes(searchTerm) ||
+                       station.genre.toLowerCase().includes(searchTerm);
+            });
+            
+            // Sort
+            const sortValue = sortSelect.value;
             filteredStations.sort((a, b) => {
-                switch (currentSort) {
-                    case 'name':
+                switch (sortValue) {
+                    case 'name-asc':
                         return a.name.localeCompare(b.name);
-                    case 'genre':
+                    case 'name-desc':
+                        return b.name.localeCompare(a.name);
+                    case 'genre-asc':
                         return a.genre.localeCompare(b.genre);
-                    case 'bitrate':
-                        return (b.bitrate || 0) - (a.bitrate || 0);
+                    case 'genre-desc':
+                        return b.genre.localeCompare(a.genre);
+                    case 'bitrate-high':
+                        return getBitrate(b) - getBitrate(a);
+                    case 'bitrate-low':
+                        return getBitrate(a) - getBitrate(b);
                     default:
                         return 0;
                 }
             });
         }
         
-        // Render stations in modal
+        // Get highest bitrate for a station
+        function getBitrate(station) {
+            const bitrates = [];
+            if (station.bitrate) bitrates.push(parseInt(station.bitrate));
+            if (station.bitrate_low) bitrates.push(parseInt(station.bitrate_low));
+            if (station.bitrate_high) bitrates.push(parseInt(station.bitrate_high));
+            return Math.max(...bitrates, 0);
+        }
+        
+        // Render stations in the list
         function renderStations() {
             if (filteredStations.length === 0) {
-                stationList.innerHTML = `
-                    <div class="no-results">
-                        <div class="no-results-icon">🔍</div>
-                        <div>No stations found</div>
-                    </div>
-                `;
+                stationList.innerHTML = '<div class="no-results">No stations found</div>';
                 return;
             }
             
             stationList.innerHTML = filteredStations.map(station => {
-                const isSelected = currentStation && currentStation.stationuuid === station.stationuuid;
                 const bitrates = [];
-                if (station.bitrate) bitrates.push(`${station.bitrate}k`);
+                if (station.bitrate_low) bitrates.push(`Low: ${station.bitrate_low}kbps`);
+                if (station.bitrate) bitrates.push(`Std: ${station.bitrate}kbps`);
+                if (station.bitrate_high) bitrates.push(`High: ${station.bitrate_high}kbps`);
+                
+                const isSelected = currentStation && currentStation.name === station.name;
                 
                 return `
-                    <div class="station-item ${isSelected ? 'selected' : ''}" data-uuid="${station.stationuuid}">
-                        <div class="station-info">
-                            <div class="station-name">${station.name}</div>
-                            <div class="station-meta">
-                                <span class="station-genre">🎵 ${station.genre || 'Unknown'}</span>
-                                <span>🌍 ${station.country || 'Unknown'}</span>
-                                ${bitrates.length > 0 ? `
-                                    <span class="station-bitrate">
-                                        ${bitrates.map(br => `<span class="bitrate-badge">${br}</span>`).join('')}
-                                    </span>
-                                ` : ''}
-                            </div>
-                        </div>
+                    <div class="station-item ${isSelected ? 'selected' : ''}" data-station='${JSON.stringify(station)}'>
+                        <div class="station-item-name">${station.name}</div>
+                        <div class="station-item-genre">${station.genre}</div>
+                        ${bitrates.length > 0 ? `<div class="station-item-bitrates">${bitrates.join(' • ')}</div>` : ''}
                     </div>
                 `;
             }).join('');
             
             // Add click handlers
-            stationList.querySelectorAll('.station-item').forEach(item => {
+            document.querySelectorAll('.station-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const uuid = item.dataset.uuid;
-                    selectStation(uuid);
+                    const station = JSON.parse(item.dataset.station);
+                    selectStation(station);
+                    stationOverlay.classList.remove('active');
                 });
             });
         }
         
         // Select a station
-        function selectStation(uuid) {
-            currentStation = stations.find(s => s.stationuuid === uuid);
-            if (currentStation) {
-                selectedStationText.textContent = currentStation.name;
-                selectedStationText.classList.remove('placeholder');
-                updateQualityAvailability();
-                stationModal.classList.remove('active');
-                renderStations(); // Re-render to show selection
-            }
+        function selectStation(station) {
+            currentStation = station;
+            
+            // Update button text
+            const btnContent = stationSelectorBtn.querySelector('.placeholder') || 
+                              stationSelectorBtn.querySelector('.selected-station');
+            btnContent.className = 'selected-station';
+            btnContent.textContent = station.name;
+            
+            updateQualityButtons();
+            updateStatus(`Station selected: ${station.name}`, '');
         }
         
-        // Update quality button availability based on selected station
-        function updateQualityAvailability() {
-            if (!currentStation) return;
-            
-            const buttons = qualitySelectorStation.querySelectorAll('.quality-btn');
-            buttons.forEach(btn => {
-                const quality = btn.dataset.quality;
-                let hasQuality = false;
-                
-                if (quality === 'medium' && currentStation.url) {
-                    hasQuality = true;
-                } else if (quality === 'low' && currentStation.url_resolved) {
-                    hasQuality = true;
-                } else if (quality === 'high' && currentStation.hls) {
-                    hasQuality = true;
-                }
-                
-                btn.disabled = !hasQuality;
-            });
-            
-            // If current quality not available, switch to medium
-            const currentBtn = qualitySelectorStation.querySelector(`[data-quality="${selectedQuality}"]`);
-            if (currentBtn && currentBtn.disabled) {
-                selectedQuality = 'medium';
-                qualitySelectorStation.querySelectorAll('.quality-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                qualitySelectorStation.querySelector('[data-quality="medium"]').classList.add('active');
+        // Load stations from JSON
+        async function loadStations() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/junguler/m3u-radio-music-playlists/refs/heads/main/raw-scrape.json');
+                stations = await response.json();
+                filteredStations = [...stations];
+                stationCount.textContent = `${stations.length} stations available`;
+                filterAndSortStations();
+            } catch (error) {
+                console.error('Failed to load stations:', error);
+                stationCount.textContent = 'Failed to load stations';
+                updateStatus('Error loading station database', 'error');
             }
         }
         
         // Update status message
         function updateStatus(message, type) {
             statusDiv.textContent = message;
-            statusDiv.className = `status ${type}`;
+            statusDiv.className = 'status';
+            if (type) {
+                statusDiv.classList.add(type);
+            }
         }
         
-        // Get artwork from APIs
-        async function getArtwork(artist, title, streamUrl = null) {
-            const apiType = artworkApiSelect.value;
-            
-            if (apiType === 'none') return null;
-            
-            // Try stream-provided artwork first
-            if (streamUrl) {
-                return streamUrl;
+        // Get artwork from selected API
+        async function getArtwork(artist, title, streamArtworkUrl) {
+            // If stream provides artwork, use it first
+            if (streamArtworkUrl) {
+                try {
+                    const testImg = new Image();
+                    testImg.src = streamArtworkUrl;
+                    await new Promise((resolve, reject) => {
+                        testImg.onload = resolve;
+                        testImg.onerror = reject;
+                    });
+                    return streamArtworkUrl;
+                } catch (e) {
+                    console.log('Stream artwork failed, trying API');
+                }
             }
             
-            if (!artist || !title) return null;
+            const apiType = artworkApiSelect.value;
             
-            try {
-                if (apiType === 'itunes') {
-                    const searchTerm = `${artist} ${title}`;
-                    const response = await fetch(
-                        `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&media=music&limit=1`
-                    );
-                    const data = await response.json();
-                    
-                    if (data.results && data.results.length > 0) {
-                        // Get high quality artwork (600x600)
-                        return data.results[0].artworkUrl100.replace('100x100', '600x600');
-                    }
-                } else if (apiType === 'lastfm') {
-                    const apiKey = apiKeyInput.value.trim();
-                    if (!apiKey) return null;
-                    
+            if (apiType === 'lastfm') {
+                const apiKey = apiKeyInput.value.trim();
+                if (!apiKey || !artist || !title) return null;
+                
+                try {
                     const response = await fetch(
                         `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(title)}&format=json`
                     );
@@ -1032,30 +984,47 @@
                     
                     if (data.track && data.track.album && data.track.album.image) {
                         const images = data.track.album.image;
-                        // Get largest image
-                        const largeImage = images.find(img => img.size === 'extralarge' || img.size === 'large');
+                        const largeImage = images.find(img => img.size === 'large' || img.size === 'extralarge');
                         if (largeImage && largeImage['#text']) {
                             return largeImage['#text'];
                         }
                     }
+                } catch (error) {
+                    console.error('Last.fm API error:', error);
                 }
-            } catch (error) {
-                console.error('Error fetching artwork:', error);
+            } else if (apiType === 'itunes') {
+                if (!artist && !title) return null;
+                
+                try {
+                    const searchTerm = artist && title ? `${artist} ${title}` : (title || artist);
+                    const response = await fetch(
+                        `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&media=music&limit=1`
+                    );
+                    const data = await response.json();
+                    
+                    if (data.results && data.results.length > 0) {
+                        const artwork = data.results[0].artworkUrl100;
+                        if (artwork) {
+                            return artwork.replace('100x100', '600x600');
+                        }
+                    }
+                } catch (error) {
+                    console.error('iTunes API error:', error);
+                }
             }
             
             return null;
         }
         
-        // Display metadata with artwork
+        // Display metadata
         async function displayMetadata(metadata) {
             let title = 'Unknown Track';
-            let artist = 'Unknown Artist';
+            let artist = '';
             let album = '';
             let streamArtworkUrl = null;
             
             // Parse metadata
             if (metadata) {
-                // Check for ICY metadata
                 if (metadata.StreamTitle) {
                     const parts = metadata.StreamTitle.split(' - ');
                     if (parts.length >= 2) {
@@ -1132,10 +1101,10 @@
                 
                 let url;
                 // Return URL based on selected quality
-                if (selectedQuality === 'low' && currentStation.url_resolved) {
-                    url = currentStation.url_resolved;
-                } else if (selectedQuality === 'high' && currentStation.hls) {
-                    url = currentStation.hls;
+                if (selectedQuality === 'low' && currentStation.url_low) {
+                    url = currentStation.url_low;
+                } else if (selectedQuality === 'high' && currentStation.url_high) {
+                    url = currentStation.url_high;
                 } else {
                     url = currentStation.url;
                 }
@@ -1290,17 +1259,11 @@
             }
         });
         
-        // Allow Enter key in search
+        // Allow Enter key to search in station overlay
         stationSearch.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && filteredStations.length > 0) {
-                selectStation(filteredStations[0].stationuuid);
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && stationModal.classList.contains('active')) {
-                stationModal.classList.remove('active');
+            if (e.key === 'Enter' && filteredStations.length === 1) {
+                selectStation(filteredStations[0]);
+                stationOverlay.classList.remove('active');
             }
         });
         
