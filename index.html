@@ -54,10 +54,18 @@
 
             <div class="stream-url-input">
                 <label for="stream-url">Stream URL:</label>
+                <select id="stream-preset" class="stream-select">
+                    <option value="">-- Select a station or enter URL below --</option>
+                    <option value="https://stream.radioparadise.com/aac-320">Radio Paradise - AAC 320k (Eclectic)</option>
+                    <option value="https://icecast.omroep.nl/radio1-bb-mp3">NPO Radio 1 - MP3 (Netherlands)</option>
+                    <option value="https://stream.srg-ssr.ch/m/rsj/mp3_128">Swiss Jazz - MP3 128k</option>
+                    <option value="http://stream.live.vc.bbcmedia.co.uk/bbc_radio_one">BBC Radio 1 - MP3 (UK)</option>
+                    <option value="https://somafm.com/duplicity130.pls">SomaFM Duplicity - PLS</option>
+                </select>
                 <input 
                     type="text" 
                     id="stream-url" 
-                    placeholder="https://stream.example.com/radio"
+                    placeholder="Or paste your own stream URL here"
                     value="https://stream.radioparadise.com/aac-320"
                 >
                 <button id="load-stream-btn" class="load-btn">Load Stream</button>
