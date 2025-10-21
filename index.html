@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Radio Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="player-card">
+            <h1>🎵 Internet Radio Player</h1>
+            
+            <div class="station-info">
+                <div class="station-name" id="station-name">Radio Station</div>
+                <div class="station-description" id="station-description">Loading...</div>
+            </div>
+
+            <div class="metadata-display">
+                <div class="now-playing-label">Now Playing</div>
+                <div class="song-title" id="song-title">Click play to start</div>
+                <div class="stream-info">
+                    <span id="bitrate"></span>
+                    <span id="genre"></span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="play-btn" class="control-btn play">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span>Play</span>
+                </button>
+                <button id="pause-btn" class="control-btn pause" style="display: none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                    </svg>
+                    <span>Pause</span>
+                </button>
+                <button id="stop-btn" class="control-btn stop">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="6" width="12" height="12"/>
+                    </svg>
+                    <span>Stop</span>
+                </button>
+            </div>
+
+            <div class="volume-control">
+                <label for="volume">Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="80">
+                <span id="volume-value">80%</span>
+            </div>
+
+            <div class="stream-url-input">
+                <label for="stream-url">Stream URL:</label>
+                <input 
+                    type="text" 
+                    id="stream-url" 
+                    placeholder="https://stream.example.com/radio"
+                    value="https://stream.radioparadise.com/aac-320"
+                >
+                <button id="load-stream-btn" class="load-btn">Load Stream</button>
+            </div>
+
+            <div class="status" id="status">Ready</div>
+
+            <div class="metadata-history">
+                <h3>Recently Played</h3>
+                <ul id="history-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/icecast-metadata-player@2.0.8/dist/icecast-metadata-player.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
