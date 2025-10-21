@@ -388,6 +388,11 @@
                         High<br><span style="font-size: 11px; color: #999;">Quality</span>
                     </button>
                 </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="useCorsProxyStation">
+                    <label for="useCorsProxyStation">Use CORS Proxy (if stream has CORS issues)</label>
+                </div>
             </div>
         </div>
         
@@ -717,14 +722,23 @@
                     return null;
                 }
                 
+                let url;
                 // Return URL based on selected quality
                 if (selectedQuality === 'low' && currentStation.url_low) {
-                    return currentStation.url_low;
+                    url = currentStation.url_low;
                 } else if (selectedQuality === 'high' && currentStation.url_high) {
-                    return currentStation.url_high;
+                    url = currentStation.url_high;
                 } else {
-                    return currentStation.url;
+                    url = currentStation.url;
                 }
+                
+                // Apply CORS proxy if enabled
+                const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
+                if (useCorsProxy) {
+                    url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+                }
+                
+                return url;
             } else {
                 let url = streamUrlInput.value.trim();
                 const useCorsProxy = document.getElementById('useCorsProxy').checked;
