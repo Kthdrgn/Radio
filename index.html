@@ -815,7 +815,6 @@
                 
                 stationItem.addEventListener('click', () => {
                     selectStation(station);
-                    stationOverlay.classList.remove('active');
                 });
                 
                 stationList.appendChild(stationItem);
@@ -853,6 +852,20 @@
             
             updateQualityButtons();
             renderStations();
+            
+            // Close the overlay
+            stationOverlay.classList.remove('active');
+            
+            // Auto-start playback
+            // Stop current player if it exists
+            if (player) {
+                player.stop();
+            }
+            
+            // Wait a moment for the stop to complete, then start playing
+            setTimeout(() => {
+                playBtn.click();
+            }, 300);
         }
         
         // Update quality buttons based on available streams
@@ -1458,7 +1471,6 @@
         stationSearch.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && filteredStations.length === 1) {
                 selectStation(filteredStations[0]);
-                stationOverlay.classList.remove('active');
             }
         });
         
