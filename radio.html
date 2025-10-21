@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#667eea">
+    <title>My Radio Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .player {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .station {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .station:active {
+            transform: scale(0.98);
+        }
+
+        .station.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+
+        .station-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .now-playing {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .now-playing-text {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: transform 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button.stop {
+            background: #e74c3c;
+        }
+
+        .volume {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .volume label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .status {
+            text-align: center;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .status.playing {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .history {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .history-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+
+        .history-item {
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <h1>🎵 My Radio</h1>
+
+        <div id="stations"></div>
+
+        <div class="now-playing">
+            <div class="now-playing-text" id="now-playing">Loading...</div>
+        </div>
+
+        <div class="controls">
+            <button id="play">▶</button>
+            <button id="stop" class="stop">■</button>
+        </div>
+
+        <div class="volume">
+            <label>Volume</label>
+            <input type="range" id="volume" min="0" max="100" value="80">
+        </div>
+
+        <div class="status" id="status">Loading library...</div>
+
+        <div class="history">
+            <div class="history-title">Recently Played</div>
+            <div id="history"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/icecast-metadata-player@2.12.4/dist/icecast-metadata-player.min.js"></script>
+    
+    <script>
+        // ⚠️ IMPORTANT: Replace this with YOUR Cloudflare Worker URL
+        const PROXY_URL = 'https://lingering-glitter-85ea.keith-e-dragon.workers.dev/';
+        
+        // Example: const PROXY_URL = 'https://radio-proxy.myname.workers.dev';
+        
+        // If you see an error, it means you need to replace the URL above!
+
+        const stations = [
+            { name: '📻 Radio Paradise', url: 'https://stream.radioparadise.com/aac-320' },
+            { name: '🎵 SomaFM Groove Salad', url: 'https://ice1.somafm.com/groovesalad-256-mp3' },
+            { name: '🌙 SomaFM Drone Zone', url: 'https://ice1.somafm.com/dronezone-256-mp3' },
+            { name: '🎺 Swiss Jazz', url: 'https://stream.srg-ssr.ch/m/rsj/mp3_128' }
+        ];
+
+        let player = null;
+        let selected = null;
+        let playing = false;
+        const history = [];
+
+        const stationsDiv = document.getElementById('stations');
+        const nowPlayingDiv = document.getElementById('now-playing');
+        const statusDiv = document.getElementById('status');
+        const historyDiv = document.getElementById('history');
+        const playBtn = document.getElementById('play');
+        const stopBtn = document.getElementById('stop');
+        const volumeSlider = document.getElementById('volume');
+
+        // Check if user set their proxy URL
+        if (PROXY_URL.includes('YOUR_CLOUDFLARE')) {
+            statusDiv.textContent = '⚠️ Error: Please set your Cloudflare Worker URL in the code!';
+            statusDiv.className = 'status error';
+            nowPlayingDiv.textContent = 'See instructions in code';
+        }
+
+        // Render stations
+        stations.forEach(station => {
+            const div = document.createElement('div');
+            div.className = 'station';
+            div.innerHTML = `<div class="station-name">${station.name}</div>`;
+            div.onclick = () => selectStation(station, div);
+            stationsDiv.appendChild(div);
+        });
+
+        function selectStation(station, element) {
+            document.querySelectorAll('.station').forEach(s => s.classList.remove('selected'));
+            element.classList.add('selected');
+            selected = station;
+            loadStation(station);
+        }
+
+        function loadStation(station) {
+            if (player) {
+                try { player.stop(); } catch(e) {}
+            }
+
+            statusDiv.textContent = 'Loading...';
+            statusDiv.className = 'status';
+
+            // Use proxy URL
+            const proxiedUrl = `${PROXY_URL}/?url=${encodeURIComponent(station.url)}`;
+
+            try {
+                player = new IcecastMetadataPlayer(proxiedUrl, {
+                    onMetadata: (metadata) => {
+                        if (metadata.StreamTitle) {
+                            nowPlayingDiv.textContent = metadata.StreamTitle;
+                            addHistory(metadata.StreamTitle);
+                        }
+                    },
+                    onStreamStart: () => {
+                        statusDiv.textContent = 'Playing ✓';
+                        statusDiv.className = 'status playing';
+                    },
+                    onError: (error) => {
+                        console.error('Error:', error);
+                        statusDiv.textContent = 'Error: ' + error.message;
+                        statusDiv.className = 'status error';
+                    }
+                });
+
+                player.audioElement.volume = volumeSlider.value / 100;
+                nowPlayingDiv.textContent = station.name + ' - Ready';
+                statusDiv.textContent = 'Ready - Tap Play';
+
+            } catch (error) {
+                console.error('Failed:', error);
+                statusDiv.textContent = 'Error loading station';
+                statusDiv.className = 'status error';
+            }
+        }
+
+        function addHistory(title) {
+            if (history[0] === title) return;
+            history.unshift(title);
+            if (history.length > 5) history.pop();
+            
+            historyDiv.innerHTML = '';
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.textContent = item;
+                historyDiv.appendChild(div);
+            });
+        }
+
+        playBtn.onclick = () => {
+            if (!selected) {
+                statusDiv.textContent = 'Select a station first';
+                statusDiv.className = 'status error';
+                return;
+            }
+
+            if (!playing) {
+                player.play().then(() => {
+                    playing = true;
+                    playBtn.textContent = '⏸';
+                    statusDiv.textContent = 'Playing ✓';
+                    statusDiv.className = 'status playing';
+                });
+            } else {
+                player.stop();
+                playing = false;
+                playBtn.textContent = '▶';
+                statusDiv.textContent = 'Paused';
+                statusDiv.className = 'status';
+            }
+        };
+
+        stopBtn.onclick = () => {
+            if (player) {
+                player.stop();
+                playing = false;
+                playBtn.textContent = '▶';
+                statusDiv.textContent = 'Stopped';
+                statusDiv.className = 'status';
+            }
+        };
+
+        volumeSlider.oninput = (e) => {
+            if (player && player.audioElement) {
+                player.audioElement.volume = e.target.value / 100;
+            }
+        };
+
+        // Auto-select first station
+        if (stations.length > 0 && typeof IcecastMetadataPlayer !== 'undefined') {
+            document.querySelector('.station').click();
+        }
+
+        // Check if library loaded
+        setTimeout(() => {
+            if (typeof IcecastMetadataPlayer === 'undefined') {
+                statusDiv.textContent = 'Library failed to load';
+                statusDiv.className = 'status error';
+            } else if (!PROXY_URL.includes('YOUR_CLOUDFLARE')) {
+                statusDiv.textContent = 'Ready - Select a station';
+                nowPlayingDiv.textContent = 'Select a station above';
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
