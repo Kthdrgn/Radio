@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+    <title>Radio with Metadata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .station-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .station-card:active {
+            transform: scale(0.98);
+        }
+
+        .station-card.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+
+        .station-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .station-description {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .metadata-display {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            min-height: 120px;
+        }
+
+        .now-playing-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .song-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .stream-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .stream-info span:not(:empty)::before {
+            content: '• ';
+            margin-right: 0.25rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .control-btn.stop {
+            background: #e74c3c;
+        }
+
+        .volume-control {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .volume-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .volume-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .volume-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 3rem;
+            text-align: right;
+        }
+
+        .status {
+            text-align: center;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .status.playing {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .history-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .history-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+
+        .history-list {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-time {
+            font-size: 0.7rem;
+            color: #999;
+            white-space: nowrap;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-card">
+        <h1>🎵 Radio with Metadata</h1>
+        <div class="subtitle">Real-time song information</div>
+
+        <div id="stations-container"></div>
+
+        <div class="metadata-display">
+            <div class="now-playing-label">Now Playing</div>
+            <div class="song-title" id="song-title">Loading...</div>
+            <div class="stream-info">
+                <span id="bitrate"></span>
+                <span id="genre"></span>
+                <span id="station-name-info"></span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="play-btn" class="control-btn">▶</button>
+            <button id="stop-btn" class="control-btn stop">■</button>
+        </div>
+
+        <div class="volume-control">
+            <label class="volume-label">Volume</label>
+            <div class="volume-slider-container">
+                <input type="range" id="volume" min="0" max="100" value="80">
+                <span class="volume-value" id="volume-value">80%</span>
+            </div>
+        </div>
+
+        <div class="status" id="status">Loading library...</div>
+
+        <div class="history-section">
+            <div class="history-title">Recently Played</div>
+            <div class="history-list" id="history-list"></div>
+        </div>
+    </div>
+
+    <!-- Load from jsDelivr which is more reliable -->
+    <script>
+        // Try loading the library
+        (function() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/icecast-metadata-player@2.12.4/dist/icecast-metadata-player.min.js';
+            
+            script.onload = function() {
+                console.log('✓ Library loaded successfully from jsDelivr');
+                initPlayer();
+            };
+            
+            script.onerror = function() {
+                console.log('jsDelivr failed, trying unpkg...');
+                const backupScript = document.createElement('script');
+                backupScript.src = 'https://unpkg.com/icecast-metadata-player@2.12.4/dist/icecast-metadata-player.min.js';
+                
+                backupScript.onload = function() {
+                    console.log('✓ Library loaded successfully from unpkg');
+                    initPlayer();
+                };
+                
+                backupScript.onerror = function() {
+                    console.error('All CDNs failed');
+                    document.getElementById('status').textContent = 'Metadata unavailable - CDN blocked. Audio still works!';
+                    document.getElementById('status').className = 'status warning';
+                    document.getElementById('song-title').textContent = 'Select a station to play';
+                    initBasicPlayer();
+                };
+                
+                document.head.appendChild(backupScript);
+            };
+            
+            document.head.appendChild(script);
+        })();
+
+        function initBasicPlayer() {
+            // Fallback: Basic player without metadata
+            console.log('Initializing basic player (no metadata)');
+            
+            const stations = [
+                { name: 'Radio Paradise', url: 'https://stream.radioparadise.com/aac-320' },
+                { name: 'SomaFM Groove Salad', url: 'https://ice1.somafm.com/groovesalad-256-mp3' },
+                { name: 'SomaFM Drone Zone', url: 'https://ice1.somafm.com/dronezone-256-mp3' },
+                { name: 'Swiss Jazz', url: 'https://stream.srg-ssr.ch/m/rsj/mp3_128' }
+            ];
+
+            const audio = new Audio();
+            let selectedStation = null;
+            let isPlaying = false;
+
+            const playBtn = document.getElementById('play-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const volumeSlider = document.getElementById('volume');
+            const volumeValue = document.getElementById('volume-value');
+            const statusDiv = document.getElementById('status');
+            const songTitle = document.getElementById('song-title');
+            const stationsContainer = document.getElementById('stations-container');
+
+            audio.volume = 0.8;
+
+            stations.forEach(station => {
+                const card = document.createElement('div');
+                card.className = 'station-card';
+                card.innerHTML = `<div class="station-name">${station.name}</div>`;
+                
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.station-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedStation = station;
+                    audio.src = station.url;
+                    songTitle.textContent = station.name + ' - Ready';
+                    statusDiv.textContent = 'Ready to play';
+                    statusDiv.className = 'status';
+                });
+                
+                stationsContainer.appendChild(card);
+            });
+
+            playBtn.addEventListener('click', () => {
+                if (!selectedStation) {
+                    statusDiv.textContent = 'Select a station first';
+                    statusDiv.className = 'status error';
+                    return;
+                }
+
+                if (!isPlaying) {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        playBtn.textContent = '⏸';
+                        songTitle.textContent = 'Playing ' + selectedStation.name;
+                        statusDiv.textContent = 'Playing (no metadata available)';
+                        statusDiv.className = 'status playing';
+                    });
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    playBtn.textContent = '▶';
+                    statusDiv.textContent = 'Paused';
+                    statusDiv.className = 'status';
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                audio.pause();
+                audio.currentTime = 0;
+                isPlaying = false;
+                playBtn.textContent = '▶';
+                statusDiv.textContent = 'Stopped';
+                statusDiv.className = 'status';
+            });
+
+            volumeSlider.addEventListener('input', (e) => {
+                audio.volume = e.target.value / 100;
+                volumeValue.textContent = e.target.value + '%';
+            });
+
+            statusDiv.textContent = 'Ready (metadata unavailable)';
+            statusDiv.className = 'status warning';
+            songTitle.textContent = 'Select a station';
+        }
+
+        function initPlayer() {
+            if (typeof IcecastMetadataPlayer === 'undefined') {
+                console.error('IcecastMetadataPlayer not available');
+                initBasicPlayer();
+                return;
+            }
+
+            console.log('✓ Initializing player with metadata support');
+
+            const stations = [
+                {
+                    name: 'Radio Paradise',
+                    description: 'Eclectic mix',
+                    url: 'https://stream.radioparadise.com/aac-320'
+                },
+                {
+                    name: 'SomaFM Groove Salad',
+                    description: 'Ambient/Downtempo',
+                    url: 'https://ice1.somafm.com/groovesalad-256-mp3'
+                },
+                {
+                    name: 'SomaFM Drone Zone',
+                    description: 'Ambient Space',
+                    url: 'https://ice1.somafm.com/dronezone-256-mp3'
+                },
+                {
+                    name: 'Swiss Jazz',
+                    description: 'Jazz',
+                    url: 'https://stream.srg-ssr.ch/m/rsj/mp3_128'
+                }
+            ];
+
+            let player = null;
+            let isPlaying = false;
+            let selectedStation = null;
+            const history = [];
+            const MAX_HISTORY = 10;
+
+            const playBtn = document.getElementById('play-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const volumeSlider = document.getElementById('volume');
+            const volumeValue = document.getElementById('volume-value');
+            const statusDiv = document.getElementById('status');
+            const songTitle = document.getElementById('song-title');
+            const bitrate = document.getElementById('bitrate');
+            const genre = document.getElementById('genre');
+            const stationNameInfo = document.getElementById('station-name-info');
+            const historyList = document.getElementById('history-list');
+            const stationsContainer = document.getElementById('stations-container');
+
+            stations.forEach(station => {
+                const card = document.createElement('div');
+                card.className = 'station-card';
+                card.innerHTML = `
+                    <div class="station-name">${station.name}</div>
+                    <div class="station-description">${station.description}</div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.station-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedStation = station;
+                    loadStation(station);
+                });
+                
+                stationsContainer.appendChild(card);
+            });
+
+            function updateStatus(message, type = 'info') {
+                statusDiv.textContent = message;
+                statusDiv.className = 'status';
+                if (type === 'playing') statusDiv.classList.add('playing');
+                else if (type === 'error') statusDiv.classList.add('error');
+            }
+
+            function addToHistory(title) {
+                if (history.length > 0 && history[0].title === title) return;
+                
+                history.unshift({
+                    title: title,
+                    time: new Date().toLocaleTimeString()
+                });
+                
+                if (history.length > MAX_HISTORY) history.pop();
+                
+                historyList.innerHTML = '';
+                history.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'history-item';
+                    div.innerHTML = `
+                        <span>${item.title}</span>
+                        <span class="history-time">${item.time}</span>
+                    `;
+                    historyList.appendChild(div);
+                });
+            }
+
+            function loadStation(station) {
+                if (player) {
+                    try { player.stop(); } catch (e) {}
+                }
+
+                updateStatus('Loading station...');
+                songTitle.textContent = `${station.name} - Loading...`;
+
+                try {
+                    player = new IcecastMetadataPlayer(station.url, {
+                        onMetadata: (metadata) => {
+                            console.log('Metadata:', metadata);
+                            
+                            if (metadata.StreamTitle) {
+                                songTitle.textContent = metadata.StreamTitle;
+                                addToHistory(metadata.StreamTitle);
+                            }
+                            
+                            if (metadata.icyName) stationNameInfo.textContent = metadata.icyName;
+                            if (metadata.icyBr) bitrate.textContent = `${metadata.icyBr} kbps`;
+                            if (metadata.icyGenre) genre.textContent = metadata.icyGenre;
+                        },
+                        onStreamStart: () => {
+                            console.log('Stream started');
+                            updateStatus('Playing', 'playing');
+                        },
+                        onError: (error) => {
+                            console.error('Player error:', error);
+                            updateStatus('Error: ' + error.message, 'error');
+                        },
+                        metadataTypes: ["icy", "ogg"]
+                    });
+
+                    player.audioElement.volume = volumeSlider.value / 100;
+                    updateStatus('Station loaded - Tap Play');
+                    songTitle.textContent = `${station.name} - Ready`;
+                    
+                } catch (error) {
+                    console.error('Failed to create player:', error);
+                    updateStatus('Error loading station', 'error');
+                }
+            }
+
+            playBtn.addEventListener('click', () => {
+                if (!selectedStation) {
+                    updateStatus('Select a station first', 'error');
+                    return;
+                }
+
+                if (!player) {
+                    loadStation(selectedStation);
+                    setTimeout(() => player.play(), 100);
+                    return;
+                }
+
+                if (!isPlaying) {
+                    player.play().then(() => {
+                        isPlaying = true;
+                        playBtn.textContent = '⏸';
+                        updateStatus('Playing', 'playing');
+                    }).catch(err => {
+                        updateStatus('Play error: ' + err.message, 'error');
+                    });
+                } else {
+                    player.stop();
+                    isPlaying = false;
+                    playBtn.textContent = '▶';
+                    updateStatus('Paused');
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                if (player) {
+                    player.stop();
+                    isPlaying = false;
+                    playBtn.textContent = '▶';
+                    updateStatus('Stopped');
+                    if (selectedStation) songTitle.textContent = `${selectedStation.name} - Stopped`;
+                }
+            });
+
+            volumeSlider.addEventListener('input', (e) => {
+                const volume = e.target.value;
+                volumeValue.textContent = `${volume}%`;
+                if (player && player.audioElement) {
+                    player.audioElement.volume = volume / 100;
+                }
+            });
+
+            updateStatus('Ready - Select a station');
+            songTitle.textContent = 'Select a station';
+        }
+    </script>
+</body>
+</html>

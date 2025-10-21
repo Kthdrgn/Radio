@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Internet Radio Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .station-info {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .station-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .metadata-display {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .now-playing {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .control-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .control-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .control-btn.stop {
+            background: #e74c3c;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .control-btn.stop:hover {
+            background: #c0392b;
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .control-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .volume-control {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .volume-control label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .volume-control input[type="range"] {
+            width: calc(100% - 60px);
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+            margin-right: 10px;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .volume-control input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        #volume-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 45px;
+            display: inline-block;
+        }
+
+        .stream-url-input {
+            margin-bottom: 20px;
+        }
+
+        .stream-url-input label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .stream-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .stream-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .stream-url-input input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stream-url-input input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .load-btn {
+            width: 100%;
+            background: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-btn:hover {
+            background: #5d3a82;
+        }
+
+        .status {
+            text-align: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .status.playing {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #856404;
+        }
+
+        .note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="player-card">
+            <h1>🎵 Simple Radio Player</h1>
+            
+            <div class="station-info">
+                <div class="station-name" id="station-name">Internet Radio</div>
+            </div>
+
+            <div class="metadata-display">
+                <div class="now-playing" id="now-playing">Select a station and click Play</div>
+            </div>
+
+            <div class="controls">
+                <button id="play-btn" class="control-btn">▶ Play</button>
+                <button id="stop-btn" class="control-btn stop">■ Stop</button>
+            </div>
+
+            <div class="volume-control">
+                <label for="volume">Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="80">
+                <span id="volume-value">80%</span>
+            </div>
+
+            <div class="stream-url-input">
+                <label for="stream-preset">Select a Station:</label>
+                <select id="stream-preset" class="stream-select">
+                    <option value="">-- Choose a station --</option>
+                    <option value="https://stream.radioparadise.com/aac-320">Radio Paradise - AAC 320k</option>
+                    <option value="https://icecast.omroep.nl/radio1-bb-mp3">NPO Radio 1 (Netherlands)</option>
+                    <option value="http://stream.live.vc.bbcmedia.co.uk/bbc_radio_one">BBC Radio 1</option>
+                    <option value="https://somafm.com/groovesalad256.pls">SomaFM Groove Salad</option>
+                </select>
+                
+                <label for="stream-url">Or enter custom URL:</label>
+                <input 
+                    type="text" 
+                    id="stream-url" 
+                    placeholder="https://stream.example.com/radio"
+                >
+                <button id="load-stream-btn" class="load-btn">Load Stream</button>
+            </div>
+
+            <div class="status" id="status">Ready to play</div>
+
+            <div class="note">
+                <strong>Note:</strong>
+                This is a simplified version using HTML5 Audio. It plays the stream but may not show real-time metadata (song titles). Some streams may not work due to CORS restrictions. For best results, try the pre-configured stations above.
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio" preload="none"></audio>
+
+    <script>
+        // Get DOM elements
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('play-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const volumeSlider = document.getElementById('volume');
+        const volumeValue = document.getElementById('volume-value');
+        const streamPreset = document.getElementById('stream-preset');
+        const streamUrlInput = document.getElementById('stream-url');
+        const loadStreamBtn = document.getElementById('load-stream-btn');
+        const statusDiv = document.getElementById('status');
+        const nowPlaying = document.getElementById('now-playing');
+        const stationName = document.getElementById('station-name');
+
+        let isPlaying = false;
+        let currentStream = '';
+
+        // Update status
+        function updateStatus(message, type = 'info') {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status';
+            if (type === 'playing') {
+                statusDiv.classList.add('playing');
+            } else if (type === 'error') {
+                statusDiv.classList.add('error');
+            }
+        }
+
+        // Load stream
+        function loadStream(url) {
+            if (!url) {
+                updateStatus('Please select or enter a stream URL', 'error');
+                return;
+            }
+
+            console.log('Loading stream:', url);
+            currentStream = url;
+            audio.src = url;
+            nowPlaying.textContent = 'Stream loaded - Click Play to start';
+            updateStatus('Stream loaded', 'info');
+            
+            // Extract station name from preset if available
+            const selectedOption = streamPreset.options[streamPreset.selectedIndex];
+            if (selectedOption && selectedOption.value === url) {
+                stationName.textContent = selectedOption.text;
+            } else {
+                stationName.textContent = 'Custom Stream';
+            }
+        }
+
+        // Play button
+        playBtn.addEventListener('click', () => {
+            if (!currentStream) {
+                // Load from input if not loaded
+                const url = streamUrlInput.value.trim() || streamPreset.value;
+                if (!url) {
+                    updateStatus('Please select or enter a stream URL first', 'error');
+                    return;
+                }
+                loadStream(url);
+            }
+
+            audio.play()
+                .then(() => {
+                    console.log('Playback started');
+                    isPlaying = true;
+                    playBtn.textContent = '⏸ Pause';
+                    nowPlaying.textContent = 'Playing...';
+                    updateStatus('Playing', 'playing');
+                })
+                .catch(err => {
+                    console.error('Playback error:', err);
+                    let errorMsg = 'Error playing stream';
+                    
+                    if (err.name === 'NotAllowedError') {
+                        errorMsg = 'Browser blocked autoplay. Please interact with page first.';
+                    } else if (err.name === 'NotSupportedError') {
+                        errorMsg = 'Stream format not supported or CORS issue';
+                    }
+                    
+                    updateStatus(errorMsg, 'error');
+                    nowPlaying.textContent = 'Error loading stream';
+                });
+        });
+
+        // Handle play/pause toggle
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                playBtn.textContent = '▶ Play';
+                updateStatus('Paused', 'info');
+                nowPlaying.textContent = 'Paused';
+            }
+        });
+
+        // Stop button
+        stopBtn.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+            isPlaying = false;
+            playBtn.textContent = '▶ Play';
+            updateStatus('Stopped', 'info');
+            nowPlaying.textContent = 'Stopped';
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value;
+            volumeValue.textContent = `${volume}%`;
+            audio.volume = volume / 100;
+        });
+
+        // Set initial volume
+        audio.volume = volumeSlider.value / 100;
+
+        // Preset selection
+        streamPreset.addEventListener('change', (e) => {
+            const url = e.target.value;
+            if (url) {
+                streamUrlInput.value = url;
+            }
+        });
+
+        // Load stream button
+        loadStreamBtn.addEventListener('click', () => {
+            const url = streamUrlInput.value.trim() || streamPreset.value;
+            loadStream(url);
+        });
+
+        // Enter key on input
+        streamUrlInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loadStreamBtn.click();
+            }
+        });
+
+        // Audio events
+        audio.addEventListener('playing', () => {
+            console.log('Audio playing event');
+            nowPlaying.textContent = 'Playing ' + stationName.textContent;
+        });
+
+        audio.addEventListener('pause', () => {
+            console.log('Audio paused event');
+        });
+
+        audio.addEventListener('error', (e) => {
+            console.error('Audio error:', audio.error);
+            let errorMsg = 'Error loading stream';
+            
+            if (audio.error) {
+                switch(audio.error.code) {
+                    case audio.error.MEDIA_ERR_NETWORK:
+                        errorMsg = 'Network error - Check CORS or stream URL';
+                        break;
+                    case audio.error.MEDIA_ERR_DECODE:
+                        errorMsg = 'Decoding error - Format not supported';
+                        break;
+                    case audio.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                        errorMsg = 'Stream not supported - Try another station';
+                        break;
+                }
+            }
+            
+            updateStatus(errorMsg, 'error');
+            nowPlaying.textContent = 'Error loading stream';
+            isPlaying = false;
+            playBtn.textContent = '▶ Play';
+        });
+
+        audio.addEventListener('loadstart', () => {
+            console.log('Loading stream...');
+            updateStatus('Loading...', 'info');
+        });
+
+        audio.addEventListener('canplay', () => {
+            console.log('Stream ready to play');
+        });
+
+        // Log any console errors
+        window.addEventListener('error', (e) => {
+            console.error('Page error:', e.message);
+        });
+    </script>
+</body>
+</html>
