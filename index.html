@@ -1133,9 +1133,12 @@
         
         // Play button handler
         playBtn.addEventListener('click', async () => {
-            const streamUrl = getStreamUrl();
+            const rawUrl = isStationMode 
+                ? (currentStation ? (selectedQuality === 'low' && currentStation.url_low ? currentStation.url_low : 
+                   selectedQuality === 'high' && currentStation.url_high ? currentStation.url_high : currentStation.url) : null)
+                : streamUrlInput.value.trim();
             
-            if (!streamUrl) {
+            if (!rawUrl) {
                 updateStatus('Please select a station or enter a URL', 'error');
                 return;
             }
@@ -1162,22 +1165,58 @@
                 </div>
             `;
             
-            try {
-                // Try to create player with full metadata support first
-                let metadataTypes = ['icy', 'ogg'];
-                let corsRetry = true;
+            // Retry strategy: try different configurations
+            const useCorsProxy = isStationMode 
+                ? document.getElementById('useCorsProxyStation').checked 
+                : document.getElementById('useCorsProxy').checked;
+            
+            let attempts = [
+                { url: rawUrl, cors: false, metadata: ['ogg'] }, // Try without CORS proxy first, OGG only
+                { url: rawUrl, cors: false, metadata: [] },      // Try without CORS proxy, no metadata
+                { url: rawUrl, cors: true, metadata: ['ogg'] },  // Try with CORS proxy, OGG only
+                { url: rawUrl, cors: true, metadata: [] }        // Try with CORS proxy, no metadata
+            ];
+            
+            // If user explicitly enabled CORS proxy, prioritize those attempts
+            if (useCorsProxy) {
+                attempts = [
+                    { url: rawUrl, cors: true, metadata: ['ogg'] },
+                    { url: rawUrl, cors: true, metadata: [] },
+                    { url: rawUrl, cors: false, metadata: ['ogg'] },
+                    { url: rawUrl, cors: false, metadata: [] }
+                ];
+            }
+            
+            let lastError = null;
+            
+            for (let i = 0; i < attempts.length; i++) {
+                const attempt = attempts[i];
+                const streamUrl = attempt.cors 
+                    ? `https://corsproxy.io/?${encodeURIComponent(attempt.url)}`
+                    : attempt.url;
                 
-                const createPlayer = (types) => {
-                    return new IcecastMetadataPlayer(streamUrl, {
-                        metadataTypes: types,
-                        enableLogging: true,
+                try {
+                    if (i > 0) {
+                        const statusMsg = attempt.cors 
+                            ? `Retrying with CORS proxy (${attempt.metadata.length > 0 ? 'with metadata' : 'no metadata'})...`
+                            : `Retrying without CORS proxy (${attempt.metadata.length > 0 ? 'with metadata' : 'no metadata'})...`;
+                        updateStatus(statusMsg, 'loading');
+                        console.log(`Attempt ${i + 1}/${attempts.length}: ${statusMsg}`);
+                    }
+                    
+                    player = new IcecastMetadataPlayer(streamUrl, {
+                        metadataTypes: attempt.metadata,
+                        enableLogging: false, // Reduce console noise
                         
                         onMetadata: (metadata) => {
                             displayMetadata(metadata);
                         },
                         
                         onPlay: () => {
-                            updateStatus('Playing', 'playing');
+                            const statusMsg = attempt.metadata.length === 0 
+                                ? 'Playing (no metadata available)'
+                                : 'Playing';
+                            updateStatus(statusMsg, 'playing');
                         },
                         
                         onStop: () => {
@@ -1192,60 +1231,45 @@
                             `;
                         },
                         
-                        onError: async (error) => {
-                            console.error('Player error:', error);
-                            
-                            // Check if this is a CORS error and we haven't retried yet
-                            if (corsRetry && error.toString().includes('CORS')) {
-                                corsRetry = false;
-                                updateStatus('CORS issue detected, retrying without ICY metadata...', 'loading');
-                                
-                                // Stop current player
-                                if (player) {
-                                    player.stop();
-                                }
-                                
-                                // Try with OGG only
-                                try {
-                                    player = createPlayer(['ogg']);
-                                    await player.play();
-                                } catch (retryError) {
-                                    // If that fails too, try with no metadata
-                                    try {
-                                        updateStatus('Retrying without metadata...', 'loading');
-                                        player = createPlayer([]);
-                                        await player.play();
-                                        updateStatus('Playing (no metadata available due to CORS)', 'playing');
-                                    } catch (finalError) {
-                                        updateStatus(`Error: Stream unavailable (CORS policy)`, 'error');
-                                        playBtn.disabled = false;
-                                        stopBtn.disabled = true;
-                                    }
-                                }
-                            } else {
-                                updateStatus(`Error: ${error}`, 'error');
-                                playBtn.disabled = false;
-                                stopBtn.disabled = true;
-                            }
+                        onError: (error) => {
+                            console.error(`Player error on attempt ${i + 1}:`, error);
                         },
                         
                         bufferLength: 3,
-                        retryTimeout: 10,
+                        retryTimeout: 5,
                         retryDelayRate: 0.5,
                         retryDelayMin: 1,
-                        retryDelayMax: 30
+                        retryDelayMax: 10
                     });
-                };
-                
-                player = createPlayer(metadataTypes);
-                await player.play();
-                
-            } catch (error) {
-                console.error('Failed to start player:', error);
-                updateStatus(`Error: ${error.message}`, 'error');
-                playBtn.disabled = false;
-                stopBtn.disabled = true;
+                    
+                    await player.play();
+                    // If we get here, playback started successfully
+                    return;
+                    
+                } catch (error) {
+                    console.error(`Attempt ${i + 1}/${attempts.length} failed:`, error.message);
+                    lastError = error;
+                    
+                    if (player) {
+                        try {
+                            player.stop();
+                        } catch (e) {
+                            // Ignore stop errors
+                        }
+                    }
+                    
+                    // If this isn't the last attempt, continue to next
+                    if (i < attempts.length - 1) {
+                        continue;
+                    }
+                }
             }
+            
+            // All attempts failed
+            console.error('All connection attempts failed');
+            updateStatus('Error: Unable to connect to stream. Try enabling/disabling CORS proxy.', 'error');
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
         });
         
         // Stop button handler
