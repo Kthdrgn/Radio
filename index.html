@@ -745,6 +745,13 @@
                 artwork: null
             };
             
+            // iHeart format: "Artist - text="Song Title" other_attributes..."
+            // Extract artist (everything before " - text=")
+            const artistMatch = streamTitle.match(/^(.+?)\s+-\s+text=/);
+            if (artistMatch) {
+                result.artist = artistMatch[1].trim();
+            }
+            
             // Extract text attribute (song title)
             const textMatch = streamTitle.match(/text="([^"]+)"/);
             if (textMatch) {
@@ -788,15 +795,12 @@
                 if (metadata.StreamTitle.includes('text=') && metadata.StreamTitle.includes('"')) {
                     const iheartData = parseIHeartMetadata(metadata.StreamTitle);
                     
+                    if (iheartData.artist) {
+                        artist = iheartData.artist;
+                    }
+                    
                     if (iheartData.title) {
-                        // Parse artist - title from the text field
-                        const parts = iheartData.title.split(' - ');
-                        if (parts.length >= 2) {
-                            artist = parts[0].trim();
-                            title = parts.slice(1).join(' - ').trim();
-                        } else {
-                            title = iheartData.title.trim();
-                        }
+                        title = iheartData.title;
                     }
                     
                     // Use iHeart's artwork URL if available
