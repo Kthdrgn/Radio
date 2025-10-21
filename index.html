@@ -57,6 +57,62 @@
             transform: translateY(-2px);
         }
         
+        /* Station display with info */
+        .station-display {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .station-display:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .station-display-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .station-display-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .station-display-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: white;
+        }
+        
+        .station-display-genres {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .station-display-change {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        
         /* Album art container */
         .artwork-container {
             width: 100%;
@@ -565,6 +621,15 @@
             Select a Station
         </button>
         
+        <div class="station-display" id="stationDisplay" style="display: none;">
+            <img src="" alt="Station Icon" class="station-display-icon" id="stationDisplayIcon">
+            <div class="station-display-info">
+                <div class="station-display-name" id="stationDisplayName"></div>
+                <div class="station-display-genres" id="stationDisplayGenres"></div>
+            </div>
+            <div class="station-display-change">CHANGE</div>
+        </div>
+        
         <div class="artwork-container" id="artworkContainer">
             <div class="album-art-placeholder">🎵</div>
         </div>
@@ -665,6 +730,10 @@
     <script>
         // Elements
         const stationSelectorBtn = document.getElementById('stationSelectorBtn');
+        const stationDisplay = document.getElementById('stationDisplay');
+        const stationDisplayIcon = document.getElementById('stationDisplayIcon');
+        const stationDisplayName = document.getElementById('stationDisplayName');
+        const stationDisplayGenres = document.getElementById('stationDisplayGenres');
         const stationOverlay = document.getElementById('stationOverlay');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const stationList = document.getElementById('stationList');
@@ -756,7 +825,32 @@
         // Select a station
         function selectStation(station) {
             currentStation = station;
+            
+            // Update simple selector button
             stationSelectorBtn.textContent = station.name;
+            
+            // Update detailed station display
+            stationDisplayName.textContent = station.name + (station.frequency ? ` - ${station.frequency}` : '');
+            
+            const genres = station.genres && station.genres.length > 0 
+                ? station.genres.join(', ') 
+                : 'No genres listed';
+            stationDisplayGenres.textContent = genres;
+            
+            if (station.icon_url) {
+                stationDisplayIcon.src = station.icon_url;
+                stationDisplayIcon.style.display = 'block';
+                stationDisplayIcon.onerror = function() {
+                    this.style.display = 'none';
+                };
+            } else {
+                stationDisplayIcon.style.display = 'none';
+            }
+            
+            // Show the detailed display, hide simple button
+            stationSelectorBtn.style.display = 'none';
+            stationDisplay.style.display = 'flex';
+            
             updateQualityButtons();
             renderStations();
         }
@@ -803,6 +897,13 @@
         
         // Station overlay handlers
         stationSelectorBtn.addEventListener('click', () => {
+            stationOverlay.classList.add('active');
+            stationSearch.value = '';
+            filterStations('');
+            stationSearch.focus();
+        });
+        
+        stationDisplay.addEventListener('click', () => {
             stationOverlay.classList.add('active');
             stationSearch.value = '';
             filterStations('');
@@ -907,6 +1008,8 @@
                 if (currentStation && currentStation.name === deletedName) {
                     currentStation = null;
                     stationSelectorBtn.textContent = 'Select a Station';
+                    stationSelectorBtn.style.display = 'block';
+                    stationDisplay.style.display = 'none';
                     if (player) {
                         player.stop();
                     }
