@@ -737,6 +737,29 @@
             return null;
         }
         
+        // Parse iHeart-style metadata with XML-like attributes
+        function parseIHeartMetadata(streamTitle) {
+            const result = {
+                artist: null,
+                title: null,
+                artwork: null
+            };
+            
+            // Extract text attribute (song title)
+            const textMatch = streamTitle.match(/text="([^"]+)"/);
+            if (textMatch) {
+                result.title = textMatch[1];
+            }
+            
+            // Extract artwork URL
+            const artworkMatch = streamTitle.match(/amgArtworkURL="([^"]+)"/);
+            if (artworkMatch) {
+                result.artwork = artworkMatch[1];
+            }
+            
+            return result;
+        }
+        
         // Format and display metadata
         async function displayMetadata(metadata) {
             console.log('Metadata received:', metadata);
@@ -761,12 +784,34 @@
             let streamArtworkUrl = null;
             
             if (metadata.StreamTitle) {
-                const parts = metadata.StreamTitle.split(' - ');
-                if (parts.length >= 2) {
-                    artist = parts[0].trim();
-                    title = parts.slice(1).join(' - ').trim();
+                // Check if this is iHeart-style metadata (contains attributes)
+                if (metadata.StreamTitle.includes('text=') && metadata.StreamTitle.includes('"')) {
+                    const iheartData = parseIHeartMetadata(metadata.StreamTitle);
+                    
+                    if (iheartData.title) {
+                        // Parse artist - title from the text field
+                        const parts = iheartData.title.split(' - ');
+                        if (parts.length >= 2) {
+                            artist = parts[0].trim();
+                            title = parts.slice(1).join(' - ').trim();
+                        } else {
+                            title = iheartData.title.trim();
+                        }
+                    }
+                    
+                    // Use iHeart's artwork URL if available
+                    if (iheartData.artwork) {
+                        streamArtworkUrl = iheartData.artwork;
+                    }
                 } else {
-                    title = metadata.StreamTitle.trim();
+                    // Standard metadata parsing
+                    const parts = metadata.StreamTitle.split(' - ');
+                    if (parts.length >= 2) {
+                        artist = parts[0].trim();
+                        title = parts.slice(1).join(' - ').trim();
+                    } else {
+                        title = metadata.StreamTitle.trim();
+                    }
                 }
             }
             
