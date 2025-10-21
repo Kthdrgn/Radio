@@ -1195,6 +1195,99 @@
             } else {
                 artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
             }
+            
+            // Update Media Session API
+            updateMediaSession(title, artist, album, artworkUrl);
+        }
+        
+        // Media Session API - Update notification metadata
+        function updateMediaSession(title, artist, album, artworkUrl) {
+            if ('mediaSession' in navigator) {
+                // Set metadata
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: title || 'Unknown Track',
+                    artist: artist || (currentStation ? currentStation.name : 'Radio Stream'),
+                    album: album || (currentStation ? currentStation.name : 'Live Radio'),
+                    artwork: artworkUrl ? [
+                        { src: artworkUrl, sizes: '96x96', type: 'image/jpeg' },
+                        { src: artworkUrl, sizes: '128x128', type: 'image/jpeg' },
+                        { src: artworkUrl, sizes: '192x192', type: 'image/jpeg' },
+                        { src: artworkUrl, sizes: '256x256', type: 'image/jpeg' },
+                        { src: artworkUrl, sizes: '384x384', type: 'image/jpeg' },
+                        { src: artworkUrl, sizes: '512x512', type: 'image/jpeg' }
+                    ] : [
+                        { src: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzY2N2VlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IiNmZmYiPjwvdGV4dD48L3N2Zz4=', 
+                          sizes: '512x512', 
+                          type: 'image/svg+xml' 
+                        }
+                    ]
+                });
+                
+                console.log('Media Session updated:', {
+                    title: title || 'Unknown Track',
+                    artist: artist || (currentStation ? currentStation.name : 'Radio Stream'),
+                    album: album || (currentStation ? currentStation.name : 'Live Radio')
+                });
+            }
+        }
+        
+        // Setup Media Session action handlers
+        function setupMediaSessionHandlers() {
+            if ('mediaSession' in navigator) {
+                // Play action
+                navigator.mediaSession.setActionHandler('play', () => {
+                    console.log('Media Session: Play action');
+                    if (player) {
+                        player.play().catch(err => console.error('Play error:', err));
+                    } else {
+                        playBtn.click();
+                    }
+                });
+                
+                // Pause action (for radio, we'll stop instead)
+                navigator.mediaSession.setActionHandler('pause', () => {
+                    console.log('Media Session: Pause action');
+                    if (player) {
+                        player.stop();
+                    }
+                });
+                
+                // Stop action
+                navigator.mediaSession.setActionHandler('stop', () => {
+                    console.log('Media Session: Stop action');
+                    if (player) {
+                        player.stop();
+                    }
+                });
+                
+                // Seek forward (skip to next station if available)
+                navigator.mediaSession.setActionHandler('nexttrack', () => {
+                    console.log('Media Session: Next track action');
+                    // Find next station in the list
+                    if (stations.length > 0 && currentStation) {
+                        const currentIndex = stations.findIndex(s => s.stationuuid === currentStation.stationuuid);
+                        const nextIndex = (currentIndex + 1) % stations.length;
+                        selectStation(stations[nextIndex]);
+                        setTimeout(() => playBtn.click(), 500);
+                    }
+                });
+                
+                // Seek backward (skip to previous station if available)
+                navigator.mediaSession.setActionHandler('previoustrack', () => {
+                    console.log('Media Session: Previous track action');
+                    // Find previous station in the list
+                    if (stations.length > 0 && currentStation) {
+                        const currentIndex = stations.findIndex(s => s.stationuuid === currentStation.stationuuid);
+                        const prevIndex = currentIndex > 0 ? currentIndex - 1 : stations.length - 1;
+                        selectStation(stations[prevIndex]);
+                        setTimeout(() => playBtn.click(), 500);
+                    }
+                });
+                
+                console.log('Media Session handlers setup complete');
+            } else {
+                console.log('Media Session API not supported in this browser');
+            }
         }
         
         // Play button handler
@@ -1349,6 +1442,9 @@
         
         // Initialize: Load stations
         loadStations();
+        
+        // Initialize Media Session API handlers
+        setupMediaSessionHandlers();
     </script>
 </body>
 </html>
