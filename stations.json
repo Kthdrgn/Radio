@@ -1,0 +1,1316 @@
+[
+  {
+    "name": "The Whale",
+    "url": "https://stream.surfernetwork.com/3834901420btv",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Mix 93.1",
+    "url": "https://stream.revma.ihrhls.com/zc1101",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Z100",
+    "url": "https://stream.revma.ihrhls.com/zc1469",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "102.7 KIIS",
+    "url": "https://stream.revma.ihrhls.com/zc185",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "KLOS",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KLOSFMAAC.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Kiss 108",
+    "url": "https://stream.revma.ihrhls.com/zc1097",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WJIB",
+    "url": "https://ice26.securenetsystems.net/WJIB",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "80s New Wave Radio",
+    "url": "https://puma.streemlion.com:2910/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WAMC",
+    "url": "http://22063.live.streamtheworld.com/WAMCFMAAC_SC",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Groove Salad",
+    "url": "https://ice5.somafm.com/groovesalad-128-aac",
+    "url_low": "https://ice5.somafm.com/groovesalad-32-aac",
+    "url_high": "https://hls.somafm.com/hls/groovesalad/FLAC/program.m3u8"
+  },
+  {
+    "name": "Left Coast 70s",
+    "url": "https://ice4.somafm.com/seventies-128-aac",
+    "url_low": "https://ice2.somafm.com/seventies-64-aac",
+    "url_high": "https://ice4.somafm.com/seventies-320-mp3"
+  },
+  {
+    "name": "Chamber Music",
+    "url": "https://chambermusic.stream.publicradio.org/chambermusic.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Relax",
+    "url": "http://relax.stream.publicradio.org/relax.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classical Kids",
+    "url": "https://classicalkids.stream.publicradio.org/classicalkids.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Concert Band",
+    "url": "https://concertband.stream.publicradio.org/concertband.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Choral",
+    "url": "https://choral.stream.publicradio.org/choral.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Calico",
+    "url": "https://radio3.radio-calico.com:8443/calico.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "I Heart 80s Australia",
+    "url": "https://stream.revma.ihrhls.com/zc4342",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "I Heart Country",
+    "url": "https://ais-arn.streamguys1.com/au_027/playlist.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "I Heart Cool Oldies",
+    "url": "https://stream.revma.ihrhls.com/zc4439",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "AURAL Radio",
+    "url": "http://radio.auralradiokerala.com:1320/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Big Bang Radio",
+    "url": "https://audio-edge-cmc51.fra.h.radiomast.io/2b410ada-8653-40aa-a654-3e8954cf4a4d",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Dance Wave Retro!",
+    "url": "http://retro.dancewave.online/retrodance.flac.ogg",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Djam Radio",
+    "url": "https://stream10.xdevel.com/audio15s976748-2280/stream/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Fr\u00e9quence 3 Gold",
+    "url": "https://h2oradio.net-radio.fr/frequence3gold.mp3",
+    "url_low": "https://live.m2stream.fr/frequence3gold.aac",
+    "url_high": "https://frequence3.net-radio.fr/frequence3gold.flac"
+  },
+  {
+    "name": "Fr\u00e9quence 3 Urban",
+    "url": "http://rod.frequence3.net/frequence3urban.mp3",
+    "url_low": "https://live.m2stream.fr/frequence3urban.aac",
+    "url_high": "https://frequence3.net-radio.fr/frequence3urban.flac"
+  },
+  {
+    "name": "Fr\u00e9quence 3 World",
+    "url": "https://hd.stream.frequence3.net/frequence3world.mp3",
+    "url_low": "https://ice2.ikoula.net-radio.fr/z_frequence3world.aac",
+    "url_high": "https://frequence3.net-radio.fr/frequence3world.flac"
+  },
+  {
+    "name": "High Fi Dream Radio",
+    "url": "https://cdn06-us-east.radio.cloud/80ba63862a97bd69c593cc7a2ccaab1c_hq",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Insanity Radio",
+    "url": "https://stream.cor.insanityradio.com/insanity.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Reggae Classics Mix",
+    "url": "https://online.jamminvibezradio.com/listen/reggae/live.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Jammin Vibez Network \u2013 Caribbean Variety Mix",
+    "url": "https://online.jamminvibezradio.com/listen/reggae/live.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "JB Radio-2",
+    "url": "https://mediacp.jb-radio.net:8001/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "La SuperSonica",
+    "url": "http://c11.radioboss.fm:8093/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Le Bon Mix",
+    "url": "https://stream10.xdevel.com/audio13s976748-2017/stream/icecast.audio",
+    "url_low": null,
+    "url_high": "https://stream10.xdevel.com/audio17s976748-2218/stream/icecast.audio"
+  },
+  {
+    "name": "Le Son Parisien",
+    "url": "https://stream.lesonparisien.com/hi.aac",
+    "url_low": "https://stream.lesonparisien.com/lo.aac",
+    "url_high": "http://stream.lesonparisien.com/live.flac"
+  },
+  {
+    "name": "OpenSky Radio",
+    "url": "https://audio.opensky.radio:8082/flac?_res_tag_=audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pi ano",
+    "url": "http://stream.p-node.org/piano.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Progressive Rock",
+    "url": "https://progressieverock.nl/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Punkrockers Radio",
+    "url": "https://stream.punkrockers-radio.de:8443/prr.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "DownTempo Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8040/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Channel \u2013 Live Party Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8060/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Channel \u2013 Dance Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8030/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Channel \u2013 Various Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8070/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Channel \u2013 Rap & HIP-HOP Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8100/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Bias",
+    "url": "https://admin.biasradio.com/radio/8000/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio BluesFlac",
+    "url": "https://streams.radiomast.io/radioblues-flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Club Classic",
+    "url": "https://stream.radioclub80.cl:8002/clasicos80.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Club Retro",
+    "url": "https://stream.radioclub80.cl:8022/retro80.flac24",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Club Ballads",
+    "url": "https://stream.radioclub80.cl:8042/baladas80.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Mast",
+    "url": "https://streams.radiomast.io/ref-128k-aaclc-stereo-preroll",
+    "url_low": "https://streams.radiomast.io/ref-64k-heaacv2-stereo",
+    "url_high": "https://streams.radiomast.io/ref-lossless-ogg-flac-stereo"
+  },
+  {
+    "name": "Radio Paradise Global Mix",
+    "url": "http://stream.radioparadise.com/global-128",
+    "url_low": "http://stream.radioparadise.com/global-32",
+    "url_high": "http://stream.radioparadise.com/global-flacm"
+  },
+  {
+    "name": "Radio Sputnik",
+    "url": "https://radiosputnik.nl:8443/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio X",
+    "url": "https://mp3.radiox.ch/standard.ogg",
+    "url_low": "https://mp3.radiox.ch/mobile.aac",
+    "url_high": null
+  },
+  {
+    "name": "Retrosquad Radio",
+    "url": "https://radio.retrosquad.id/listen/retrosquad/high",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Riverside Radio",
+    "url": "https://stream.and-stuff.nl:8443/riverside",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rondo Klasu",
+    "url": "https://iradio.fi/klasu.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rondo Klasu Pro",
+    "url": "https://iradio.fi/klasupro-hi.mp3",
+    "url_low": "https://iradio.fi/klasupro-med.mp3",
+    "url_high": "https://iradio.fi/klasupro.flac"
+  },
+  {
+    "name": "Roxy Radio",
+    "url": "https://s2.audiostream.hu/roxy_FLAC",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "shadowfr69 Radio",
+    "url": "https://radio.shadowfr69.eu/lossless",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Stereo Anime",
+    "url": "http://radio.stereoanime.net:8000/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "TEKnival Radio",
+    "url": "https://listen.teknivalradio.com/listen/teknivalradio/radio.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Cheese",
+    "url": "https://station.thecheese.co.nz/listen/the_cheese/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Lite Rock",
+    "url": "https://stream.revma.ihrhls.com/zc6830",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "KRXF",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KRXFFM.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The So Cal Sound",
+    "url": "https://stream.thesocalsound.org/1",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Colorado Sound",
+    "url": "https://ais-sa1.streamon.fm/7891_96k.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The River",
+    "url": "https://nebcoradio.com:8443/WXRV",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Covers",
+    "url": "https://ice5.somafm.com/covers-128-mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC World Service",
+    "url": "https://ice.audionow.com/485BBCWorld.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 1",
+    "url": "https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 5",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_89021708/live/ww/bbc_radio_five_live/bbc_radio_five_live.isml/bbc_radio_five_live-audio%3d128000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 6",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_81827798/live/ww/bbc_6music/bbc_6music.isml/bbc_6music-audio%3d128000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Inhailer Radio",
+    "url": "https://streaming.radio.co/seac6e5991/listen",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Monocle ",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/MONOCLE_24.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Totally Wired Radio",
+    "url": "https://totallywired.out.airtime.pro/totallywired_a",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Cinemix",
+    "url": "https://kathy.torontocast.com:1190/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Openlab",
+    "url": "https://ice04.fluidstream.net/openlab.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Memory Lane",
+    "url": "https://stream-mixtape-geo.ntslive.net/mixtape6",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "NTS Radio",
+    "url": "https://stream-relay-geo.ntslive.net/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Do!! You!! Radio",
+    "url": "https://doyouworld.out.airtime.pro/doyouworld_a",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Lot Radio",
+    "url": "https://streamingv2.shoutcast.com/the-lot-radio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Indie88",
+    "url": "https://localradio.streamb.live/SB00348",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "ESPN Radio",
+    "url": "https://live.amperwave.net/direct/espn-networkmp3-48",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "KNDS FM",
+    "url": "https://ice.romanport.com/knds",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WTOP",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/WTOPFM.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively The Police",
+    "url": "https://2.mystreaming.net/er/policehits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively The Beatles",
+    "url": "http://nl4.mystreaming.net/er/beatles/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Neil Young",
+    "url": "http://2.mystreaming.net/er/neilyoung/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Prince ",
+    "url": "http://streaming.exclusive.radio/er/prince/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Taylor Swift ",
+    "url": "http://2.mystreaming.net/er/taylorswift/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Bonnie Raitt",
+    "url": "http://2.mystreaming.net/er/bonnieraitt/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rock The World - Classic Rock",
+    "url": "https://2.mystreaming.net:443/uber/rtwclassics/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rock The World - Country Rock",
+    "url": "https://2.mystreaming.net:443/uber/rtwcountry/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Pink Floyd",
+    "url": "http://2.mystreaming.net/er/pinkfloyd/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Led Zeppelin ",
+    "url": "http://2.mystreaming.net/er-app/ledzeppelin/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Crosby, Stills, Nash & Young",
+    "url": "http://2.mystreaming.net/er/csny/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively David Bowie",
+    "url": "http://2.mystreaming.net/er/davidbowie/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Tom Petty Hits",
+    "url": "https://2.mystreaming.net/er/tompettyhits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively The Band",
+    "url": "https://2.mystreaming.net/er/theband/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Joni Mitchell ",
+    "url": "http://2.mystreaming.net/er/jonimitchell/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Bob Marley Hits",
+    "url": "https://2.mystreaming.net/er/bobmarleyhits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "XPN2",
+    "url": "https://wxpn.xpn.org/xpnmp3hi",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "KNBA",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KNBAFM.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classic Rock",
+    "url": "https://stream.laut.fm/classicrock",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classic101",
+    "url": "https://stream.laut.fm/classic101",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WMAS",
+    "url": "https://live.amperwave.net/direct/audacy-wmasfmaac-imc",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively Easy",
+    "url": "https://streaming.positivity.radio/pr/posieasy/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively 1990s",
+    "url": "https://streaming.positivity.radio/pr/posi90s/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively 1980s",
+    "url": "https://streaming.positivity.radio/pr/posi80s/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively Good Night",
+    "url": "https://streaming.positivity.radio/pr/goodnight/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WBUR",
+    "url": "https://icecast-stream.wbur.org/wbur",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "KZFR",
+    "url": "https://listen.kzfr.org/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Zone Dublin",
+    "url": "https://uk1.internet-radio.com/proxy/thezone?mp=/stream;",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Le Bon Soft Mix",
+    "url": "https://stream10.xdevel.com/audio14s976748-2279/stream/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Le Bon Dynamic Channel",
+    "url": "https://stream10.xdevel.com/audio15s976748-2112/stream/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rock 102",
+    "url": "https://live.amperwave.net/direct/saga-waqyfmmp3-ibc2",
+    "url_low": "https://live.amperwave.net/direct/saga-waqyfmaac-ibc2",
+    "url_high": null
+  },
+  {
+    "name": "The River",
+    "url": "https://live.amperwave.net/direct/saga-wrsifmmp3-ibc2",
+    "url_low": "https://live.amperwave.net/direct/saga-wrsifmaac-ibc2",
+    "url_high": null
+  },
+  {
+    "name": "WFCR",
+    "url": "https://nepr.streamguys1.com/nopreroll-WFCR.mp3",
+    "url_low": "https://nepr.streamguys1.com/nopreroll-WFCR",
+    "url_high": null
+  },
+  {
+    "name": "KEXP",
+    "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WKTU",
+    "url": "https://stream.revma.ihrhls.com/zc1473/47_1rikugy8mw9th02/playlist.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "1010 WINS",
+    "url": "https://live.amperwave.net/direct/audacy-winsamaac-imc?session-id=5142bf6297b78ea6739606f0f8d1de03",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "NPR Live Stream",
+    "url": "https://npr-ice.streamguys1.com/live.mp3",
+    "url_low": "https://npr-ice.streamguys1.com/live.aac",
+    "url_high": null
+  },
+  {
+    "name": "MSNBC",
+    "url": "https://tunein.cdnstream1.com/3511_96.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Indie Pop Rock",
+    "url": "https://ice2.somafm.com/indiepop-128-aac",
+    "url_low": "https://ice2.somafm.com/indiepop-64-aac",
+    "url_high": null
+  },
+  {
+    "name": "Underground 80s",
+    "url": "https://ice5.somafm.com/u80s-128-aac",
+    "url_low": "https://ice3.somafm.com/u80s-32-aac",
+    "url_high": "https://ice4.somafm.com/u80s-256-mp3"
+  },
+  {
+    "name": "Sonic Universe",
+    "url": "https://ice1.somafm.com/sonicuniverse-128-mp3",
+    "url_low": "https://ice2.somafm.com/sonicuniverse-32-aac",
+    "url_high": "https://ice5.somafm.com/sonicuniverse-256-mp3"
+  },
+  {
+    "name": "Folk Forward",
+    "url": "https://ice2.somafm.com/folkfwd-128-aac",
+    "url_low": "https://ice2.somafm.com/folkfwd-64-aac",
+    "url_high": null
+  },
+  {
+    "name": "Boot Liquor",
+    "url": "https://ice4.somafm.com/bootliquor-128-aac",
+    "url_low": "https://ice2.somafm.com/bootliquor-64-aac",
+    "url_high": "https://ice2.somafm.com/bootliquor-320-mp3"
+  },
+  {
+    "name": "Peaceful Piano",
+    "url": "http://peacefulpiano.stream.publicradio.org/peacefulpiano.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Your Classical Radio",
+    "url": "https://ycradio.stream.publicradio.org/ycradio.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classical Guitar",
+    "url": "https://guitar.stream.publicradio.org/guitar.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Essentials",
+    "url": "https://favorites.stream.publicradio.org/favorites.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Holiday Classical",
+    "url": "https://holiday.stream.publicradio.org/holiday_yc.mp3?cb=8282040137",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Sleep",
+    "url": "https://lullabies.stream.publicradio.org/lullabies.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pixel & Plot",
+    "url": "https://pixelplot.stream.publicradio.org/pixelplot.aac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "YouRadio",
+    "url": "https://drive.uber.radio/uber/noelsbillions/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "I Heart 80s",
+    "url": "https://stream.revma.ihrhls.com/zc5060",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "60North Radio",
+    "url": "http://r5.zetcast.net/stream3",
+    "url_low": "http://cdn1.zetcast.net/stream6",
+    "url_high": "http://r5.zetcast.net/flac"
+  },
+  {
+    "name": "95bFM",
+    "url": "https://streams.95bfm.com/stream112",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "AIDA Radio",
+    "url": "https://cdn05.radio.cloud:8128/AIDA-OMNIA-GAI",
+    "url_low": "http://frontend.streamonkey.net/aidaradio-meergefuehl",
+    "url_high": "https://cdn05.radio.cloud:8128/AIDA-OMNIA-GAI"
+  },
+  {
+    "name": "Bailrigg 95.3FM",
+    "url": "https://bfm-live.lancs.ac.uk/listen/bfm/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BDPST Rock Radio",
+    "url": "https://s2.audiostream.hu/bdpstrock_FLAC",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Dance Wave",
+    "url": "http://dancewave.online/dance.flac.ogg",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Danubius Radio",
+    "url": "https://danubiusradio.hu/live_HiFi.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Fr\u00e9quence 3",
+    "url": "https://master.net-radio.fr/freq3fm-tuner37.mp3",
+    "url_low": null,
+    "url_high": "https://frequence3.net-radio.fr/frequence3.flac"
+  },
+  {
+    "name": "Fr\u00e9quence 3 Dance",
+    "url": "https://frequence3-fm.net-radio.fr/z_frequence3dance.aac",
+    "url_low": "https://abf.net-radio.fr/z_frequence3dance.aac",
+    "url_high": "https://onair.net-radio.fr/frequence3dance.flac"
+  },
+  {
+    "name": "Futura.FM",
+    "url": "https://futura.fm/stream.ogg?ts=1699656027.325",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Haarlem Shuffle Radio",
+    "url": "https://stream.tbmp.nl:8000/haarlem105high.aac",
+    "url_low": "https://stream.tbmp.nl:8000/haarlem105low.aac",
+    "url_high": "https://stream.tbmp.nl:8000/haarlemshuffle.flac"
+  },
+  {
+    "name": "HitMix",
+    "url": "https://stream.hitmix.ee:8443/PFL",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "ISEKOI Radio",
+    "url": "https://isekoi-radio.com/listen/isekoi/radio.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Joy Hits",
+    "url": "http://joyhits.online/joyhits.flac.ogg",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "LapFox Radio",
+    "url": "https://radio.lapfoxradio.com/radio/8000/stream-ogg-128.ogg",
+    "url_low": null,
+    "url_high": "https://radio.lapfoxradio.com/radio/8000/stream-flac.flac 10"
+  },
+  {
+    "name": "Lux Radio",
+    "url": "https://live7.avf.ch/lux_main",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "openbroadcast",
+    "url": "http://stream.openbroadcast.ch/16bit.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Lounge Radio",
+    "url": "https://mscp4.live-streams.nl:8142/lounge.ogg",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Holland \u2013 The Underground Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8000/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Holland \u2013 Hardcore Channel",
+    "url": "https://streamserver.pure-isp.eu/radio/8010/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Pure Radio Channel \u2013 DJ R.I.P.\u2019s Podcast",
+    "url": "https://streamserver.pure-isp.eu/radio/8050/flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Qabayan FM",
+    "url": "https://c2.radioboss.fm:8478/live",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Paradise Main Mix",
+    "url": "http://stream.radioparadise.com/mp3-192",
+    "url_low": "http://stream.radioparadise.com/aac-32",
+    "url_high": "http://stream.radioparadise.com/flacm"
+  },
+  {
+    "name": "Mellow Mix",
+    "url": "http://stream.radioparadise.com/mellow-128",
+    "url_low": "http://stream.radioparadise.com/mellow-32",
+    "url_high": "http://stream.radioparadise.com/mellow-flacm"
+  },
+  {
+    "name": "Rock Mix",
+    "url": "http://stream.radioparadise.com/rock-320",
+    "url_low": "http://stream.radioparadise.com/rock-32",
+    "url_high": "http://stream.radioparadise.com/rock-flacm"
+  },
+  {
+    "name": "RIO \u2013 R\u00e1dio Internacional Odemira",
+    "url": "http://c30.radioboss.fm:8510/autodj",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "SUBJAM",
+    "url": "http://orbit.citrus3.com:9016/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Sveriges Radio",
+    "url": "https://live1.sr.se/p2-flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Violent Forces Radio",
+    "url": "https://tuneintoradio1.com:8010/stream.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Zappa Stream Radio",
+    "url": "https://streams.norbert.de/zappa.flac",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Hit Nation",
+    "url": "https://stream.revma.ihrhls.com/zc4422",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "2000s",
+    "url": "https://stream.revma.ihrhls.com/zc6850",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "WXPN",
+    "url": "https://wxpnhi.xpn.org/xpnhi-nopreroll",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Current",
+    "url": "https://current.stream.publicradio.org/current.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 2",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_74208725/live/ww/bbc_radio_two/bbc_radio_two.isml/bbc_radio_two-audio%3d128000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 3",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_23461179/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d128000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "BBC 4",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_55057080/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio%3d128000.norewind.m3u8",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "NPR Hourly News Summary",
+    "url": "http://pd.npr.org/anon.npr-mp3/npr/news/newscast.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classic Hits 109",
+    "url": "https://broadcast.classichits109.com/70s-90s;",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rock FM Classic Rock",
+    "url": "https://audiotainment-sw.streamabc.net/atsw-classicrock-mp3-128-2538548?",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Caroline ",
+    "url": "https://stream.radiocaroline.net/;",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "X-ray FM",
+    "url": "https://listen.xray.fm/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rinse FM",
+    "url": "https://admin.stream.rinse.fm/proxy/rinse_uk/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radio Paradise 2050",
+    "url": "http://stream.radioparadise.com/radio2050-128",
+    "url_low": "http://stream.radioparadise.com/radio2050-32",
+    "url_high": "http://stream.radioparadise.com/radio2050-flacm"
+  },
+  {
+    "name": "Radio Paradise Beyond",
+    "url": "http://stream.radioparadise.com/beyond-128",
+    "url_low": "http://stream.radioparadise.com/beyond-32",
+    "url_high": "http://stream.radioparadise.com/beyond-flacm"
+  },
+  {
+    "name": "Radio Paradise Serenity",
+    "url": "http://stream.radioparadise.com/serenity",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Eclectic 24 ",
+    "url": "https://streams.kcrw.com/e24_mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Easy Radio",
+    "url": "https://live.easyradio.bg/aac?type=.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Cat Stevens ",
+    "url": "https://2.mystreaming.net/er/catstevens/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Billy Joel",
+    "url": "https://2.mystreaming.net/er/billyjoelhits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively The Who",
+    "url": "https://2.mystreaming.net/er-app/whohits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Sleep - Max Richter",
+    "url": "https://streaming.positivity.radio/pr/maxrichter/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Rock The World - Alt Rock",
+    "url": "https://2.mystreaming.net:443/uber/rtwalt/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "PRX Remix",
+    "url": "https://peridot.streamguys1.com:5515/WREM",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Simon & Garfunkel ",
+    "url": "http://2.mystreaming.net/er/simongarfunkle/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Beatles Hits",
+    "url": "https://2.mystreaming.net/er/thebeatleshits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively Elton John ",
+    "url": "https://2.mystreaming.net/er/eltonjohn/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively James Taylor",
+    "url": "http://2.mystreaming.net/er/jamestaylor/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Exclusively R.E.M. Hits ",
+    "url": "http://2.mystreaming.net/er/remhits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "New England Public Radio Classical",
+    "url": "https://nepr.streamguys1.com/nopreroll-WFCR-HD.mp3",
+    "url_low": "https://nepr.streamguys1.com/nopreroll-WFCR-HD",
+    "url_high": null
+  },
+  {
+    "name": "Daily Vibes ",
+    "url": "https://stream.laut.fm/dailyvibes",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Theo Radio",
+    "url": "https://stream.laut.fm/theo",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Valley Free Radio",
+    "url": "https://stream.valleyfreeradio.org:8443/stream",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "EZ 107.5",
+    "url": "https://live.amperwave.net/direct/saga-wpvqhd2mp3-imc",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively Good Evening",
+    "url": "https://streaming.positivity.radio/pr/goodevening/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively Good Afternoon",
+    "url": "https://streaming.positivity.radio/pr/goodafternoon/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Positively Good Morning ",
+    "url": "https://streaming.positivity.radio/pr/goodmorning/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Globe ",
+    "url": "https://icecast.goshen.edu:8001/wgcs-128vbr",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "radioeins",
+    "url": "http://www.radioeins.de/livemp3",
+    "url_low": "http://www.radioeins.de/livemp3_s",
+    "url_high": null
+  },
+  {
+    "name": "Triple R",
+    "url": "https://ondemand.rrr.org.au/getstream?id=wshq",
+    "url_low": "https://ondemand.rrr.org.au/getstream?id=wslq",
+    "url_high": null
+  },
+  {
+    "name": "Coffeehouse",
+    "url": "https://rfcm.streamguys1.com/coffeehouse-mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Switch Indie",
+    "url": "https://rfcm.streamguys1.com/indiesk-mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Roots Rock Radio",
+    "url": "https://streaming.live365.com/a70335",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Classic Rock Hits",
+    "url": "https://rfcm.streamguys1.com/classicrock-mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Yacht HQ Radio",
+    "url": "https://streaming.live365.com/a91703",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Coffee House",
+    "url": "https://tunein-live-b.cdnstream1.com/3740_128.mp3",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Abba Hits",
+    "url": "https://nl4.mystreaming.net/er-app/abbahits/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "The Best of Indie",
+    "url": "https://nl4.mystreaming.net/uber-app/starboxindie/icecast.audio",
+    "url_low": null,
+    "url_high": null
+  },
+  {
+    "name": "Radiostorm.com - AT WORK",
+    "url": "http://streaming.live365.com/b30572_128mp3",
+    "url_low": "http://streaming.live365.com/b30572_64aac",
+    "url_high": null
+  },
+  {
+    "name": "Radiostorm.com - OLDIES",
+    "url": "http://streaming.live365.com/b09584_128mp3",
+    "url_low": "http://streaming.live365.com/b09584_64aac",
+    "url_high": null
+  },
+  {
+    "name": "Radiostorm.com - CLASSIC ROCK",
+    "url": "http://streaming.live365.com/b47785_128mp3",
+    "url_low": "http://streaming.live365.com/b47785_64aac",
+    "url_high": null
+  },
+  {
+    "name": "Radiostorm.com - COMEDY",
+    "url": "http://streaming.live365.com/b42761_64aac",
+    "url_low": null,
+    "url_high": null
+  }
+]
