@@ -1125,26 +1125,42 @@
             
             // Parse metadata
             if (metadata) {
+                // Handle iHeartRadio extended metadata format
                 if (metadata.StreamTitle) {
-                    const parts = metadata.StreamTitle.split(' - ');
-                    if (parts.length >= 2) {
-                        artist = parts[0].trim();
-                        title = parts.slice(1).join(' - ').trim();
+                    const streamTitle = metadata.StreamTitle;
+                    
+                    // Check for iHeartRadio format with text= and artist=
+                    const textMatch = streamTitle.match(/text="([^"]+)"/);
+                    const artistMatch = streamTitle.match(/artist="([^"]+)"/);
+                    const artworkMatch = streamTitle.match(/amgArtworkURL="([^"]+)"/);
+                    
+                    if (textMatch || artistMatch) {
+                        // iHeartRadio format
+                        if (textMatch) title = textMatch[1].trim();
+                        if (artistMatch) artist = artistMatch[1].trim();
+                        if (artworkMatch) streamArtworkUrl = artworkMatch[1].trim();
                     } else {
-                        title = metadata.StreamTitle.trim();
+                        // Standard format: Artist - Title
+                        const parts = streamTitle.split(' - ');
+                        if (parts.length >= 2) {
+                            artist = parts[0].trim();
+                            title = parts.slice(1).join(' - ').trim();
+                        } else {
+                            title = streamTitle.trim();
+                        }
                     }
                 }
+                
+                // Check for stream-provided artwork (if not already found)
+                if (!streamArtworkUrl && metadata.StreamUrl) {
+                    streamArtworkUrl = metadata.StreamUrl;
+                }
+                
+                // Check for OGG metadata (overrides if present)
+                if (metadata.ARTIST) artist = metadata.ARTIST;
+                if (metadata.TITLE) title = metadata.TITLE;
+                if (metadata.ALBUM) album = metadata.ALBUM;
             }
-            
-            // Check for stream-provided artwork
-            if (metadata.StreamUrl) {
-                streamArtworkUrl = metadata.StreamUrl;
-            }
-            
-            // Check for OGG metadata
-            if (metadata.ARTIST) artist = metadata.ARTIST;
-            if (metadata.TITLE) title = metadata.TITLE;
-            if (metadata.ALBUM) album = metadata.ALBUM;
             
             // Check if we should search for artwork
             const shouldSearchArtwork = artist && title && 
