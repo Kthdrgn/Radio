@@ -3,1314 +3,3206 @@
     "name": "The Whale",
     "url": "https://stream.surfernetwork.com/3834901420btv",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Rock",
+      "Classic Rock"
+    ],
+    "call_letters": "WDRC",
+    "frequency": "102.9 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e868a5f42_349.jpg"
   },
   {
     "name": "Mix 93.1",
     "url": "https://stream.revma.ihrhls.com/zc1101",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Pop",
+      "Top 40",
+      "Local"
+    ],
+    "call_letters": "WHYN",
+    "frequency": "93.1 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/78dc3fe97_350.png"
   },
   {
     "name": "Z100",
     "url": "https://stream.revma.ihrhls.com/zc1469",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Pop",
+      "Top 40",
+      "Hits"
+    ],
+    "call_letters": "WHTZ",
+    "frequency": "100.3 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/788d31b3f_352.png"
   },
   {
     "name": "102.7 KIIS",
     "url": "https://stream.revma.ihrhls.com/zc185",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Pop",
+      "Top 40",
+      "Hits"
+    ],
+    "call_letters": "KIIS",
+    "frequency": "102.7 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e96078bd7_353.png"
   },
   {
     "name": "KLOS",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KLOSFMAAC.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Rock"
+    ],
+    "call_letters": "KLOS",
+    "frequency": "95.5 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ccd378b39_355.png"
   },
   {
     "name": "Kiss 108",
     "url": "https://stream.revma.ihrhls.com/zc1097",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Top 40",
+      "Hits"
+    ],
+    "call_letters": "WXKS",
+    "frequency": "107.9 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bd363ad13_356.jpg"
   },
   {
     "name": "WJIB",
     "url": "https://ice26.securenetsystems.net/WJIB",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Top 40",
+      "Oldies"
+    ],
+    "call_letters": "WJIB",
+    "frequency": "101.3 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/39d73e363_359.png"
   },
   {
     "name": "80s New Wave Radio",
     "url": "https://puma.streemlion.com:2910/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "80s"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d9ec143bb_360.png"
   },
   {
     "name": "WAMC",
     "url": "http://22063.live.streamtheworld.com/WAMCFMAAC_SC",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "Public",
+      "Local"
+    ],
+    "call_letters": "WAMC",
+    "frequency": "90.3 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/dbf876d37_1000003867.jpg"
   },
   {
     "name": "Groove Salad",
     "url": "https://ice5.somafm.com/groovesalad-128-aac",
     "url_low": "https://ice5.somafm.com/groovesalad-32-aac",
-    "url_high": "https://hls.somafm.com/hls/groovesalad/FLAC/program.m3u8"
+    "url_high": "https://hls.somafm.com/hls/groovesalad/FLAC/program.m3u8",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Electronic",
+      "Ambient",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ac5b11518_1000003874.png"
   },
   {
     "name": "Left Coast 70s",
     "url": "https://ice4.somafm.com/seventies-128-aac",
     "url_low": "https://ice2.somafm.com/seventies-64-aac",
-    "url_high": "https://ice4.somafm.com/seventies-320-mp3"
+    "url_high": "https://ice4.somafm.com/seventies-320-mp3",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "70s",
+      "Commercial Free",
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/41965790d_444.jpg"
   },
   {
     "name": "Chamber Music",
     "url": "https://chambermusic.stream.publicradio.org/chambermusic.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b97c2a23f_363.jpg"
   },
   {
     "name": "Relax",
     "url": "http://relax.stream.publicradio.org/relax.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/331982c58_365.jpg"
   },
   {
     "name": "Classical Kids",
     "url": "https://classicalkids.stream.publicradio.org/classicalkids.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Public",
+      "Classical"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8162bd527_367.jpg"
   },
   {
     "name": "Concert Band",
     "url": "https://concertband.stream.publicradio.org/concertband.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/4f554caee_369.jpg"
   },
   {
     "name": "Choral",
     "url": "https://choral.stream.publicradio.org/choral.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2d249f6ed_370.jpg"
   },
   {
     "name": "Radio Calico",
     "url": "https://radio3.radio-calico.com:8443/calico.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Hits",
+      "Pop",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/9efdfa7c7_1000003882.png"
   },
   {
     "name": "I Heart 80s Australia",
     "url": "https://stream.revma.ihrhls.com/zc4342",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/09029d28c_379.jpg"
   },
   {
     "name": "I Heart Country",
     "url": "https://ais-arn.streamguys1.com/au_027/playlist.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Country",
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/fe44e44ee_377.jpg"
   },
   {
     "name": "I Heart Cool Oldies",
     "url": "https://stream.revma.ihrhls.com/zc4439",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Oldies",
+      "70s",
+      "80s",
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ef2760590_380.png"
   },
   {
     "name": "AURAL Radio",
     "url": "http://radio.auralradiokerala.com:1320/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d213d6bd3_455.webp"
   },
   {
     "name": "Big Bang Radio",
     "url": "https://audio-edge-cmc51.fra.h.radiomast.io/2b410ada-8653-40aa-a654-3e8954cf4a4d",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d2929868f_467.jpg"
   },
   {
     "name": "Dance Wave Retro!",
     "url": "http://retro.dancewave.online/retrodance.flac.ogg",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/56f377456_448.jpg"
   },
   {
     "name": "Djam Radio",
     "url": "https://stream10.xdevel.com/audio15s976748-2280/stream/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Eclectic"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e87b4588f_471.png"
   },
   {
-    "name": "Fr\u00e9quence 3 Gold",
+    "name": "Fréquence 3 Gold",
     "url": "https://h2oradio.net-radio.fr/frequence3gold.mp3",
     "url_low": "https://live.m2stream.fr/frequence3gold.aac",
-    "url_high": "https://frequence3.net-radio.fr/frequence3gold.flac"
+    "url_high": "https://frequence3.net-radio.fr/frequence3gold.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/04bf14575_464.png"
   },
   {
-    "name": "Fr\u00e9quence 3 Urban",
+    "name": "Fréquence 3 Urban",
     "url": "http://rod.frequence3.net/frequence3urban.mp3",
     "url_low": "https://live.m2stream.fr/frequence3urban.aac",
-    "url_high": "https://frequence3.net-radio.fr/frequence3urban.flac"
+    "url_high": "https://frequence3.net-radio.fr/frequence3urban.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/98f06477c_465.png"
   },
   {
-    "name": "Fr\u00e9quence 3 World",
+    "name": "Fréquence 3 World",
     "url": "https://hd.stream.frequence3.net/frequence3world.mp3",
     "url_low": "https://ice2.ikoula.net-radio.fr/z_frequence3world.aac",
-    "url_high": "https://frequence3.net-radio.fr/frequence3world.flac"
+    "url_high": "https://frequence3.net-radio.fr/frequence3world.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "World"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bee3e1461_472.png"
   },
   {
     "name": "High Fi Dream Radio",
     "url": "https://cdn06-us-east.radio.cloud/80ba63862a97bd69c593cc7a2ccaab1c_hq",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a3451819c_473.jpg"
   },
   {
     "name": "Insanity Radio",
     "url": "https://stream.cor.insanityradio.com/insanity.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/71b2d31cb_461.png"
   },
   {
     "name": "Reggae Classics Mix",
     "url": "https://online.jamminvibezradio.com/listen/reggae/live.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": "Jammin Vibes Network",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/476bab6cc_476.png"
   },
   {
-    "name": "Jammin Vibez Network \u2013 Caribbean Variety Mix",
+    "name": "Jammin Vibez Network – Caribbean Variety Mix",
     "url": "https://online.jamminvibezradio.com/listen/reggae/live.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Reggae"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b8f69b10d_476.png"
   },
   {
     "name": "JB Radio-2",
     "url": "https://mediacp.jb-radio.net:8001/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/c2916aee3_477.webp"
   },
   {
     "name": "La SuperSonica",
     "url": "http://c11.radioboss.fm:8093/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e308717fa_478.jpg"
   },
   {
     "name": "Le Bon Mix",
     "url": "https://stream10.xdevel.com/audio13s976748-2017/stream/icecast.audio",
     "url_low": null,
-    "url_high": "https://stream10.xdevel.com/audio17s976748-2218/stream/icecast.audio"
+    "url_high": "https://stream10.xdevel.com/audio17s976748-2218/stream/icecast.audio",
+    "website_url": "https://www.lebonmix.radio/en",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/481149e05_69371.png"
   },
   {
     "name": "Le Son Parisien",
     "url": "https://stream.lesonparisien.com/hi.aac",
     "url_low": "https://stream.lesonparisien.com/lo.aac",
-    "url_high": "http://stream.lesonparisien.com/live.flac"
+    "url_high": "http://stream.lesonparisien.com/live.flac",
+    "website_url": "https://www.lesonparisien.com/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/addd284be_69372.png"
   },
   {
     "name": "OpenSky Radio",
     "url": "https://audio.opensky.radio:8082/flac?_res_tag_=audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/50e5702c3_492.png"
   },
   {
     "name": "Pi ano",
     "url": "http://stream.p-node.org/piano.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/06cd92bc0_1000003921.jpg"
   },
   {
     "name": "Progressive Rock",
     "url": "https://progressieverock.nl/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://progressieverock.nl/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/6e624ed8b_69375.webp"
   },
   {
     "name": "Punkrockers Radio",
     "url": "https://stream.punkrockers-radio.de:8443/prr.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://punkrockers-radio.de/",
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Punk"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/176a0b85f_69376.png"
   },
   {
     "name": "DownTempo Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8040/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": "Pure Radio Holland",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/0df565a8f_69363.webp"
   },
   {
-    "name": "Pure Radio Channel \u2013 Live Party Channel",
+    "name": "Pure Radio Channel – Live Party Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8060/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/3d133dcf9_69366.webp"
   },
   {
-    "name": "Pure Radio Channel \u2013 Dance Channel",
+    "name": "Pure Radio Channel – Dance Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8030/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/9a93f1dca_69364.webp"
   },
   {
-    "name": "Pure Radio Channel \u2013 Various Channel",
+    "name": "Pure Radio Channel – Various Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8070/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/adc2a87ac_69368.webp"
   },
   {
-    "name": "Pure Radio Channel \u2013 Rap & HIP-HOP Channel",
+    "name": "Pure Radio Channel – Rap & HIP-HOP Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8100/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/d10a414b9_69367.webp"
   },
   {
     "name": "Radio Bias",
     "url": "https://admin.biasradio.com/radio/8000/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://biasradio.com/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/1c3eb4165_69383.jpg"
   },
   {
     "name": "Radio BluesFlac",
     "url": "https://streams.radiomast.io/radioblues-flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Blues"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/7c4ae9b17_450.png"
   },
   {
     "name": "Radio Club Classic",
     "url": "https://stream.radioclub80.cl:8002/clasicos80.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2b374e8b6_455.jpg"
   },
   {
     "name": "Radio Club Retro",
     "url": "https://stream.radioclub80.cl:8022/retro80.flac24",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/b24095fc6_69384.jpg"
   },
   {
     "name": "Radio Club Ballads",
     "url": "https://stream.radioclub80.cl:8042/baladas80.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a6f1c3018_457.jpg"
   },
   {
     "name": "Radio Mast",
     "url": "https://streams.radiomast.io/ref-128k-aaclc-stereo-preroll",
     "url_low": "https://streams.radiomast.io/ref-64k-heaacv2-stereo",
-    "url_high": "https://streams.radiomast.io/ref-lossless-ogg-flac-stereo"
+    "url_high": "https://streams.radiomast.io/ref-lossless-ogg-flac-stereo",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/d9df1f136_69385.png"
   },
   {
     "name": "Radio Paradise Global Mix",
     "url": "http://stream.radioparadise.com/global-128",
     "url_low": "http://stream.radioparadise.com/global-32",
-    "url_high": "http://stream.radioparadise.com/global-flacm"
+    "url_high": "http://stream.radioparadise.com/global-flacm",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "World",
+      "Commercial Free"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/88a575f05_391.png"
   },
   {
     "name": "Radio Sputnik",
     "url": "https://radiosputnik.nl:8443/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://radiosputnik.nl/",
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Electronic",
+      "Ambient"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/f5549bd11_69386.jpg"
   },
   {
     "name": "Radio X",
     "url": "https://mp3.radiox.ch/standard.ogg",
     "url_low": "https://mp3.radiox.ch/mobile.aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/4187f33b2_69387.png"
   },
   {
     "name": "Retrosquad Radio",
     "url": "https://radio.retrosquad.id/listen/retrosquad/high",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/0407001e6_479.png"
   },
   {
     "name": "Riverside Radio",
     "url": "https://stream.and-stuff.nl:8443/riverside",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/392247495_446.png"
   },
   {
     "name": "Rondo Klasu",
     "url": "https://iradio.fi/klasu.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/58df47531_69389.jpg"
   },
   {
     "name": "Rondo Klasu Pro",
     "url": "https://iradio.fi/klasupro-hi.mp3",
     "url_low": "https://iradio.fi/klasupro-med.mp3",
-    "url_high": "https://iradio.fi/klasupro.flac"
+    "url_high": "https://iradio.fi/klasupro.flac",
+    "website_url": "https://rondo.fi/kampanjasivut/",
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/679730372_454.jpg"
   },
   {
     "name": "Roxy Radio",
     "url": "https://s2.audiostream.hu/roxy_FLAC",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/1b2cb9076_1000003920.jpg"
   },
   {
     "name": "shadowfr69 Radio",
     "url": "https://radio.shadowfr69.eu/lossless",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://azuracast.shadowfr69.eu/public/shadowfr69_radio",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/fbe757e69_69388.jpg"
   },
   {
     "name": "Stereo Anime",
     "url": "http://radio.stereoanime.net:8000/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e21df60b4_456.jpg"
   },
   {
     "name": "TEKnival Radio",
     "url": "https://listen.teknivalradio.com/listen/teknivalradio/radio.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/f1b4eb3e8_logod.webp"
   },
   {
     "name": "The Cheese",
     "url": "https://station.thecheese.co.nz/listen/the_cheese/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/3c253d83c_1000003919.png"
   },
   {
     "name": "Lite Rock",
     "url": "https://stream.revma.ihrhls.com/zc6830",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Rock"
+    ],
+    "call_letters": "I Heart",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/74938f0b4_1000003916.png"
   },
   {
     "name": "KRXF",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KRXFFM.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Alternative",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": "92.9",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/7496dc0fb_377.jpg"
   },
   {
     "name": "The So Cal Sound",
     "url": "https://stream.thesocalsound.org/1",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "KCSN",
+    "frequency": "88.5",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/c339f3f72_379.jpg"
   },
   {
     "name": "The Colorado Sound",
     "url": "https://ais-sa1.streamon.fm/7891_96k.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "KJAC",
+    "frequency": "105.5",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a706017f0_383.png"
   },
   {
     "name": "The River",
     "url": "https://nebcoradio.com:8443/WXRV",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "WXRV",
+    "frequency": "92.5",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/6d601ccbe_385.jpg"
   },
   {
     "name": "Covers",
     "url": "https://ice5.somafm.com/covers-128-mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/522188aa9_387.jpg"
   },
   {
     "name": "BBC World Service",
     "url": "https://ice.audionow.com/485BBCWorld.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "News"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/4c0168e15_377.png"
   },
   {
     "name": "BBC 1",
     "url": "https://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/68625600b_378.png"
   },
   {
     "name": "BBC 5",
     "url": "http://as-hls-ww-live.akamaized.net/pool_89021708/live/ww/bbc_radio_five_live/bbc_radio_five_live.isml/bbc_radio_five_live-audio%3d128000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "News",
+      "Sports"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/70235c69e_388.png"
   },
   {
     "name": "BBC 6",
     "url": "http://as-hls-ww-live.akamaized.net/pool_81827798/live/ww/bbc_6music/bbc_6music.isml/bbc_6music-audio%3d128000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Alternative"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ea88f4cf1_389.png"
   },
   {
     "name": "Inhailer Radio",
     "url": "https://streaming.radio.co/seac6e5991/listen",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Indie",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/433926d01_421.png"
   },
   {
     "name": "Monocle ",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/MONOCLE_24.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2a55347b3_441.jpg"
   },
   {
     "name": "Totally Wired Radio",
     "url": "https://totallywired.out.airtime.pro/totallywired_a",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/9d21e7573_442.jpg"
   },
   {
     "name": "Cinemix",
     "url": "https://kathy.torontocast.com:1190/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e95777abe_444.png"
   },
   {
     "name": "Openlab",
     "url": "https://ice04.fluidstream.net/openlab.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/3a790ed01_445.jpg"
   },
   {
     "name": "Memory Lane",
     "url": "https://stream-mixtape-geo.ntslive.net/mixtape6",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "NTS radio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a7e7c50ff_447.jpg"
   },
   {
     "name": "NTS Radio",
     "url": "https://stream-relay-geo.ntslive.net/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a3293a511_448.png"
   },
   {
     "name": "Do!! You!! Radio",
     "url": "https://doyouworld.out.airtime.pro/doyouworld_a",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bf3305d99_449.png"
   },
   {
     "name": "The Lot Radio",
     "url": "https://streamingv2.shoutcast.com/the-lot-radio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/f01e8bf89_451.png"
   },
   {
     "name": "Indie88",
     "url": "https://localradio.streamb.live/SB00348",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Indie",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b20052bde_452.png"
   },
   {
     "name": "ESPN Radio",
     "url": "https://live.amperwave.net/direct/espn-networkmp3-48",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "Sports"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/f19bad1a0_490.jpg"
   },
   {
     "name": "KNDS FM",
     "url": "https://ice.romanport.com/knds",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "KNDS",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/427e0863a_491.png"
   },
   {
     "name": "WTOP",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/WTOPFM.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://wtop.com/",
+    "description": null,
+    "genres": [
+      "Talk",
+      "News"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/197bb9e43_481.jpg"
   },
   {
     "name": "Exclusively The Police",
     "url": "https://2.mystreaming.net/er/policehits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusivehits-the-police-hits",
+    "description": "Welcome to Exclusively The Police - Hits!\nBand Members (Past and Present): Sting, Andy Summers, Stewart Copeland, Henry Padovani.\n\nExperience the Timeless Hits of The Police\nDive into the legendary sound of The Police, a band that reshaped the landscape of rock and pop with their groundbreaking musi",
+    "genres": [],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/7272c8931_498.jpg"
   },
   {
     "name": "Exclusively The Beatles",
     "url": "http://nl4.mystreaming.net/er/beatles/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b4aa4685b_484.jpg"
   },
   {
     "name": "Exclusively Neil Young",
     "url": "http://2.mystreaming.net/er/neilyoung/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/exclusiveradio-neil-young",
+    "description": "Neil Young: A Timeless Icon in Music\nNeil Young remains a legendary figure in rock and folk, his music resonating across generations with profound lyrics and unique guitar sounds. With timeless tracks like \"Harvest Moon\" and impactful protest songs inspired by events like 9/11, Young's ability to ch",
+    "genres": [],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e94f5b452_485.jpg"
   },
   {
     "name": "Exclusively Prince ",
     "url": "http://streaming.exclusive.radio/er/prince/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusivehits-prince-hits",
+    "description": null,
+    "genres": [
+      "Pop",
+      "Hits",
+      "80s",
+      "90s"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/742567e72_69058.jpg"
   },
   {
     "name": "Exclusively Taylor Swift ",
     "url": "http://2.mystreaming.net/er/taylorswift/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusivehits-taylor-swift-hits",
+    "description": "Immerse yourself in the world of Taylor Swift with Exclusively Hits, the ultimate radio station dedicated solely to playing the biggest hits from one of the best-selling music artists of all time. Whether you're a long-time Swiftie or curious about who Taylor Swift is dating, our station guarantees ",
+    "genres": [
+      "Top 40",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/6981cdf6a_69356.jpg"
   },
   {
     "name": "Exclusively Bonnie Raitt",
     "url": "http://2.mystreaming.net/er/bonnieraitt/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusiveradio-bonnie-raitt",
+    "description": "Bonnie Raitt has been a powerful voice in blues, rock, and American roots music for over five decades. Born on November 8, 1949, in Burbank, California, she grew up in a musical household, influenced by her father, Broadway star John Raitt, and her mother, pianist Marjorie Haydock. With her signatur",
+    "genres": [
+      "Blues",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e34611fbe_69357.jpg"
   },
   {
     "name": "Rock The World - Classic Rock",
     "url": "https://2.mystreaming.net:443/uber/rtwclassics/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/rock-classic-rock",
+    "description": "Welcome to Rock The World – Classic Rock, your presenter-free destination for the iconic sounds that defined rock history. Our station is dedicated to bringing you a non-stop stream of classic anthems, legendary guitar solos, and unforgettable vocals that have shaped the rock genre over decades. Whe",
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/14d2e2f12_69359.jpg"
   },
   {
     "name": "Rock The World - Country Rock",
     "url": "https://2.mystreaming.net:443/uber/rtwcountry/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/rock-country-rock",
+    "description": "Welcome to Rock The World - Country Rock, your ad-free gateway to the raw, authentic sounds of Country Rock. Here, the fusion of country storytelling and rock’s bold energy creates a timeless musical experience that celebrates both heritage and innovation.",
+    "genres": [
+      "Country",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/6d8521fdc_69360.jpg"
   },
   {
     "name": "Exclusively Pink Floyd",
     "url": "http://2.mystreaming.net/er/pinkfloyd/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-pink-floyd",
+    "description": "Pink Floyd, a name synonymous with psychedelic rock and progressive music, has left an indelible mark on the world of music. Formed in London in 1965, the band originally consisted of students Syd Barrett, Nick Mason, Roger Waters, and Richard Wright. Over the years, the band’s iconic sound, charact",
+    "genres": [
+      "Rock",
+      "Classic Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/52213ebb8_539.jpg"
   },
   {
     "name": "Exclusively Led Zeppelin ",
     "url": "http://2.mystreaming.net/er-app/ledzeppelin/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-led-zeppelin",
+    "description": "Formed in 1968, Led Zeppelin stands as one of the most legendary bands in rock history, blending intense musicality with boundless innovation. Featuring iconic Led Zeppelin members Robert Plant (vocals), Jimmy Page (guitar), John Paul Jones (bass/keyboard), and John Bonham (drums), the band redefine",
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/945d88422_541.jpg"
   },
   {
     "name": "Exclusively Crosby, Stills, Nash & Young",
     "url": "http://2.mystreaming.net/er/csny/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-crosby-stills-nash-young",
+    "description": "Delve into the harmonious world of Crosby, Stills, Nash & Young (CSNY), a folk rock supergroup that has captivated audiences since the late 1960s. Comprising David Crosby, Stephen Stills, Graham Nash, and occasionally Neil Young, this iconic ensemble has left an indelible mark on music with their in",
+    "genres": [
+      "Classic Rock",
+      "Oldies",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/e9e152803_543.jpg"
   },
   {
     "name": "Exclusively David Bowie",
     "url": "http://2.mystreaming.net/er/davidbowie/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-david-bowie",
+    "description": "David Bowie, a name synonymous with musical innovation and visual brilliance, remains an unparalleled icon in music, film, and fashion. Born David Robert Jones on January 8, 1947, in Brixton, London, Bowie emerged as one of the most influential figures in 20th-century music, captivating audiences wi",
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/a82cecb0f_548.jpg"
   },
   {
     "name": "Exclusively Tom Petty Hits",
     "url": "https://2.mystreaming.net/er/tompettyhits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusivehits-tom-petty-hits",
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Hits",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/331c9b49c_550.jpg"
   },
   {
     "name": "Exclusively The Band",
     "url": "https://2.mystreaming.net/er/theband/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-the-band",
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/d470c5b3b_552.jpg"
   },
   {
     "name": "Exclusively Joni Mitchell ",
     "url": "http://2.mystreaming.net/er/jonimitchell/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-joni-mitchell",
+    "description": "Joni Mitchell, a trailblazer in the fusion of folk and jazz, has touched audiences worldwide with her unparalleled musical talent and innovative songwriting. Born Roberta Joan Anderson on November 7, 1943, in Fort Macleod, Alberta, Canada, Mitchell’s storied career spans decades and features a reper",
+    "genres": [
+      "Folk",
+      "Oldies"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/5c17b3b2a_553.jpg"
   },
   {
     "name": "Exclusively Bob Marley Hits",
     "url": "https://2.mystreaming.net/er/bobmarleyhits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusivehits-bob-marley-hits",
+    "description": "Immerse yourself in the rhythmic beats and soul-stirring lyrics of a true musical legend at Exclusively Hits. Our station is dedicated to celebrating the iconic Bob Marley, a reggae pioneer whose music transcended boundaries and played a pivotal role in bringing reggae music to a global audience.",
+    "genres": [
+      "Reggae",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/5b5b87255_69390.jpg"
   },
   {
     "name": "XPN2",
     "url": "https://wxpn.xpn.org/xpnmp3hi",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://xpn.org/program/xpn2/",
+    "description": "XPoNential Radio on XPN2 is a journey of musical discovery with a mix of emerging and heritage contemporary musicians. XPoNential plays an eclectic mix of music. From classic rockers, indie rockers and soul singers to folk singers, contemporary singer-songwriters, and country and alt-country singers",
+    "genres": [
+      "Classic Rock",
+      "Indie",
+      "Folk",
+      "Eclectic",
+      "Commercial Free"
+    ],
+    "call_letters": "WXPN HD2",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/8b5cb3a48_69391.jpg"
   },
   {
     "name": "KNBA",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KNBAFM.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.knba.org/knba-radio-schedule",
+    "description": null,
+    "genres": [
+      "Eclectic",
+      "Indie",
+      "Indigenous"
+    ],
+    "call_letters": "KNBA",
+    "frequency": "90.3",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/6327e9d0b_69392.jpg"
   },
   {
     "name": "Classic Rock",
     "url": "https://stream.laut.fm/classicrock",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://laut.fm/classicrock",
+    "description": "The Ultimate Classic Rock Rotation",
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "Laut.FM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/547c5f32c_69394.jpg"
   },
   {
     "name": "Classic101",
     "url": "https://stream.laut.fm/classic101",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://laut.fm/classic101",
+    "description": "Music radio for cool people.\nIndie and pop classics. 90s & 2000s. Nonstop music programming.",
+    "genres": [
+      "Indie",
+      "Pop",
+      "90s",
+      "00s"
+    ],
+    "call_letters": "Laut FM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/b05065904_69397.jpg"
   },
   {
     "name": "WMAS",
     "url": "https://live.amperwave.net/direct/audacy-wmasfmaac-imc",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.audacy.com/947wmas",
+    "description": null,
+    "genres": [
+      "Adult Contemporary",
+      "Top 40",
+      "Hits"
+    ],
+    "call_letters": "WMAS",
+    "frequency": "94.7",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/23ea01ea2_69400.png"
   },
   {
     "name": "Positively Easy",
     "url": "https://streaming.positivity.radio/pr/posieasy/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-easy",
+    "description": "Life can be hectic, but with Positively Easy, you can unwind to the most relaxing hits of all time. Whether you’re looking to take a break from the rush of daily life, need calming background music, or simply want to enjoy timeless, easy-listening tunes, Positively Easy delivers a carefully curated ",
+    "genres": [
+      "Easy Listening",
+      "Soft Rock",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/a888d3417_69402.jpg"
   },
   {
     "name": "Positively 1990s",
     "url": "https://streaming.positivity.radio/pr/posi90s/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-1990s",
+    "description": "Get ready to take a nostalgic journey through the unforgettable music of the 1990s with Positively 1990s, part of the Positivity Radio network founded by Noel Edmonds. Whether you're rekindling fond memories or exploring the magic of the decade for the first time, this station is your ultimate hub f",
+    "genres": [
+      "90s",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/3027d7519_69404.jpg"
   },
   {
     "name": "Positively 1980s",
     "url": "https://streaming.positivity.radio/pr/posi80s/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-1980s",
+    "description": "Welcome to Positivity Radio 1980s, your free, ultimate destination for the greatest hits of the 80s! Streaming online 24/7, Positively 1980s takes you on a nostalgic trip back in time when neon colors, shoulder pads, and iconic hairstyles ruled the world. Whether you love synth-pop, rock ballads, or",
+    "genres": [
+      "80s",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/6ad328036_69405.jpg"
   },
   {
     "name": "Positively Good Night",
     "url": "https://streaming.positivity.radio/pr/goodnight/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-good-night",
+    "description": "As the day comes to an end, finding time to unwind and prepare for a restful night is essential for your well-being. Positively Good Night offers the perfect night-time playlist designed to help you relax, clear your mind, and drift into peaceful sleep. Whether you're looking for soothing background",
+    "genres": [
+      "Soft Rock",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/cfdae02fe_69407.jpg"
   },
   {
     "name": "WBUR",
     "url": "https://icecast-stream.wbur.org/wbur",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.wbur.org/",
+    "description": null,
+    "genres": [
+      "News",
+      "Public",
+      "Talk"
+    ],
+    "call_letters": "WBUR",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/5093a70af_662.jpg"
   },
   {
     "name": "KZFR",
     "url": "https://listen.kzfr.org/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.kzfr.org/",
+    "description": "KZFR Community Radio is an essential, independent source of news and cultural content for the communities of northern California. Thanks to the dedication of our volunteer programmers, committee members and staff we have been able to fulfill our mission to educate, enlighten, inform and entertain ou",
+    "genres": [
+      "Public",
+      "Commercial Free"
+    ],
+    "call_letters": "KZFR",
+    "frequency": "90.1",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/56ca99c98_663.png"
   },
   {
     "name": "The Zone Dublin",
     "url": "https://uk1.internet-radio.com/proxy/thezone?mp=/stream;",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.thezonedublin.org/",
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Alternative",
+      "Indie"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/5147079f6_thezone.png"
   },
   {
     "name": "Le Bon Soft Mix",
     "url": "https://stream10.xdevel.com/audio14s976748-2279/stream/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.xdevel.com/13104/audio14s976748-2279",
+    "description": null,
+    "genres": [
+      "Soft Rock",
+      "Jazz"
+    ],
+    "call_letters": "Le Bon",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/1b61cfac7_671.jpg"
   },
   {
     "name": "Le Bon Dynamic Channel",
     "url": "https://stream10.xdevel.com/audio15s976748-2112/stream/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.xdevel.com/13104/audio15s976748-2112",
+    "description": null,
+    "genres": [
+      "Electronic",
+      "Ambient"
+    ],
+    "call_letters": "Le Bon",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/64475552e_672.png"
   },
   {
     "name": "Rock 102",
     "url": "https://live.amperwave.net/direct/saga-waqyfmmp3-ibc2",
     "url_low": "https://live.amperwave.net/direct/saga-waqyfmaac-ibc2",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Rock",
+      "Local",
+      "Classic Rock"
+    ],
+    "call_letters": "WAQY",
+    "frequency": "102.1 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/db1020995_348.png"
   },
   {
     "name": "The River",
     "url": "https://live.amperwave.net/direct/saga-wrsifmmp3-ibc2",
     "url_low": "https://live.amperwave.net/direct/saga-wrsifmaac-ibc2",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://wrsi.com/",
+    "description": null,
+    "genres": [
+      "Alternative",
+      "Local"
+    ],
+    "call_letters": "WRSI",
+    "frequency": "93.9 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8a25a830b_435.png"
   },
   {
     "name": "WFCR",
     "url": "https://nepr.streamguys1.com/nopreroll-WFCR.mp3",
     "url_low": "https://nepr.streamguys1.com/nopreroll-WFCR",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Talk",
+      "Public",
+      "Local",
+      "News"
+    ],
+    "call_letters": "WFCR",
+    "frequency": "88.5 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8ecdb7406_351.png"
   },
   {
     "name": "KEXP",
     "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Indie",
+      "Alternative"
+    ],
+    "call_letters": "KEXP",
+    "frequency": "90.3 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/26feda422_354.png"
   },
   {
     "name": "WKTU",
     "url": "https://stream.revma.ihrhls.com/zc1473/47_1rikugy8mw9th02/playlist.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Adult Contemporary"
+    ],
+    "call_letters": "WKTU",
+    "frequency": "103.5 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/9576f648a_357.jpg"
   },
   {
     "name": "1010 WINS",
     "url": "https://live.amperwave.net/direct/audacy-winsamaac-imc?session-id=5142bf6297b78ea6739606f0f8d1de03",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "News",
+      "Talk"
+    ],
+    "call_letters": "WINS",
+    "frequency": "1010.0 FM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e87f76524_358.jpg"
   },
   {
     "name": "NPR Live Stream",
     "url": "https://npr-ice.streamguys1.com/live.mp3",
     "url_low": "https://npr-ice.streamguys1.com/live.aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "News",
+      "Public"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a1e274c03_361.jpg"
   },
   {
     "name": "MSNBC",
     "url": "https://tunein.cdnstream1.com/3511_96.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "News"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/681945ebe_1000003868.jpg"
   },
   {
     "name": "Indie Pop Rock",
     "url": "https://ice2.somafm.com/indiepop-128-aac",
     "url_low": "https://ice2.somafm.com/indiepop-64-aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Indie",
+      "Rock",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/0c173ca58_1000003869.png"
   },
   {
     "name": "Underground 80s",
     "url": "https://ice5.somafm.com/u80s-128-aac",
     "url_low": "https://ice3.somafm.com/u80s-32-aac",
-    "url_high": "https://ice4.somafm.com/u80s-256-mp3"
+    "url_high": "https://ice4.somafm.com/u80s-256-mp3",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "80s",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b08dbafef_1000003875.png"
   },
   {
     "name": "Sonic Universe",
     "url": "https://ice1.somafm.com/sonicuniverse-128-mp3",
     "url_low": "https://ice2.somafm.com/sonicuniverse-32-aac",
-    "url_high": "https://ice5.somafm.com/sonicuniverse-256-mp3"
+    "url_high": "https://ice5.somafm.com/sonicuniverse-256-mp3",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Jazz",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b0b6a0717_1000003877.png"
   },
   {
     "name": "Folk Forward",
     "url": "https://ice2.somafm.com/folkfwd-128-aac",
     "url_low": "https://ice2.somafm.com/folkfwd-64-aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://somafm.com/folkfwd/",
+    "description": "Indie Folk, Alt-folk and the occasional folk classics.\n\nContemporary indie folk music. Sometimes softer, sometimes a little harder, but always authentic. A modern take on classic folk music, with occasional appearances by the classic masters.",
+    "genres": [
+      "Folk",
+      "Indie",
+      "Rock",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bb9aade81_1000003878.jpg"
   },
   {
     "name": "Boot Liquor",
     "url": "https://ice4.somafm.com/bootliquor-128-aac",
     "url_low": "https://ice2.somafm.com/bootliquor-64-aac",
-    "url_high": "https://ice2.somafm.com/bootliquor-320-mp3"
+    "url_high": "https://ice2.somafm.com/bootliquor-320-mp3",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Country",
+      "Commercial Free"
+    ],
+    "call_letters": "SomaFM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/39b3ca928_1000003879.png"
   },
   {
     "name": "Peaceful Piano",
     "url": "http://peacefulpiano.stream.publicradio.org/peacefulpiano.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Public",
+      "Classical"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/4c4ecb18e_1000003881.jpg"
   },
   {
     "name": "Your Classical Radio",
     "url": "https://ycradio.stream.publicradio.org/ycradio.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Public",
+      "Classical"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/43677a20e_362.png"
   },
   {
     "name": "Classical Guitar",
     "url": "https://guitar.stream.publicradio.org/guitar.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e5fd41eaf_364.webp"
   },
   {
     "name": "Essentials",
     "url": "https://favorites.stream.publicradio.org/favorites.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bc21256c3_366.webp"
   },
   {
     "name": "Holiday Classical",
     "url": "https://holiday.stream.publicradio.org/holiday_yc.mp3?cb=8282040137",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8b5ff5953_368.jpg"
   },
   {
     "name": "Sleep",
     "url": "https://lullabies.stream.publicradio.org/lullabies.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/f19e0d230_371.webp"
   },
   {
     "name": "Pixel & Plot",
     "url": "https://pixelplot.stream.publicradio.org/pixelplot.aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical",
+      "Public",
+      "Soundtrack"
+    ],
+    "call_letters": "YourClassical",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d80b89b5c_372.webp"
   },
   {
     "name": "YouRadio",
     "url": "https://drive.uber.radio/uber/noelsbillions/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Hits",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/1ad644eea_1000003897.jpg"
   },
   {
     "name": "I Heart 80s",
     "url": "https://stream.revma.ihrhls.com/zc5060",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "80s",
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/be2205746_378.jpg"
   },
   {
     "name": "60North Radio",
     "url": "http://r5.zetcast.net/stream3",
     "url_low": "http://cdn1.zetcast.net/stream6",
-    "url_high": "http://r5.zetcast.net/flac"
+    "url_high": "http://r5.zetcast.net/flac",
+    "website_url": "https://60north.radio/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/cd944e3ac_451.jpg"
   },
   {
     "name": "95bFM",
     "url": "https://streams.95bfm.com/stream112",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d287f9278_452.png"
   },
   {
     "name": "AIDA Radio",
     "url": "https://cdn05.radio.cloud:8128/AIDA-OMNIA-GAI",
     "url_low": "http://frontend.streamonkey.net/aidaradio-meergefuehl",
-    "url_high": "https://cdn05.radio.cloud:8128/AIDA-OMNIA-GAI"
+    "url_high": "https://cdn05.radio.cloud:8128/AIDA-OMNIA-GAI",
+    "website_url": "https://aidaradio.de/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/c8cfa456a_453.png"
   },
   {
     "name": "Bailrigg 95.3FM",
     "url": "https://bfm-live.lancs.ac.uk/listen/bfm/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/876b1e7cd_466.jpg"
   },
   {
     "name": "BDPST Rock Radio",
     "url": "https://s2.audiostream.hu/bdpstrock_FLAC",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e598dd0b4_445.png"
   },
   {
     "name": "Dance Wave",
     "url": "http://dancewave.online/dance.flac.ogg",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Dance"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/d7daf21d6_447.png"
   },
   {
     "name": "Danubius Radio",
     "url": "https://danubiusradio.hu/live_HiFi.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/15c2fd709_468.png"
   },
   {
-    "name": "Fr\u00e9quence 3",
+    "name": "Fréquence 3",
     "url": "https://master.net-radio.fr/freq3fm-tuner37.mp3",
     "url_low": null,
-    "url_high": "https://frequence3.net-radio.fr/frequence3.flac"
+    "url_high": "https://frequence3.net-radio.fr/frequence3.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Eclectic"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ed0c42673_462.png"
   },
   {
-    "name": "Fr\u00e9quence 3 Dance",
+    "name": "Fréquence 3 Dance",
     "url": "https://frequence3-fm.net-radio.fr/z_frequence3dance.aac",
     "url_low": "https://abf.net-radio.fr/z_frequence3dance.aac",
-    "url_high": "https://onair.net-radio.fr/frequence3dance.flac"
+    "url_high": "https://onair.net-radio.fr/frequence3dance.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Dance"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/1382f946b_463.png"
   },
   {
     "name": "Futura.FM",
     "url": "https://futura.fm/stream.ogg?ts=1699656027.325",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "80s",
+      "Hits",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/c195017e8_458.jpg"
   },
   {
     "name": "Haarlem Shuffle Radio",
     "url": "https://stream.tbmp.nl:8000/haarlem105high.aac",
     "url_low": "https://stream.tbmp.nl:8000/haarlem105low.aac",
-    "url_high": "https://stream.tbmp.nl:8000/haarlemshuffle.flac"
+    "url_high": "https://stream.tbmp.nl:8000/haarlemshuffle.flac",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Adult Contemporary"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/c279d2906_456.png"
   },
   {
     "name": "HitMix",
     "url": "https://stream.hitmix.ee:8443/PFL",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/660ace24c_474.jpg"
   },
   {
     "name": "ISEKOI Radio",
     "url": "https://isekoi-radio.com/listen/isekoi/radio.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/0ae8f0e63_475.png"
   },
   {
     "name": "Joy Hits",
     "url": "http://joyhits.online/joyhits.flac.ogg",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ab19e351f_449.jpg"
   },
   {
     "name": "LapFox Radio",
     "url": "https://radio.lapfoxradio.com/radio/8000/stream-ogg-128.ogg",
     "url_low": null,
-    "url_high": "https://radio.lapfoxradio.com/radio/8000/stream-flac.flac 10"
+    "url_high": "https://radio.lapfoxradio.com/radio/8000/stream-flac.flac 10",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/339b2439a_69370.png"
   },
   {
     "name": "Lux Radio",
     "url": "https://live7.avf.ch/lux_main",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/e352c5cf7_69373.webp"
   },
   {
     "name": "openbroadcast",
     "url": "http://stream.openbroadcast.ch/16bit.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://openbroadcast.ch/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/3b1730e8f_69374.png"
   },
   {
     "name": "Pure Lounge Radio",
     "url": "https://mscp4.live-streams.nl:8142/lounge.ogg",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.pureloungeradio.com/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/583457085_69377.png"
   },
   {
-    "name": "Pure Radio Holland \u2013 The Underground Channel",
+    "name": "Pure Radio Holland – The Underground Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8000/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/29a1b5740_69361.webp"
   },
   {
-    "name": "Pure Radio Holland \u2013 Hardcore Channel",
+    "name": "Pure Radio Holland – Hardcore Channel",
     "url": "https://streamserver.pure-isp.eu/radio/8010/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e80a82659_453.jpg"
   },
   {
-    "name": "Pure Radio Channel \u2013 DJ R.I.P.\u2019s Podcast",
+    "name": "Pure Radio Channel – DJ R.I.P.’s Podcast",
     "url": "https://streamserver.pure-isp.eu/radio/8050/flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/7a718a2bd_69365.webp"
   },
   {
     "name": "Qabayan FM",
     "url": "https://c2.radioboss.fm:8478/live",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.qabayanfm.com/",
+    "description": "Qabayan Radio is a vital hub for the Filipino expatriates' community in Qatar, providing entertainment and engagement for Filipinos and other nationals residing in Qatar.",
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": "94.3",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/5cdfeaa31_69379.png"
   },
   {
     "name": "Radio Paradise Main Mix",
     "url": "http://stream.radioparadise.com/mp3-192",
     "url_low": "http://stream.radioparadise.com/aac-32",
-    "url_high": "http://stream.radioparadise.com/flacm"
+    "url_high": "http://stream.radioparadise.com/flacm",
+    "website_url": "https://radioparadise.com/listen/channels/main-mix",
+    "description": "Dj-mixed modern & classic rock, electronic, world music, and more. An eclectic musical adventure.",
+    "genres": [
+      "Lossless",
+      "Rock",
+      "Classic Rock",
+      "Electronic",
+      "World",
+      "Commercial Free"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/5d877ae15_392.png"
   },
   {
     "name": "Mellow Mix",
     "url": "http://stream.radioparadise.com/mellow-128",
     "url_low": "http://stream.radioparadise.com/mellow-32",
-    "url_high": "http://stream.radioparadise.com/mellow-flacm"
+    "url_high": "http://stream.radioparadise.com/mellow-flacm",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Indie",
+      "Rock",
+      "Folk",
+      "Commercial Free"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/30ac88b13_389.png"
   },
   {
     "name": "Rock Mix",
     "url": "http://stream.radioparadise.com/rock-320",
     "url_low": "http://stream.radioparadise.com/rock-32",
-    "url_high": "http://stream.radioparadise.com/rock-flacm"
+    "url_high": "http://stream.radioparadise.com/rock-flacm",
+    "website_url": "https://radioparadise.com/listen/channels/rock-mix",
+    "description": "Many different styles and genres with a steady rockin' energy to keep you moving.",
+    "genres": [
+      "Lossless",
+      "Classic Rock",
+      "Rock",
+      "Alternative"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ef157bcf2_390.png"
   },
   {
-    "name": "RIO \u2013 R\u00e1dio Internacional Odemira",
+    "name": "RIO – Rádio Internacional Odemira",
     "url": "http://c30.radioboss.fm:8510/autodj",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/bb956d565_454.png"
   },
   {
     "name": "SUBJAM",
     "url": "http://orbit.citrus3.com:9016/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.subjam.co.uk/",
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/1b58bb614_69378.webp"
   },
   {
     "name": "Sveriges Radio",
     "url": "https://live1.sr.se/p2-flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless",
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/7c82536b0_c593dad72ca44fee27d70d063a3e608de073d89e-833x833.jpg"
   },
   {
     "name": "Violent Forces Radio",
     "url": "https://tuneintoradio1.com:8010/stream.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/73df87248_1000003918.jpg"
   },
   {
     "name": "Zappa Stream Radio",
     "url": "https://streams.norbert.de/zappa.flac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Lossless"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/56992ec4a_1000003917.jpg"
   },
   {
     "name": "Hit Nation",
     "url": "https://stream.revma.ihrhls.com/zc4422",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Hits"
+    ],
+    "call_letters": "I Heart",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e46e5b471_1000003947.webp"
   },
   {
     "name": "2000s",
     "url": "https://stream.revma.ihrhls.com/zc6850",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Hits"
+    ],
+    "call_letters": "I Heart",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8332440f5_1000003946.webp"
   },
   {
     "name": "WXPN",
     "url": "https://wxpnhi.xpn.org/xpnhi-nopreroll",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://xpn.org/",
+    "description": null,
+    "genres": [
+      "Public",
+      "Commercial Free",
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": "88.5",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/49eb4ef74_378.jpg"
   },
   {
     "name": "The Current",
     "url": "https://current.stream.publicradio.org/current.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/fbb99b414_384.webp"
   },
   {
     "name": "BBC 2",
     "url": "http://as-hls-ww-live.akamaized.net/pool_74208725/live/ww/bbc_radio_two/bbc_radio_two.isml/bbc_radio_two-audio%3d128000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Adult Contemporary"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2cbb10d33_384.png"
   },
   {
     "name": "BBC 3",
     "url": "http://as-hls-ww-live.akamaized.net/pool_23461179/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d128000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/6fac37ed1_385.png"
   },
   {
     "name": "BBC 4",
     "url": "http://as-hls-ww-live.akamaized.net/pool_55057080/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio%3d128000.norewind.m3u8",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Talk",
+      "News"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e26f07d54_387.jpg"
   },
   {
     "name": "NPR Hourly News Summary",
     "url": "http://pd.npr.org/anon.npr-mp3/npr/news/newscast.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "News"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2b099ed63_390.png"
   },
   {
     "name": "Classic Hits 109",
     "url": "https://broadcast.classichits109.com/70s-90s;",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/61a73f997_391.png"
   },
   {
     "name": "Rock FM Classic Rock",
     "url": "https://audiotainment-sw.streamabc.net/atsw-classicrock-mp3-128-2538548?",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classic Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/8a48764a4_392.jpg"
   },
   {
     "name": "Radio Caroline ",
     "url": "https://stream.radiocaroline.net/;",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": "648 AM",
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/29a44ab0d_437.jpg"
   },
   {
     "name": "X-ray FM",
     "url": "https://listen.xray.fm/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Local",
+      "Indie"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/2fd67ff1c_443.png"
   },
   {
     "name": "Rinse FM",
     "url": "https://admin.stream.rinse.fm/proxy/rinse_uk/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/b921025e8_446.png"
   },
   {
     "name": "Radio Paradise 2050",
     "url": "http://stream.radioparadise.com/radio2050-128",
     "url_low": "http://stream.radioparadise.com/radio2050-32",
-    "url_high": "http://stream.radioparadise.com/radio2050-flacm"
+    "url_high": "http://stream.radioparadise.com/radio2050-flacm",
+    "website_url": "https://radioparadise.com/radio2050",
+    "description": "Radio 2050 is a flow of music and conversation -- exploring ideas, new perspectives and boots-on-the-ground efforts for a better future in the year 2050 and beyond.\nBe inspired.",
+    "genres": [
+      "Commercial Free"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/e5e091267_439.jpg"
   },
   {
     "name": "Radio Paradise Beyond",
     "url": "http://stream.radioparadise.com/beyond-128",
     "url_low": "http://stream.radioparadise.com/beyond-32",
-    "url_high": "http://stream.radioparadise.com/beyond-flacm"
+    "url_high": "http://stream.radioparadise.com/beyond-flacm",
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Commercial Free",
+      "Jazz"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/34b0feb81_440.jpg"
   },
   {
     "name": "Radio Paradise Serenity",
     "url": "http://stream.radioparadise.com/serenity",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Ambient",
+      "Commercial Free"
+    ],
+    "call_letters": "Radio Paradise",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/a329870ba_442.png"
   },
   {
     "name": "Eclectic 24 ",
     "url": "https://streams.kcrw.com/e24_mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [],
+    "call_letters": "KCRW",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/dcdc3d71a_443.webp"
   },
   {
     "name": "Easy Radio",
     "url": "https://live.easyradio.bg/aac?type=.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://easyradio.bg/#",
+    "description": "Your relaxing music mix.",
+    "genres": [
+      "Hits",
+      "Pop",
+      "Top 40"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ad3b07833_494.png"
   },
   {
     "name": "Exclusively Cat Stevens ",
     "url": "https://2.mystreaming.net/er/catstevens/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/easy-cat-stevens",
+    "description": "Relax with the Smoothest Easy Listening Music on Our Radio Station",
+    "genres": [],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/ca14d2a24_496.jpg"
   },
   {
     "name": "Exclusively Billy Joel",
     "url": "https://2.mystreaming.net/er/billyjoelhits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusivehits-billy-joel-hits",
+    "description": "Welcome to Exclusively Billy Joel Hits, your dedicated station for celebrating the enduring music of one of the greatest songwriters of all time. Known as the Piano Man, Billy Joel has captivated audiences for decades with his storytelling lyrics, unforgettable melodies, and soulful performances. Fr",
+    "genres": [],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/5810caade_487.jpg"
   },
   {
     "name": "Exclusively The Who",
     "url": "https://2.mystreaming.net/er-app/whohits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/exclusivehits-the-who-hits",
+    "description": null,
+    "genres": [
+      "Rock",
+      "Classic Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/10f07d433_69057.jpg"
   },
   {
     "name": "Sleep - Max Richter",
     "url": "https://streaming.positivity.radio/pr/maxrichter/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/positivity-positively-sleep-max-richter",
+    "description": "Delve into the soothing world of Max Richter, a visionary composer whose music blends art with the science of sleep. Richter’s innovative approach to calming sleep music has captivated audiences globally, creating soundscapes designed to enhance relaxation and improve sleep quality. His music is a p",
+    "genres": [
+      "Ambient",
+      "Classical"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/1d0aea80f_69355.jpg"
   },
   {
     "name": "Rock The World - Alt Rock",
     "url": "https://2.mystreaming.net:443/uber/rtwalt/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://play.you.radio/station/rock-alt-rock",
+    "description": "Welcome to Rock The World - Alt Rock, your gateway to the dynamic universe of Alternative Rock. Our presenter‐free station is devoted to delivering a non‐stop musical experience that honours the raw energy, creative spirit, and storied history of Alt Rock. From its rebellious Punk Rock origins to it",
+    "genres": [
+      "Rock"
+    ],
+    "call_letters": "YouRadio ",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/5a3337871_69358.jpg"
   },
   {
     "name": "PRX Remix",
     "url": "https://peridot.streamguys1.com:5515/WREM",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.prx.mx/",
+    "description": "PRX Remix is our 24/7 stream of the best podcasts, documentaries, and stories, handpicked from both independent creators and our podcast network Radiotopia. Stations can air as many hours per week as they'd like. For example: six hours overnight, a couple of hours each Saturday night, or 24/7 on HD.",
+    "genres": [
+      "Talk",
+      "Public",
+      "News",
+      "Commercial Free"
+    ],
+    "call_letters": "WPRX",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/284c581ba_518.png"
   },
   {
     "name": "Exclusively Simon & Garfunkel ",
     "url": "http://2.mystreaming.net/er/simongarfunkle/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-simon-garfunkel",
+    "description": "Simon & Garfunkel, the legendary American folk-rock duo, have left an enduring imprint on music with their harmonious vocals and thoughtful storytelling. Comprised of Paul Simon and Art Garfunkel, they rose to prominence during the 1960s, captivating audiences with their evocative lyrics and signatu",
+    "genres": [
+      "Oldies",
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/251e49dc2_544.jpg"
   },
   {
     "name": "Exclusively Beatles Hits",
     "url": "https://2.mystreaming.net/er/thebeatleshits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusivehits-beatles-hits",
+    "description": null,
+    "genres": [
+      "Oldies",
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/d7f241cbd_546.jpg"
   },
   {
     "name": "Exclusively Elton John ",
     "url": "https://2.mystreaming.net/er/eltonjohn/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-elton-john",
+    "description": "Elton John, a name synonymous with unique style, unforgettable music, and spectacular performances, has been a towering figure in the music world for over five decades. Born Reginald Kenneth Dwight on March 25, 1947, in Pinner, Middlesex, England, he has transformed into a global icon who has reshap",
+    "genres": [
+      "Rock",
+      "Classic Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/b9281b9ec_547.jpg"
   },
   {
     "name": "Exclusively James Taylor",
     "url": "http://2.mystreaming.net/er/jamestaylor/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusiveradio-james-taylor",
+    "description": "James Taylor, an iconic figure in the realms of folk and rock music, has captivated audiences worldwide with his soothing voice, introspective lyrics, and distinctive style of guitar playing. Born on March 12, 1948, in Boston, Massachusetts, Taylor rose to fame in the 1970s with his introspective so",
+    "genres": [
+      "Classic Rock",
+      "Rock",
+      "Adult Contemporary"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/c3de251de_549.jpg"
   },
   {
     "name": "Exclusively R.E.M. Hits ",
     "url": "http://2.mystreaming.net/er/remhits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://exclusive.radio/station/exclusivehits-rem-hits",
+    "description": "R.E.M. redefined the sound of alternative rock with their innovative music, heartfelt lyrics, and timeless appeal. Formed in Athens, Georgia, in 1980, the band quickly became icons of the genre, captivating fans across the globe. Exclusively R.E.M. Hits is your dedicated station for their most iconi",
+    "genres": [
+      "Alternative",
+      "Rock",
+      "Hits"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/bcd5af35a_551.jpg"
   },
   {
     "name": "New England Public Radio Classical",
     "url": "https://nepr.streamguys1.com/nopreroll-WFCR-HD.mp3",
     "url_low": "https://nepr.streamguys1.com/nopreroll-WFCR-HD",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.nepm.org/classical",
+    "description": "Classical music for western Mass. Find locally-produced classical music, with a vibrant mix of music from every era, along with national classical programs.",
+    "genres": [
+      "Public",
+      "Classical"
+    ],
+    "call_letters": "WFCR",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/2ecf9f123_559.png"
   },
   {
     "name": "Daily Vibes ",
     "url": "https://stream.laut.fm/dailyvibes",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://laut.fm/dailyvibes",
+    "description": "Discover fresh indie, rock, and pop music. The best of the 2000s and 2010s. Timeless classics and brand-new music.",
+    "genres": [
+      "Indie",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/cc02dd3d6_69393.jpg"
   },
   {
     "name": "Theo Radio",
     "url": "https://stream.laut.fm/theo",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://laut.fm/theo",
+    "description": "THEO Radio is a radio station dedicated to grief, loss, and coping with pain. People share their experiences in personal conversations at places of mourning and offer comfort, pointing the way to healing and hope.",
+    "genres": [
+      "Classical"
+    ],
+    "call_letters": "Laut FM",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68a525145273cb23757f1765/files/public/68a525145273cb23757f1765/d1dd48feb_69395.jpg"
   },
   {
     "name": "Valley Free Radio",
     "url": "https://stream.valleyfreeradio.org:8443/stream",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://valleyfreeradio.org/",
+    "description": null,
+    "genres": [],
+    "call_letters": "WXOJ-LP",
+    "frequency": "103.3",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/e3991534b_654.webp"
   },
   {
     "name": "EZ 107.5",
     "url": "https://live.amperwave.net/direct/saga-wpvqhd2mp3-imc",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://ez1075.com/",
+    "description": null,
+    "genres": [
+      "Easy Listening",
+      "Soft Rock"
+    ],
+    "call_letters": "WPVQ HD2",
+    "frequency": "107.5",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/3fa646269_69401.jpg"
   },
   {
     "name": "Positively Good Evening",
     "url": "https://streaming.positivity.radio/pr/goodevening/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-good-evening",
+    "description": "After a long, hectic day, finding time to relax and unwind is essential for both your mental and physical well-being. Positively Good Evening is designed to help you do just that. Offering the perfect selection of calming, uplifting songs, this free radio station is your go-to companion for easing i",
+    "genres": [
+      "Easy Listening",
+      "Hits"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/f4723d7c4_69403.jpg"
   },
   {
     "name": "Positively Good Afternoon",
     "url": "https://streaming.positivity.radio/pr/goodafternoon/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-good-afternoon",
+    "description": "When the afternoon slump hits, we all need something to boost our energy and spirits. That’s where Positively Good Afternoon comes in, offering the perfect selection of uplifting tunes to help you sail through your day with positivity and motivation. With Positively Good Afternoon, you can enjoy a s",
+    "genres": [
+      "Hits",
+      "Easy Listening"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/4e0498f7c_69406.jpg"
   },
   {
     "name": "Positively Good Morning ",
     "url": "https://streaming.positivity.radio/pr/goodmorning/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/positivity-positively-good-morning",
+    "description": "Begin each day on a positive note with Positively Good Morning, a free online station from Positivity Radio. Tired of waking up to ads or gloomy morning news? It’s time to switch things up and embrace a new way to kickstart your day—with a burst of positivity.",
+    "genres": [
+      "Hits",
+      "Rock"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/e2e71ee46_69408.jpg"
   },
   {
     "name": "The Globe ",
     "url": "https://icecast.goshen.edu:8001/wgcs-128vbr",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://globeradio.org/",
+    "description": "91.1 The Globe plays music from the Americana and Triple-A formats. In addition, the radio station promotes and features local musicians and live performances. The Globe is committed to offering unique programming consisting of artist interviews, syndicated programming, and specialty music shows tha",
+    "genres": [
+      "Blues",
+      "Rock",
+      "Roots",
+      "Alt-Country",
+      "College"
+    ],
+    "call_letters": "WGCS",
+    "frequency": "91.1",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/ba3b0e60b_674.jpg"
   },
   {
     "name": "radioeins",
     "url": "http://www.radioeins.de/livemp3",
     "url_low": "http://www.radioeins.de/livemp3_s",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.radioeins.de/",
+    "description": null,
+    "genres": [
+      "Alternative",
+      "Eclectic"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/f11f8aa8b_1000001035.png"
   },
   {
     "name": "Triple R",
     "url": "https://ondemand.rrr.org.au/getstream?id=wshq",
     "url_low": "https://ondemand.rrr.org.au/getstream?id=wslq",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://www.rrr.org.au/",
+    "description": null,
+    "genres": [
+      "Commercial Free",
+      "Eclectic",
+      "Alternative"
+    ],
+    "call_letters": null,
+    "frequency": "102.7",
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/3f1e4104f_1000001036.png"
   },
   {
     "name": "Coffeehouse",
     "url": "https://rfcm.streamguys1.com/coffeehouse-mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://tunein.com/radio/Coffeehouse-s304385/",
+    "description": null,
+    "genres": [
+      "Indie"
+    ],
+    "call_letters": "TuneIn",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/4bf873206_logog.webp"
   },
   {
     "name": "Switch Indie",
     "url": "https://rfcm.streamguys1.com/indiesk-mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Folk",
+      "Indie"
+    ],
+    "call_letters": "TuneIn",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/3a37a2c3a_logog.jpg"
   },
   {
     "name": "Roots Rock Radio",
     "url": "https://streaming.live365.com/a70335",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://live365.com/station/Roots-Rock-Radio-a70335",
+    "description": "Freeform & eclectic mix of old & new music: Classic AOR, Blues Rock, Roots Rock & Americana, Folk Rock, and Soul, plus more - LIVE SHOWS: Friday Nights at 9 PM Eastern. Some Wednesdays at 9 PM Eastern. Some Saturday nights, too.",
+    "genres": [
+      "Folk",
+      "Indie",
+      "Alternative"
+    ],
+    "call_letters": "Live 365",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/39a115467_f9cf2642-8dd9-4a45-9856-801c3307c982.webp"
   },
   {
     "name": "Classic Rock Hits",
     "url": "https://rfcm.streamguys1.com/classicrock-mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": "TuneIn",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/58cafcc99_logog1.webp"
   },
   {
     "name": "Yacht HQ Radio",
     "url": "https://streaming.live365.com/a91703",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Rock",
+      "Yacht Rock"
+    ],
+    "call_letters": "Live 365",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/8536bda5a_64fe93cc-87fc-4330-9645-fd32bd13aed6.webp"
   },
   {
     "name": "Coffee House",
     "url": "https://tunein-live-b.cdnstream1.com/3740_128.mp3",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Indie",
+      "Easy Listening"
+    ],
+    "call_letters": "Calm Radio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/8beb0818e_45c38af3da83d81d42d5a9782341ba1d1aeed615949bfc47a266f7511f47.png"
   },
   {
     "name": "Abba Hits",
     "url": "https://nl4.mystreaming.net/er-app/abbahits/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/exclusivehits-abba-hits",
+    "description": "ABBA, the iconic Swedish pop group that took the world by storm in the 1970s, continues to captivate audiences with their catchy tunes and memorable lyrics. Comprising band members Agnetha Fältskog, Björn Ulvaeus, Benny Andersson, and Anni-Frid Lyngstad, ABBA created a musical legacy that remains in",
+    "genres": [
+      "Hits",
+      "Easy Listening",
+      "70s"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/e2153dd47_cabbb0a2-f8ca-4562-a5d8-265bec1b563f.jpg"
   },
   {
     "name": "The Best of Indie",
     "url": "https://nl4.mystreaming.net/uber-app/starboxindie/icecast.audio",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://you.radio/station/bestof-indie",
+    "description": "Discover the heart and soul of independent music at YouRadio, where we are dedicated to bringing you an unparalleled selection of indie tunes 24/7. Whether you're a long-time indie aficionado or just dipping your toes into this vibrant genre, YouRadio is your ultimate companion, providing a seamless",
+    "genres": [
+      "Indie"
+    ],
+    "call_letters": "YouRadio",
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/7c0ec6567_2f3fb33e-593e-4516-8484-7a5ecfc38bf1.jpeg"
   },
   {
     "name": "Radiostorm.com - AT WORK",
     "url": "http://streaming.live365.com/b30572_128mp3",
     "url_low": "http://streaming.live365.com/b30572_64aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": "https://radiostorm.com/home/listen-now/",
+    "description": null,
+    "genres": [
+      "Easy Listening"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/e20b6be88_1000001210.png"
   },
   {
     "name": "Radiostorm.com - OLDIES",
     "url": "http://streaming.live365.com/b09584_128mp3",
     "url_low": "http://streaming.live365.com/b09584_64aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Oldies"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/71a8f87aa_1000001210.png"
   },
   {
     "name": "Radiostorm.com - CLASSIC ROCK",
     "url": "http://streaming.live365.com/b47785_128mp3",
     "url_low": "http://streaming.live365.com/b47785_64aac",
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Classic Rock",
+      "Rock"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/00f719fa0_1000001210.png"
   },
   {
     "name": "Radiostorm.com - COMEDY",
     "url": "http://streaming.live365.com/b42761_64aac",
     "url_low": null,
-    "url_high": null
+    "url_high": null,
+    "website_url": null,
+    "description": null,
+    "genres": [
+      "Comedy"
+    ],
+    "call_letters": null,
+    "frequency": null,
+    "icon_url": "https://base44.app/api/apps/68bb3cdc3be9cd0c4b26b1ff/files/public/68bb3cdc3be9cd0c4b26b1ff/1d0b11390_1000001210.png"
   }
 ]
