@@ -846,8 +846,9 @@
             
             // Filter
             filteredStations = stations.filter(station => {
-                return station.name.toLowerCase().includes(searchTerm) ||
-                       station.genre.toLowerCase().includes(searchTerm);
+                const name = (station.name || '').toLowerCase();
+                const genre = (station.genre || '').toLowerCase();
+                return name.includes(searchTerm) || genre.includes(searchTerm);
             });
             
             // Sort
@@ -855,13 +856,13 @@
             filteredStations.sort((a, b) => {
                 switch (sortValue) {
                     case 'name-asc':
-                        return a.name.localeCompare(b.name);
+                        return (a.name || '').localeCompare(b.name || '');
                     case 'name-desc':
-                        return b.name.localeCompare(a.name);
+                        return (b.name || '').localeCompare(a.name || '');
                     case 'genre-asc':
-                        return a.genre.localeCompare(b.genre);
+                        return (a.genre || '').localeCompare(b.genre || '');
                     case 'genre-desc':
-                        return b.genre.localeCompare(a.genre);
+                        return (b.genre || '').localeCompare(a.genre || '');
                     case 'bitrate-high':
                         return getBitrate(b) - getBitrate(a);
                     case 'bitrate-low':
@@ -895,11 +896,13 @@
                 if (station.bitrate_high) bitrates.push(`High: ${station.bitrate_high}kbps`);
                 
                 const isSelected = currentStation && currentStation.name === station.name;
+                const stationName = station.name || 'Unknown Station';
+                const stationGenre = station.genre || 'Unknown Genre';
                 
                 return `
-                    <div class="station-item ${isSelected ? 'selected' : ''}" data-station='${JSON.stringify(station)}'>
-                        <div class="station-item-name">${station.name}</div>
-                        <div class="station-item-genre">${station.genre}</div>
+                    <div class="station-item ${isSelected ? 'selected' : ''}" data-station='${JSON.stringify(station).replace(/'/g, "&#39;")}'>
+                        <div class="station-item-name">${stationName}</div>
+                        <div class="station-item-genre">${stationGenre}</div>
                         ${bitrates.length > 0 ? `<div class="station-item-bitrates">${bitrates.join(' • ')}</div>` : ''}
                     </div>
                 `;
