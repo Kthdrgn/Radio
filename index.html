@@ -77,6 +77,276 @@
             border-color: #667eea;
         }
         
+        /* Station Browser Button Styles */
+        .station-browser-btn {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+        }
+        
+        .station-browser-btn:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+        
+        .station-browser-btn .placeholder {
+            color: #999;
+        }
+        
+        .station-browser-btn .arrow {
+            font-size: 18px;
+            color: #667eea;
+        }
+        
+        /* Modal Overlay Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-in;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .close-btn:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .modal-controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 35px 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            pointer-events: none;
+        }
+        
+        .sort-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .sort-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .sort-btn {
+            padding: 8px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .sort-btn:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+        
+        .sort-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .station-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 30px 30px;
+        }
+        
+        .station-item {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .station-item:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+            transform: translateX(5px);
+        }
+        
+        .station-item.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+        }
+        
+        .station-info {
+            flex: 1;
+        }
+        
+        .station-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .station-meta {
+            font-size: 13px;
+            opacity: 0.8;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .station-genre {
+            font-weight: 500;
+        }
+        
+        .station-bitrate {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .bitrate-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
+        .station-item:not(.selected) .bitrate-badge {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        
+        .no-results-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
         .quality-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -244,27 +514,19 @@
             color: white;
         }
         
-        .btn-play:hover {
+        .btn-play:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
         
-        .btn-play:active {
-            transform: translateY(0);
-        }
-        
         .btn-stop {
-            background: #ff4757;
+            background: #f44336;
             color: white;
         }
         
-        .btn-stop:hover {
+        .btn-stop:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
-        }
-        
-        .btn-stop:active {
-            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
         }
         
         .btn:disabled {
@@ -275,30 +537,67 @@
         
         .status {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 10px;
             border-radius: 8px;
             font-size: 14px;
+            font-weight: 500;
         }
         
         .status.playing {
-            background: #d4edda;
-            color: #155724;
+            background: #e8f5e9;
+            color: #2e7d32;
         }
         
         .status.stopped {
-            background: #f8d7da;
-            color: #721c24;
+            background: #ffebee;
+            color: #c62828;
         }
         
         .status.loading {
-            background: #fff3cd;
-            color: #856404;
+            background: #fff3e0;
+            color: #ef6c00;
         }
         
         .status.error {
-            background: #f8d7da;
-            color: #721c24;
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .mode-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 5px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .mode-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .mode-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mode-section {
+            display: none;
+        }
+        
+        .mode-section.active {
+            display: block;
         }
         
         .checkbox-group {
@@ -319,37 +618,34 @@
             font-size: 13px;
         }
         
-        .mode-toggle {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .mode-btn {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        
-        .mode-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-        }
-        
-        .mode-btn:hover:not(.active) {
-            border-color: #667eea;
-            background: #f0f7ff;
-        }
-        
-        .hidden {
-            display: none;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-height: 95vh;
+            }
+            
+            .modal-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .sort-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .metadata-display {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .metadata-text {
+                text-align: center !important;
+            }
         }
     </style>
 </head>
@@ -357,77 +653,71 @@
     <div class="player-container">
         <div class="player-header">
             <h1>🎵 Radio Stream Player</h1>
-            <div class="station-count">Loading stations...</div>
+            <div class="station-count" id="stationCount">Loading stations...</div>
         </div>
         
-        <!-- Mode Toggle -->
-        <div class="mode-toggle">
+        <!-- Mode Switch -->
+        <div class="mode-switch">
             <button class="mode-btn active" id="stationModeBtn">Station Database</button>
             <button class="mode-btn" id="customModeBtn">Custom URL</button>
         </div>
         
-        <!-- Station Selection Mode -->
-        <div id="stationMode">
+        <!-- Station Mode Section -->
+        <div class="mode-section active" id="stationMode">
             <div class="input-group">
-                <label for="stationSelect">Select a Radio Station</label>
-                <select id="stationSelect">
-                    <option value="">Choose a station...</option>
-                </select>
+                <label>Select Station</label>
+                <button class="station-browser-btn" id="stationBrowserBtn">
+                    <span class="placeholder" id="selectedStationText">Click to browse stations</span>
+                    <span class="arrow">▼</span>
+                </button>
             </div>
             
-            <div class="input-group" id="qualityGroup" style="display: none;">
+            <!-- Quality Selection (for stations) -->
+            <div class="input-group">
                 <label>Stream Quality</label>
-                <div class="quality-selector">
-                    <button class="quality-btn" id="qualityLow" data-quality="low">
-                        Low<br><span style="font-size: 11px; color: #999;">Bandwidth</span>
-                    </button>
-                    <button class="quality-btn active" id="qualityStandard" data-quality="standard">
-                        Standard<br><span style="font-size: 11px; color: #999;">Recommended</span>
-                    </button>
-                    <button class="quality-btn" id="qualityHigh" data-quality="high">
-                        High<br><span style="font-size: 11px; color: #999;">Quality</span>
-                    </button>
+                <div class="quality-selector" id="qualitySelectorStation">
+                    <button class="quality-btn active" data-quality="medium">Medium</button>
+                    <button class="quality-btn" data-quality="low">Low</button>
+                    <button class="quality-btn" data-quality="high">High</button>
                 </div>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="useCorsProxyStation">
-                    <label for="useCorsProxyStation">Use CORS Proxy (if stream has CORS issues)</label>
-                </div>
+            </div>
+            
+            <!-- CORS Proxy Option -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="useCorsProxyStation">
+                <label for="useCorsProxyStation">Use CORS Proxy (if station has CORS issues)</label>
             </div>
         </div>
         
-        <!-- Custom URL Mode -->
-        <div id="customMode" class="hidden">
+        <!-- Custom URL Mode Section -->
+        <div class="mode-section" id="customMode">
             <div class="input-group">
                 <label for="streamUrl">Stream URL</label>
-                <input type="text" id="streamUrl" placeholder="Enter radio stream URL (e.g., http://stream.example.com:8000/stream)">
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="useCorsProxy">
-                    <label for="useCorsProxy">Use CORS Proxy (if stream has CORS issues)</label>
-                </div>
+                <input type="text" id="streamUrl" placeholder="Enter Icecast/Shoutcast stream URL">
+            </div>
+            
+            <!-- CORS Proxy Option -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="useCorsProxy">
+                <label for="useCorsProxy">Use CORS Proxy (if stream has CORS issues)</label>
             </div>
         </div>
         
-        <!-- Artwork API Selection -->
+        <!-- Artwork API Settings -->
         <div class="input-group">
-            <label for="artworkApi">Artwork Source</label>
+            <label for="artworkApi">Album Artwork Source</label>
             <select id="artworkApi">
-                <option value="stream">Stream Only (No API)</option>
-                <option value="musicbrainz" selected>MusicBrainz (Free, No Key)</option>
-                <option value="itunes">iTunes (Free, No Key)</option>
+                <option value="itunes">iTunes (No API Key Required)</option>
                 <option value="lastfm">Last.fm (Requires API Key)</option>
+                <option value="none">No Artwork</option>
             </select>
-            <div class="api-info" id="apiInfo">
-                <strong>MusicBrainz:</strong> Free, no API key required. Best coverage for official releases.
-            </div>
         </div>
         
         <div class="input-group" id="apiKeyGroup" style="display: none;">
             <label for="apiKey">Last.fm API Key</label>
             <input type="text" id="apiKey" placeholder="Enter your Last.fm API key">
             <div class="api-info">
-                Get a free API key at <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a>
+                Get your free API key at <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a>
             </div>
         </div>
         
@@ -439,376 +729,334 @@
             </div>
         </div>
         
-        <!-- Playback Controls -->
+        <!-- Controls -->
         <div class="controls">
             <button class="btn btn-play" id="playBtn">▶ Play</button>
-            <button class="btn btn-stop" id="stopBtn" disabled>⏹ Stop</button>
+            <button class="btn btn-stop" id="stopBtn" disabled>⬛ Stop</button>
         </div>
         
-        <!-- Status Display -->
-        <div class="status" id="status">Ready to play</div>
+        <div class="status" id="status"></div>
+    </div>
+
+    <!-- Station Browser Modal -->
+    <div class="modal-overlay" id="stationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Browse Stations</h2>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            
+            <div class="modal-controls">
+                <div class="search-box">
+                    <input type="text" id="stationSearch" placeholder="Search stations...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                
+                <div class="sort-controls">
+                    <span class="sort-label">Sort:</span>
+                    <button class="sort-btn active" data-sort="name">A-Z</button>
+                    <button class="sort-btn" data-sort="genre">Genre</button>
+                    <button class="sort-btn" data-sort="bitrate">Bitrate</button>
+                </div>
+            </div>
+            
+            <div class="station-list" id="stationList">
+                <!-- Stations will be populated here -->
+            </div>
+        </div>
     </div>
     
     <script>
-        // Station database - will be populated from JSON
-        let stations = [];
-        let currentStation = null;
-        let selectedQuality = 'standard';
-        let isStationMode = true;
-        
-        // DOM Elements
-        const stationSelect = document.getElementById('stationSelect');
+        // Get DOM elements
+        const stationModeBtn = document.getElementById('stationModeBtn');
+        const customModeBtn = document.getElementById('customModeBtn');
+        const stationModeSection = document.getElementById('stationMode');
+        const customModeSection = document.getElementById('customMode');
+        const stationBrowserBtn = document.getElementById('stationBrowserBtn');
+        const selectedStationText = document.getElementById('selectedStationText');
+        const stationModal = document.getElementById('stationModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const stationList = document.getElementById('stationList');
+        const stationSearch = document.getElementById('stationSearch');
+        const sortButtons = document.querySelectorAll('.sort-btn');
         const streamUrlInput = document.getElementById('streamUrl');
         const playBtn = document.getElementById('playBtn');
         const stopBtn = document.getElementById('stopBtn');
         const metadataDiv = document.getElementById('metadata');
         const statusDiv = document.getElementById('status');
         const artworkApiSelect = document.getElementById('artworkApi');
-        const apiKeyInput = document.getElementById('apiKey');
         const apiKeyGroup = document.getElementById('apiKeyGroup');
-        const qualityGroup = document.getElementById('qualityGroup');
-        const qualityButtons = document.querySelectorAll('.quality-btn');
+        const apiKeyInput = document.getElementById('apiKey');
+        const qualitySelectorStation = document.getElementById('qualitySelectorStation');
+        const stationCountDiv = document.getElementById('stationCount');
+        
+        // State variables
+        let player = null;
+        let stations = [];
+        let filteredStations = [];
+        let currentStation = null;
+        let selectedQuality = 'medium';
+        let isStationMode = true;
+        let currentSort = 'name';
         
         // Mode switching
-        const stationModeBtn = document.getElementById('stationModeBtn');
-        const customModeBtn = document.getElementById('customModeBtn');
-        const stationMode = document.getElementById('stationMode');
-        const customMode = document.getElementById('customMode');
-        
-        // Player instance
-        let player = null;
-        
-        // Artwork cache to avoid repeated API calls
-        const artworkCache = new Map();
-        
-        // Load stations from JSON
-        async function loadStations() {
-            try {
-                const response = await fetch('stations.json');
-                stations = await response.json();
-                
-                // Populate dropdown
-                stations.forEach(station => {
-                    const option = document.createElement('option');
-                    option.value = station.name;
-                    option.textContent = station.name;
-                    stationSelect.appendChild(option);
-                });
-                
-                document.querySelector('.station-count').textContent = 
-                    `${stations.length} stations available`;
-                    
-            } catch (error) {
-                console.error('Failed to load stations:', error);
-                document.querySelector('.station-count').textContent = 
-                    'Error loading stations';
-            }
-        }
-        
-        // Mode switching handlers
         stationModeBtn.addEventListener('click', () => {
             isStationMode = true;
             stationModeBtn.classList.add('active');
             customModeBtn.classList.remove('active');
-            stationMode.classList.remove('hidden');
-            customMode.classList.add('hidden');
+            stationModeSection.classList.add('active');
+            customModeSection.classList.remove('active');
         });
         
         customModeBtn.addEventListener('click', () => {
             isStationMode = false;
             customModeBtn.classList.add('active');
             stationModeBtn.classList.remove('active');
-            customMode.classList.remove('hidden');
-            stationMode.classList.add('hidden');
-            qualityGroup.style.display = 'none';
+            customModeSection.classList.add('active');
+            stationModeSection.classList.remove('active');
         });
         
-        // Station selection handler
-        stationSelect.addEventListener('change', (e) => {
-            const stationName = e.target.value;
-            if (!stationName) {
-                currentStation = null;
-                qualityGroup.style.display = 'none';
-                return;
+        // Modal controls
+        stationBrowserBtn.addEventListener('click', () => {
+            stationModal.classList.add('active');
+            renderStations();
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            stationModal.classList.remove('active');
+        });
+        
+        stationModal.addEventListener('click', (e) => {
+            if (e.target === stationModal) {
+                stationModal.classList.remove('active');
             }
-            
-            currentStation = stations.find(s => s.name === stationName);
-            
-            // Show quality selector and configure buttons
-            qualityGroup.style.display = 'block';
-            
-            // Enable/disable quality buttons based on available URLs
-            document.getElementById('qualityLow').disabled = !currentStation.url_low;
-            document.getElementById('qualityHigh').disabled = !currentStation.url_high;
-            
-            // Reset to standard quality
-            selectedQuality = 'standard';
-            qualityButtons.forEach(btn => btn.classList.remove('active'));
-            document.getElementById('qualityStandard').classList.add('active');
         });
         
-        // Quality selection handlers
-        qualityButtons.forEach(btn => {
+        // Search functionality
+        stationSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredStations = stations.filter(station => 
+                station.name.toLowerCase().includes(searchTerm) ||
+                station.genre.toLowerCase().includes(searchTerm) ||
+                station.country.toLowerCase().includes(searchTerm)
+            );
+            renderStations();
+        });
+        
+        // Sort functionality
+        sortButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                if (!btn.disabled) {
-                    selectedQuality = btn.dataset.quality;
-                    qualityButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                }
+                sortButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSort = btn.dataset.sort;
+                sortStations();
+                renderStations();
             });
+        });
+        
+        // Quality selection for stations
+        qualitySelectorStation.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quality-btn') && !e.target.disabled) {
+                qualitySelectorStation.querySelectorAll('.quality-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                selectedQuality = e.target.dataset.quality;
+                updateQualityAvailability();
+            }
         });
         
         // Show/hide API key input based on selection
         artworkApiSelect.addEventListener('change', () => {
-            const apiInfo = document.getElementById('apiInfo');
-            
-            if (artworkApiSelect.value === 'lastfm') {
-                apiKeyGroup.style.display = 'block';
-                apiInfo.innerHTML = 'Get a free API key at <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a>';
-            } else if (artworkApiSelect.value === 'musicbrainz') {
-                apiKeyGroup.style.display = 'none';
-                apiInfo.innerHTML = '<strong>MusicBrainz:</strong> Free, no API key required. Best coverage for official releases.';
-            } else if (artworkApiSelect.value === 'itunes') {
-                apiKeyGroup.style.display = 'none';
-                apiInfo.innerHTML = '<strong>iTunes:</strong> Free, no API key required. Good for popular music.';
-            } else {
-                apiKeyGroup.style.display = 'none';
-                apiInfo.innerHTML = '<strong>Stream Only:</strong> Uses artwork provided by the stream, if available.';
-            }
+            apiKeyGroup.style.display = artworkApiSelect.value === 'lastfm' ? 'block' : 'none';
         });
         
-        // Update status display
-        function updateStatus(message, type) {
-            statusDiv.textContent = message;
-            statusDiv.className = 'status ' + type;
-        }
-        
-        // Get artwork from iTunes API
-        async function getItunesArtwork(artist, title) {
-            const cacheKey = `itunes-${artist}-${title}`;
-            
-            // Check cache first
-            if (artworkCache.has(cacheKey)) {
-                return artworkCache.get(cacheKey);
-            }
-            
+        // Load stations from API
+        async function loadStations() {
             try {
-                const searchTerm = `${artist} ${title}`.trim();
-                const response = await fetch(
-                    `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&media=music&entity=song&limit=1`
-                );
-                const data = await response.json();
+                const response = await fetch('https://de1.api.radio-browser.info/json/stations/search?limit=500&order=votes&reverse=true&hidebroken=true');
+                stations = await response.json();
+                filteredStations = [...stations];
                 
-                if (data.results && data.results.length > 0) {
-                    // Get high-res artwork (600x600)
-                    const artworkUrl = data.results[0].artworkUrl100.replace('100x100', '600x600');
-                    artworkCache.set(cacheKey, artworkUrl);
-                    return artworkUrl;
-                }
-                
-                artworkCache.set(cacheKey, null);
-                return null;
-            } catch (error) {
-                console.error('iTunes API error:', error);
-                return null;
-            }
-        }
-        
-        // Get artwork from MusicBrainz/Cover Art Archive
-        async function getMusicBrainzArtwork(artist, title) {
-            const cacheKey = `musicbrainz-${artist}-${title}`;
-            
-            // Check cache first
-            if (artworkCache.has(cacheKey)) {
-                return artworkCache.get(cacheKey);
-            }
-            
-            try {
-                // Step 1: Search for the recording
-                const searchUrl = `https://musicbrainz.org/ws/2/recording/?query=artist:"${encodeURIComponent(artist)}" AND recording:"${encodeURIComponent(title)}"&fmt=json&limit=1`;
-                
-                const searchResponse = await fetch(searchUrl);
-                const searchData = await searchResponse.json();
-                
-                if (!searchData.recordings || searchData.recordings.length === 0) {
-                    artworkCache.set(cacheKey, null);
-                    return null;
-                }
-                
-                const recording = searchData.recordings[0];
-                
-                // Step 2: Get release information
-                if (!recording.releases || recording.releases.length === 0) {
-                    artworkCache.set(cacheKey, null);
-                    return null;
-                }
-                
-                const release = recording.releases[0];
-                const releaseId = release.id;
-                
-                // Step 3: Try to get cover art from Cover Art Archive
-                const artworkUrl = `https://coverartarchive.org/release/${releaseId}/front-250`;
-                
-                // Test if the artwork exists
-                const artworkTest = await fetch(artworkUrl, { method: 'HEAD' });
-                if (artworkTest.ok) {
-                    artworkCache.set(cacheKey, artworkUrl);
-                    return artworkUrl;
-                }
-                
-                artworkCache.set(cacheKey, null);
-                return null;
+                stationCountDiv.textContent = `${stations.length} stations available`;
+                sortStations();
                 
             } catch (error) {
-                console.error('MusicBrainz lookup error:', error);
-                return null;
+                console.error('Error loading stations:', error);
+                stationCountDiv.textContent = 'Error loading stations';
             }
         }
         
-        // Get artwork from Last.fm API
-        async function getLastFmArtwork(artist, title, apiKey) {
-            const cacheKey = `lastfm-${artist}-${title}`;
-            
-            // Check cache first
-            if (artworkCache.has(cacheKey)) {
-                return artworkCache.get(cacheKey);
-            }
-            
-            try {
-                const response = await fetch(
-                    `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(title)}&format=json`
-                );
-                const data = await response.json();
-                
-                if (data.track && data.track.album && data.track.album.image) {
-                    const images = data.track.album.image;
-                    // Get the largest image (usually last in array)
-                    const largeImage = images.find(img => img.size === 'extralarge') || images[images.length - 1];
-                    if (largeImage && largeImage['#text']) {
-                        const artworkUrl = largeImage['#text'];
-                        artworkCache.set(cacheKey, artworkUrl);
-                        return artworkUrl;
-                    }
+        // Sort stations
+        function sortStations() {
+            filteredStations.sort((a, b) => {
+                switch (currentSort) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'genre':
+                        return a.genre.localeCompare(b.genre);
+                    case 'bitrate':
+                        return (b.bitrate || 0) - (a.bitrate || 0);
+                    default:
+                        return 0;
                 }
-                
-                artworkCache.set(cacheKey, null);
-                return null;
-            } catch (error) {
-                console.error('Last.fm API error:', error);
-                return null;
-            }
+            });
         }
         
-        // Get artwork based on selected API
-        async function getArtwork(artist, title, streamArtworkUrl) {
-            // First, use stream-provided artwork if available
-            if (streamArtworkUrl) {
-                return streamArtworkUrl;
-            }
-            
-            // Otherwise, use the selected API
-            const apiChoice = artworkApiSelect.value;
-            
-            // If stream only mode, don't search APIs
-            if (apiChoice === 'stream') {
-                return null;
-            }
-            
-            // Try MusicBrainz
-            if (apiChoice === 'musicbrainz') {
-                return await getMusicBrainzArtwork(artist, title);
-            }
-            
-            // Try iTunes
-            if (apiChoice === 'itunes') {
-                return await getItunesArtwork(artist, title);
-            }
-            
-            // Try Last.fm
-            if (apiChoice === 'lastfm') {
-                const apiKey = apiKeyInput.value.trim();
-                if (!apiKey) {
-                    console.warn('Last.fm API key not provided');
-                    return null;
-                }
-                return await getLastFmArtwork(artist, title, apiKey);
-            }
-            
-            return null;
-        }
-        
-        // Parse iHeart-style metadata with XML-like attributes
-        function parseIHeartMetadata(streamTitle) {
-            const result = {
-                artist: null,
-                title: null,
-                artwork: null
-            };
-            
-            // iHeart format: "Artist - text="Song Title" other_attributes..."
-            // Extract artist (everything before " - text=")
-            const artistMatch = streamTitle.match(/^(.+?)\s+-\s+text=/);
-            if (artistMatch) {
-                result.artist = artistMatch[1].trim();
-            }
-            
-            // Extract text attribute (song title)
-            const textMatch = streamTitle.match(/text="([^"]+)"/);
-            if (textMatch) {
-                result.title = textMatch[1];
-            }
-            
-            // Extract artwork URL
-            const artworkMatch = streamTitle.match(/amgArtworkURL="([^"]+)"/);
-            if (artworkMatch) {
-                result.artwork = artworkMatch[1];
-            }
-            
-            return result;
-        }
-        
-        // Format and display metadata
-        async function displayMetadata(metadata) {
-            console.log('Metadata received:', metadata);
-            
-            // Clear the display
-            metadataDiv.innerHTML = '';
-            
-            if (!metadata) {
-                metadataDiv.innerHTML = `
-                    <div class="metadata-text centered">
-                        <div class="now-playing-label">NOW PLAYING</div>
-                        <div class="no-metadata">No metadata available</div>
+        // Render stations in modal
+        function renderStations() {
+            if (filteredStations.length === 0) {
+                stationList.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <div>No stations found</div>
                     </div>
                 `;
                 return;
             }
             
-            // Parse metadata
+            stationList.innerHTML = filteredStations.map(station => {
+                const isSelected = currentStation && currentStation.stationuuid === station.stationuuid;
+                const bitrates = [];
+                if (station.bitrate) bitrates.push(`${station.bitrate}k`);
+                
+                return `
+                    <div class="station-item ${isSelected ? 'selected' : ''}" data-uuid="${station.stationuuid}">
+                        <div class="station-info">
+                            <div class="station-name">${station.name}</div>
+                            <div class="station-meta">
+                                <span class="station-genre">🎵 ${station.genre || 'Unknown'}</span>
+                                <span>🌍 ${station.country || 'Unknown'}</span>
+                                ${bitrates.length > 0 ? `
+                                    <span class="station-bitrate">
+                                        ${bitrates.map(br => `<span class="bitrate-badge">${br}</span>`).join('')}
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add click handlers
+            stationList.querySelectorAll('.station-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const uuid = item.dataset.uuid;
+                    selectStation(uuid);
+                });
+            });
+        }
+        
+        // Select a station
+        function selectStation(uuid) {
+            currentStation = stations.find(s => s.stationuuid === uuid);
+            if (currentStation) {
+                selectedStationText.textContent = currentStation.name;
+                selectedStationText.classList.remove('placeholder');
+                updateQualityAvailability();
+                stationModal.classList.remove('active');
+                renderStations(); // Re-render to show selection
+            }
+        }
+        
+        // Update quality button availability based on selected station
+        function updateQualityAvailability() {
+            if (!currentStation) return;
+            
+            const buttons = qualitySelectorStation.querySelectorAll('.quality-btn');
+            buttons.forEach(btn => {
+                const quality = btn.dataset.quality;
+                let hasQuality = false;
+                
+                if (quality === 'medium' && currentStation.url) {
+                    hasQuality = true;
+                } else if (quality === 'low' && currentStation.url_resolved) {
+                    hasQuality = true;
+                } else if (quality === 'high' && currentStation.hls) {
+                    hasQuality = true;
+                }
+                
+                btn.disabled = !hasQuality;
+            });
+            
+            // If current quality not available, switch to medium
+            const currentBtn = qualitySelectorStation.querySelector(`[data-quality="${selectedQuality}"]`);
+            if (currentBtn && currentBtn.disabled) {
+                selectedQuality = 'medium';
+                qualitySelectorStation.querySelectorAll('.quality-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                qualitySelectorStation.querySelector('[data-quality="medium"]').classList.add('active');
+            }
+        }
+        
+        // Update status message
+        function updateStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+        
+        // Get artwork from APIs
+        async function getArtwork(artist, title, streamUrl = null) {
+            const apiType = artworkApiSelect.value;
+            
+            if (apiType === 'none') return null;
+            
+            // Try stream-provided artwork first
+            if (streamUrl) {
+                return streamUrl;
+            }
+            
+            if (!artist || !title) return null;
+            
+            try {
+                if (apiType === 'itunes') {
+                    const searchTerm = `${artist} ${title}`;
+                    const response = await fetch(
+                        `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&media=music&limit=1`
+                    );
+                    const data = await response.json();
+                    
+                    if (data.results && data.results.length > 0) {
+                        // Get high quality artwork (600x600)
+                        return data.results[0].artworkUrl100.replace('100x100', '600x600');
+                    }
+                } else if (apiType === 'lastfm') {
+                    const apiKey = apiKeyInput.value.trim();
+                    if (!apiKey) return null;
+                    
+                    const response = await fetch(
+                        `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(title)}&format=json`
+                    );
+                    const data = await response.json();
+                    
+                    if (data.track && data.track.album && data.track.album.image) {
+                        const images = data.track.album.image;
+                        // Get largest image
+                        const largeImage = images.find(img => img.size === 'extralarge' || img.size === 'large');
+                        if (largeImage && largeImage['#text']) {
+                            return largeImage['#text'];
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching artwork:', error);
+            }
+            
+            return null;
+        }
+        
+        // Display metadata with artwork
+        async function displayMetadata(metadata) {
+            let title = 'Unknown Track';
             let artist = 'Unknown Artist';
-            let title = 'Unknown Title';
             let album = '';
             let streamArtworkUrl = null;
             
-            if (metadata.StreamTitle) {
-                // Check if this is iHeart-style metadata (contains attributes)
-                if (metadata.StreamTitle.includes('text=') && metadata.StreamTitle.includes('"')) {
-                    const iheartData = parseIHeartMetadata(metadata.StreamTitle);
-                    
-                    if (iheartData.artist) {
-                        artist = iheartData.artist;
-                    }
-                    
-                    if (iheartData.title) {
-                        title = iheartData.title;
-                    }
-                    
-                    // Use iHeart's artwork URL if available
-                    if (iheartData.artwork) {
-                        streamArtworkUrl = iheartData.artwork;
-                    }
-                } else {
-                    // Standard metadata parsing
+            // Parse metadata
+            if (metadata) {
+                // Check for ICY metadata
+                if (metadata.StreamTitle) {
                     const parts = metadata.StreamTitle.split(' - ');
                     if (parts.length >= 2) {
                         artist = parts[0].trim();
@@ -884,10 +1132,10 @@
                 
                 let url;
                 // Return URL based on selected quality
-                if (selectedQuality === 'low' && currentStation.url_low) {
-                    url = currentStation.url_low;
-                } else if (selectedQuality === 'high' && currentStation.url_high) {
-                    url = currentStation.url_high;
+                if (selectedQuality === 'low' && currentStation.url_resolved) {
+                    url = currentStation.url_resolved;
+                } else if (selectedQuality === 'high' && currentStation.hls) {
+                    url = currentStation.hls;
                 } else {
                     url = currentStation.url;
                 }
@@ -1039,6 +1287,20 @@
         streamUrlInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !playBtn.disabled) {
                 playBtn.click();
+            }
+        });
+        
+        // Allow Enter key in search
+        stationSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && filteredStations.length > 0) {
+                selectStation(filteredStations[0].stationuuid);
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && stationModal.classList.contains('active')) {
+                stationModal.classList.remove('active');
             }
         });
         
