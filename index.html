@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Stream Player with Station Database</title>
+    <title>Radio Player</title>
     
     <!-- Load the icecast-metadata-player library from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/icecast-metadata-player@1.17.13/build/icecast-metadata-player-1.17.13.main.min.js"></script>
@@ -16,99 +16,223 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            color: white;
         }
         
         .player-container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
-        }
-        
-        .player-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .player-header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .station-count {
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-group label {
-            display: block;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        
-        .input-group input:focus, .input-group select:focus {
-            outline: none;
-            border-color: #667eea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
         
         /* Station selector button */
         .station-selector-btn {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            background: white;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             cursor: pointer;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: border-color 0.3s;
-        }
-        
-        .station-selector-btn:hover {
-            border-color: #667eea;
-        }
-        
-        .station-selector-btn .placeholder {
-            color: #999;
-        }
-        
-        .station-selector-btn .selected-station {
-            color: #333;
+            text-align: center;
+            transition: all 0.3s;
+            color: white;
             font-weight: 500;
         }
         
-        .station-selector-btn .arrow {
-            color: #667eea;
+        .station-selector-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Album art container */
+        .artwork-container {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .album-art {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .album-art-placeholder {
+            font-size: 120px;
+            opacity: 0.5;
+        }
+        
+        /* Metadata section */
+        .metadata-section {
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .now-playing-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+        }
+        
+        .song-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .artist-name {
             font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 6px;
+        }
+        
+        .album-name {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .no-metadata {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+        
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-play {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-play:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .btn-stop {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-stop:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Quality selector */
+        .quality-section {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .quality-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .quality-btn {
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .quality-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .quality-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .quality-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        /* Status */
+        .status {
+            font-size: 14px;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+        }
+        
+        .status.error {
+            background: rgba(255, 59, 48, 0.2);
+            color: #ff6b6b;
+        }
+        
+        .status.playing {
+            background: rgba(52, 199, 89, 0.2);
+            color: #6ee7b7;
+        }
+        
+        .status.loading {
+            background: rgba(255, 214, 10, 0.2);
+            color: #fcd34d;
         }
         
         /* Station overlay */
@@ -119,7 +243,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             animation: fadeIn 0.3s ease;
         }
@@ -140,14 +265,14 @@
         }
         
         .station-modal {
-            background: white;
+            background: #2d2d2d;
             border-radius: 20px;
             width: 90%;
             max-width: 700px;
             max-height: 80vh;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: slideUp 0.3s ease;
         }
         
@@ -164,14 +289,14 @@
         
         .station-modal-header {
             padding: 25px 30px;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .station-modal-header h2 {
-            color: #333;
+            color: white;
             font-size: 22px;
         }
         
@@ -179,7 +304,7 @@
             background: none;
             border: none;
             font-size: 28px;
-            color: #999;
+            color: rgba(255, 255, 255, 0.6);
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -192,13 +317,13 @@
         }
         
         .close-modal:hover {
-            background: #f0f0f0;
-            color: #333;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
         }
         
         .station-modal-controls {
             padding: 20px 30px;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -211,15 +336,22 @@
         .search-box input {
             width: 100%;
             padding: 12px 40px 12px 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .search-box input:focus {
             outline: none;
             border-color: #667eea;
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .search-box .search-icon {
@@ -227,12 +359,266 @@
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: #999;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 18px;
             pointer-events: none;
         }
         
         .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sort-controls label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .sort-controls select {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .sort-controls select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .station-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .station-item {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .station-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .station-item.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .station-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .station-icon-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .station-item.selected .station-icon-placeholder {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .station-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .station-item-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: white;
+        }
+        
+        .station-item-details {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        
+        .station-item-frequency {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .station-item.selected .station-item-frequency {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .station-item-call-letters {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .station-item.selected .station-item-call-letters {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .station-item-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        
+        .genre-tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #a5b4fc;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .station-item.selected .genre-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .station-item-bitrates {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 4px;
+        }
+        
+        .station-item.selected .station-item-bitrates {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <!-- Station selector -->
+        <button class="station-selector-btn" id="stationSelectorBtn">
+            <span class="placeholder">Select a Station</span>
+            <span class="arrow">▼</span>
+        </button>
+        
+        <!-- Artwork -->
+        <div class="artwork-container" id="artworkContainer">
+            <div class="album-art-placeholder">🎵</div>
+        </div>
+        
+        <!-- Metadata -->
+        <div class="metadata-section" id="metadata">
+            <div class="now-playing-label">NOW PLAYING</div>
+            <div class="no-metadata">Select a station to start streaming</div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-play" id="playBtn">▶ Play</button>
+            <button class="btn btn-stop" id="stopBtn" disabled>⏹ Stop</button>
+        </div>
+        
+        <!-- Quality selector -->
+        <div class="quality-section">
+            <div class="quality-selector" id="qualitySelector">
+                <button class="quality-btn" data-quality="low">Low</button>
+                <button class="quality-btn active" data-quality="standard">Standard</button>
+                <button class="quality-btn" data-quality="high">High</button>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="useCorsProxyStation">
+                <label for="useCorsProxyStation">Use CORS Proxy (if station blocked)</label>
+            </div>
+        </div>
+        
+        <!-- Status -->
+        <div class="status" id="status">Ready</div>
+    </div>
+    
+    <!-- Station Overlay -->
+    <div class="station-overlay" id="stationOverlay">
+        <div class="station-modal">
+            <div class="station-modal-header">
+                <h2>Select a Station</h2>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            
+            <div class="station-modal-controls">
+                <div class="search-box">
+                    <input type="text" id="stationSearch" placeholder="Search stations...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                
+                <div class="sort-controls">
+                    <label>Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="genre-asc">Genre (A-Z)</option>
+                        <option value="genre-desc">Genre (Z-A)</option>
+                        <option value="bitrate-high">Quality (High to Low)</option>
+                        <option value="bitrate-low">Quality (Low to High)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="station-list" id="stationList">
+                <!-- Stations will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
             display: flex;
             gap: 10px;
             align-items: center;
@@ -776,23 +1162,17 @@
     
     <script>
         // Elements
-        const stationCount = document.getElementById('stationCount');
         const stationSelectorBtn = document.getElementById('stationSelectorBtn');
         const stationOverlay = document.getElementById('stationOverlay');
         const closeModal = document.getElementById('closeModal');
         const stationList = document.getElementById('stationList');
         const stationSearch = document.getElementById('stationSearch');
         const sortSelect = document.getElementById('sortSelect');
-        const streamUrlInput = document.getElementById('streamUrl');
         const playBtn = document.getElementById('playBtn');
         const stopBtn = document.getElementById('stopBtn');
         const metadataDiv = document.getElementById('metadata');
         const statusDiv = document.getElementById('status');
-        
-        // Mode toggle
-        const modeBtns = document.querySelectorAll('.mode-btn');
-        const stationMode = document.getElementById('stationMode');
-        const customMode = document.getElementById('customMode');
+        const artworkContainer = document.getElementById('artworkContainer');
         
         // Quality buttons
         const qualityBtns = document.querySelectorAll('.quality-btn');
@@ -802,32 +1182,7 @@
         let filteredStations = [];
         let currentStation = null;
         let player = null;
-        let isStationMode = true;
         let selectedQuality = 'standard';
-        
-        // Mode toggle handler
-        modeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const mode = btn.dataset.mode;
-                isStationMode = mode === 'station';
-                
-                if (isStationMode) {
-                    stationMode.classList.add('active');
-                    customMode.classList.remove('active');
-                } else {
-                    stationMode.classList.remove('active');
-                    customMode.classList.add('active');
-                }
-                
-                // Stop current playback when switching modes
-                if (player) {
-                    player.stop();
-                }
-            });
-        });
         
         // Quality selector handler
         qualityBtns.forEach(btn => {
@@ -1022,12 +1377,11 @@
                 }
                 stations = await response.json();
                 filteredStations = [...stations];
-                stationCount.textContent = `${stations.length} stations available`;
                 filterAndSortStations();
+                console.log(`Loaded ${stations.length} stations`);
             } catch (error) {
                 console.error('Failed to load stations:', error);
-                stationCount.textContent = 'Error: stations.json not found';
-                updateStatus('Please add a stations.json file in the same directory', 'error');
+                updateStatus('Error: stations.json not found', 'error');
             }
         }
         
@@ -1119,101 +1473,70 @@
                 !artist.toLowerCase().includes('unknown') && 
                 !title.toLowerCase().includes('unknown');
             
-            // Show loading state only if we're going to search
+            // Show loading state in artwork container
             if (shouldSearchArtwork || streamArtworkUrl) {
-                metadataDiv.innerHTML = `
-                    <div class="album-art-container">
-                        <div class="loading-spinner">🔍 Searching...</div>
-                    </div>
-                    <div class="metadata-text">
-                        <div class="now-playing-label">NOW PLAYING</div>
-                        <div class="song-title">${title}</div>
-                        <div class="artist-name">${artist}</div>
-                        ${album ? `<div class="album-name">${album}</div>` : ''}
-                    </div>
-                `;
+                artworkContainer.innerHTML = `<div class="album-art-placeholder">🔍</div>`;
             }
+            
+            // Update metadata text
+            metadataDiv.innerHTML = `
+                <div class="now-playing-label">NOW PLAYING</div>
+                ${title ? `<div class="song-title">${title}</div>` : ''}
+                ${artist ? `<div class="artist-name">${artist}</div>` : ''}
+                ${album ? `<div class="album-name">${album}</div>` : ''}
+                ${!title && !artist ? `<div class="no-metadata">Streaming...</div>` : ''}
+            `;
             
             // Get artwork (async) - only if we should search
             const artworkUrl = (shouldSearchArtwork || streamArtworkUrl) 
                 ? await getArtwork(artist, title, streamArtworkUrl)
                 : null;
             
-            // Build final display
-            let html = '';
-            
+            // Update artwork container
             if (artworkUrl) {
-                html += `
-                    <div class="album-art-container">
-                        <img src="${artworkUrl}" alt="Album Art" class="album-art" 
-                             onerror="this.parentElement.innerHTML='<div class=\\'album-art-placeholder\\'>🎵</div>'">
-                    </div>
+                artworkContainer.innerHTML = `
+                    <img src="${artworkUrl}" alt="Album Art" class="album-art" 
+                         onerror="this.innerHTML='<div class=\\'album-art-placeholder\\'>🎵</div>'">
                 `;
             } else {
-                html += `
-                    <div class="album-art-container">
-                        <div class="album-art-placeholder">🎵</div>
-                    </div>
-                `;
+                artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
             }
-            
-            html += `
-                <div class="metadata-text">
-                    <div class="now-playing-label">NOW PLAYING</div>
-                    <div class="song-title">${title}</div>
-                    <div class="artist-name">${artist}</div>
-                    ${album ? `<div class="album-name">${album}</div>` : ''}
-                </div>
-            `;
-            
-            metadataDiv.innerHTML = html;
         }
         
-        // Get stream URL based on mode and quality
+        // Get stream URL based on quality
         function getStreamUrl() {
-            if (isStationMode) {
-                if (!currentStation) {
-                    return null;
-                }
-                
-                let url;
-                // Return URL based on selected quality
-                if (selectedQuality === 'low' && currentStation.url_low) {
-                    url = currentStation.url_low;
-                } else if (selectedQuality === 'high' && currentStation.url_high) {
-                    url = currentStation.url_high;
-                } else {
-                    url = currentStation.url;
-                }
-                
-                // Apply CORS proxy if enabled
-                const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
-                if (useCorsProxy) {
-                    url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-                }
-                
-                return url;
-            } else {
-                let url = streamUrlInput.value.trim();
-                const useCorsProxy = document.getElementById('useCorsProxy').checked;
-                
-                if (useCorsProxy) {
-                    url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-                }
-                
-                return url;
+            if (!currentStation) {
+                return null;
             }
+            
+            let url;
+            // Return URL based on selected quality
+            if (selectedQuality === 'low' && currentStation.url_low) {
+                url = currentStation.url_low;
+            } else if (selectedQuality === 'high' && currentStation.url_high) {
+                url = currentStation.url_high;
+            } else {
+                url = currentStation.url;
+            }
+            
+            // Apply CORS proxy if enabled
+            const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
+            if (useCorsProxy) {
+                url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+            }
+            
+            return url;
         }
         
         // Play button handler
         playBtn.addEventListener('click', async () => {
-            const rawUrl = isStationMode 
-                ? (currentStation ? (selectedQuality === 'low' && currentStation.url_low ? currentStation.url_low : 
-                   selectedQuality === 'high' && currentStation.url_high ? currentStation.url_high : currentStation.url) : null)
-                : streamUrlInput.value.trim();
+            const rawUrl = currentStation 
+                ? (selectedQuality === 'low' && currentStation.url_low ? currentStation.url_low : 
+                   selectedQuality === 'high' && currentStation.url_high ? currentStation.url_high : currentStation.url)
+                : null;
             
             if (!rawUrl) {
-                updateStatus('Please select a station or enter a URL', 'error');
+                updateStatus('Please select a station', 'error');
                 return;
             }
             
@@ -1226,17 +1549,14 @@
             playBtn.disabled = true;
             stopBtn.disabled = false;
             updateStatus('Connecting...', 'loading');
+            artworkContainer.innerHTML = `<div class="album-art-placeholder">🔄</div>`;
             metadataDiv.innerHTML = `
-                <div class="metadata-text centered">
-                    <div class="now-playing-label">NOW PLAYING</div>
-                    <div class="no-metadata">Loading stream...</div>
-                </div>
+                <div class="now-playing-label">NOW PLAYING</div>
+                <div class="no-metadata">Loading stream...</div>
             `;
             
             // Retry strategy: try different configurations
-            const useCorsProxy = isStationMode 
-                ? document.getElementById('useCorsProxyStation').checked 
-                : document.getElementById('useCorsProxy').checked;
+            const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
             
             let attempts = [
                 { url: rawUrl, cors: false, metadata: ['icy', 'ogg'] }, // Try full metadata first
@@ -1295,11 +1615,10 @@
                             updateStatus('Stopped', 'stopped');
                             playBtn.disabled = false;
                             stopBtn.disabled = true;
+                            artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
                             metadataDiv.innerHTML = `
-                                <div class="metadata-text centered">
-                                    <div class="now-playing-label">NOW PLAYING</div>
-                                    <div class="no-metadata">Select a station to start streaming</div>
-                                </div>
+                                <div class="now-playing-label">NOW PLAYING</div>
+                                <div class="no-metadata">Select a station to start streaming</div>
                             `;
                         },
                         
@@ -1348,13 +1667,6 @@
         stopBtn.addEventListener('click', () => {
             if (player) {
                 player.stop();
-            }
-        });
-        
-        // Allow Enter key to play (for custom URL mode)
-        streamUrlInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !playBtn.disabled) {
-                playBtn.click();
             }
         });
         
