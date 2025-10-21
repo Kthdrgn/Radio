@@ -929,18 +929,21 @@
             updateStatus(`Station selected: ${station.name}`, '');
         }
         
-        // Load stations from JSON
+        // Load stations from stations.json file
         async function loadStations() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/junguler/m3u-radio-music-playlists/refs/heads/main/raw-scrape.json');
+                const response = await fetch('stations.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load stations.json: ${response.status}`);
+                }
                 stations = await response.json();
                 filteredStations = [...stations];
                 stationCount.textContent = `${stations.length} stations available`;
                 filterAndSortStations();
             } catch (error) {
                 console.error('Failed to load stations:', error);
-                stationCount.textContent = 'Failed to load stations';
-                updateStatus('Error loading station database', 'error');
+                stationCount.textContent = 'Error: stations.json not found';
+                updateStatus('Please add a stations.json file in the same directory', 'error');
             }
         }
         
