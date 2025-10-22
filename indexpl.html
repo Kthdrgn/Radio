@@ -977,6 +977,9 @@
                 <!-- Stations Section -->
                 <div class="section-header">
                     <h3 class="section-title">All Stations</h3>
+                    <button class="create-playlist-btn" id="addStationBtn">
+                        + Add Station
+                    </button>
                 </div>
                 <div class="station-list" id="stationList"></div>
             </div>
@@ -1946,6 +1949,11 @@
         // Create playlist button
         createPlaylistBtn.addEventListener('click', () => {
             showPlaylistForm();
+        });
+        
+        // Add station button
+        document.getElementById('addStationBtn').addEventListener('click', () => {
+            showStationForm();
         });
         
         // Playlist form
