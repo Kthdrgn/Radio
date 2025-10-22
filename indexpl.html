@@ -934,7 +934,7 @@
         
         <!-- CORS Proxy Toggle -->
         <div class="form-checkbox" style="justify-content: center;">
-            <input type="checkbox" id="globalCorsProxy">
+            <input type="checkbox" id="globalCorsProxy" checked>
             <label for="globalCorsProxy" style="color: rgba(255, 255, 255, 0.6); font-size: 13px; cursor: pointer;">Use CORS Proxy</label>
         </div>
     </div>
@@ -1744,6 +1744,11 @@
             if (currentPlaylist) {
                 renderPlaylistStations();
             }
+            
+            // Automatically start playing the station
+            setTimeout(() => {
+                playBtn.click();
+            }, 100);
         }
         
         // Open playlist
