@@ -631,7 +631,8 @@
             background: #1e1e1e;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            min-width: 160px;
+            min-width: 180px;
+            max-width: 250px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             opacity: 0;
             visibility: hidden;
@@ -639,12 +640,43 @@
             transition: all 0.2s;
             max-height: 300px;
             overflow-y: auto;
+            z-index: 101;
+            white-space: normal;
+            word-wrap: break-word;
         }
         
-        .dropdown-submenu:hover .dropdown-submenu-content {
+        /* Position submenu to the left if it would overflow */
+        .dropdown-submenu-content.left {
+            left: auto;
+            right: 100%;
+            margin-left: 0;
+            margin-right: 4px;
+        }
+        
+        .dropdown-submenu:hover .dropdown-submenu-content,
+        .dropdown-submenu.active .dropdown-submenu-content {
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
+        }
+        
+        /* Custom scrollbar for submenu */
+        .dropdown-submenu-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .dropdown-submenu-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .dropdown-submenu-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        .dropdown-submenu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         /* Empty state */
@@ -1159,7 +1191,7 @@
         // Initialize Supabase - Replace with your credentials
         const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4';
-         
+            
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         } catch (error) {
@@ -1574,6 +1606,33 @@
                     });
                     
                     dropdown.classList.toggle('active');
+                    
+                    // Position submenu if needed
+                    if (dropdown.classList.contains('active')) {
+                        positionSubmenus(dropdown);
+                    }
+                });
+            });
+            
+            // Add hover listeners for submenus
+            document.querySelectorAll('.dropdown-submenu').forEach(submenu => {
+                submenu.addEventListener('mouseenter', () => {
+                    const submenuContent = submenu.querySelector('.dropdown-submenu-content');
+                    if (submenuContent) {
+                        positionSubmenu(submenuContent);
+                    }
+                });
+                
+                // Also support click for mobile
+                submenu.addEventListener('click', (e) => {
+                    if (e.target.closest('.dropdown-item') && !e.target.dataset.action) {
+                        e.stopPropagation();
+                        submenu.classList.toggle('active');
+                        const submenuContent = submenu.querySelector('.dropdown-submenu-content');
+                        if (submenuContent && submenu.classList.contains('active')) {
+                            positionSubmenu(submenuContent);
+                        }
+                    }
                 });
             });
             
@@ -1804,6 +1863,28 @@
             });
             
             stationFormModal.classList.add('active');
+        }
+        
+        // Position submenu to avoid overflow
+        function positionSubmenu(submenuContent) {
+            const rect = submenuContent.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            
+            // If submenu would overflow to the right, position it to the left
+            if (rect.right > viewportWidth - 10) {
+                submenuContent.classList.add('left');
+            } else {
+                submenuContent.classList.remove('left');
+            }
+        }
+        
+        // Position all submenus in a dropdown
+        function positionSubmenus(dropdown) {
+            const submenus = dropdown.querySelectorAll('.dropdown-submenu-content');
+            submenus.forEach(submenu => {
+                // Small delay to allow dropdown to fully render
+                setTimeout(() => positionSubmenu(submenu), 10);
+            });
         }
         
         // Edit station
