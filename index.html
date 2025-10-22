@@ -328,10 +328,11 @@
             padding: 30px;
             max-width: 600px;
             width: 100%;
-            max-height: 80vh;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
         }
         
         .modal-header {
@@ -389,6 +390,30 @@
             overflow-y: auto;
             flex: 1;
             margin-bottom: 20px;
+            min-height: 200px;
+        }
+        
+        /* Custom scrollbar styling */
+        .station-list::-webkit-scrollbar,
+        .add-form::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .station-list::-webkit-scrollbar-track,
+        .add-form::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .station-list::-webkit-scrollbar-thumb,
+        .add-form::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        .station-list::-webkit-scrollbar-thumb:hover,
+        .add-form::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         .station-item {
@@ -505,6 +530,8 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
+            max-height: 60vh;
+            overflow-y: auto;
         }
         
         .add-form.active {
@@ -531,6 +558,19 @@
             color: white;
             font-size: 14px;
             transition: all 0.2s;
+            font-family: inherit;
+        }
+        
+        .form-input[type="text"] {
+            width: 100%;
+        }
+        
+        textarea.form-input {
+            width: 100%;
+            resize: vertical;
+            min-height: 60px;
+            max-height: 150px;
+            font-family: inherit;
         }
         
         .form-input:focus {
@@ -616,6 +656,42 @@
             cursor: pointer;
             color: rgba(255, 255, 255, 0.8);
         }
+        
+        /* Mobile responsiveness */
+        @media (max-height: 700px) {
+            .station-modal {
+                max-height: 95vh;
+                padding: 20px;
+            }
+            
+            .add-form {
+                max-height: 50vh;
+            }
+            
+            .modal-header {
+                margin-bottom: 15px;
+            }
+            
+            .modal-title {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .station-modal {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .add-form {
+                padding: 15px;
+                gap: 12px;
+            }
+            
+            .form-group {
+                gap: 4px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -659,7 +735,7 @@
         
         <div class="settings-section">
             <div class="settings-option">
-                <input type="checkbox" id="useCorsProxyStation" checked>
+                <input type="checkbox" id="useCorsProxyStation">
                 <label for="useCorsProxyStation">Use CORS Proxy (enable if stream won't play)</label>
             </div>
         </div>
@@ -748,8 +824,8 @@
         // SUPABASE CONFIGURATION
         // ======================
         // TODO: Replace these with your actual Supabase credentials
-        const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co'; // e.g., 'https://xxxxx.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4'; // Your anon/public key
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // e.g., 'https://xxxxx.supabase.co'
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Your anon/public key
         
         // Initialize Supabase client
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
