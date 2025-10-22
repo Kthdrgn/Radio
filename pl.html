@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Player</title>
+    
+    <!-- Load the icecast-metadata-player library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/icecast-metadata-player@1.17.13/build/icecast-metadata-player-1.17.13.main.min.js"></script>
+    
+    <!-- Load Supabase client library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .player-container {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        /* Station selector button */
+        .station-selector-btn {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .station-selector-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Station display with info */
+        .station-display {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .station-display:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .station-display-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .station-display-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .station-display-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: white;
+        }
+        
+        .station-display-genres {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .station-display-change {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        
+        /* Album art container */
+        .artwork-container {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .album-art {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .album-art-placeholder {
+            font-size: 120px;
+            opacity: 0.5;
+        }
+        
+        /* Metadata section */
+        .metadata-section {
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .now-playing-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+        }
+        
+        .song-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .artist-name {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 6px;
+        }
+        
+        .album-name {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .no-metadata {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+        
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-play {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-play:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .btn-stop {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-stop:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Status indicator */
+        .status {
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .status.loading {
+            background: rgba(255, 193, 7, 0.2);
+            border-color: rgba(255, 193, 7, 0.4);
+            color: #ffc107;
+        }
+        
+        .status.playing {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.4);
+            color: #4caf50;
+        }
+        
+        .status.error {
+            background: rgba(244, 67, 54, 0.2);
+            border-color: rgba(244, 67, 54, 0.4);
+            color: #f44336;
+        }
+        
+        /* Modal overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        /* Modal content */
+        .modal {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Modal header */
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        /* Modal body */
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        /* Search bar inside modal */
+        .modal-search {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .modal-search:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-search::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Station list sections */
+        .station-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+        
+        .station-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Individual station card */
+        .station-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .station-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .station-card.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .station-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .station-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .station-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .station-genres {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .station-menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .station-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Dropdown menu for station actions */
+        .station-dropdown {
+            position: absolute;
+            right: 15px;
+            top: 55px;
+            background: #2d2d2d;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 8px;
+            min-width: 200px;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .station-dropdown.active {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-item.danger {
+            color: #f44336;
+        }
+        
+        .dropdown-item.danger:hover {
+            background: rgba(244, 67, 54, 0.2);
+        }
+        
+        /* Playlist card styling */
+        .playlist-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .playlist-card:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(5px);
+        }
+        
+        .playlist-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .playlist-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .playlist-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .playlist-count {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Add to playlist modal */
+        .playlist-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .playlist-option {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .playlist-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .playlist-option-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .playlist-option-info {
+            flex: 1;
+        }
+        
+        .playlist-option-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 2px;
+        }
+        
+        .playlist-option-count {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .create-new-playlist {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+        
+        .create-new-playlist:hover {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Create playlist form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+        
+        .btn-secondary {
+            padding: 12px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-primary {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:disabled,
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Settings section */
+        .settings-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .settings-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+        
+        .setting-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Toggle switch */
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+        
+        /* Quality selector */
+        .quality-selector {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .quality-btn {
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quality-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .quality-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            color: white;
+        }
+        
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        .empty-state-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .player-container {
+                gap: 20px;
+            }
+            
+            .modal {
+                max-height: 90vh;
+            }
+            
+            .modal-header {
+                padding: 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .song-title {
+                font-size: 20px;
+            }
+            
+            .artist-name {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <!-- Station selector button / display -->
+        <div id="stationSelectorBtn" class="station-selector-btn">
+            Select a Station
+        </div>
+        
+        <div id="stationDisplay" class="station-display" style="display: none;">
+            <img id="stationDisplayIcon" class="station-display-icon" src="" alt="">
+            <div class="station-display-info">
+                <div id="stationDisplayName" class="station-display-name"></div>
+                <div id="stationDisplayGenres" class="station-display-genres"></div>
+            </div>
+            <div class="station-display-change">CHANGE</div>
+        </div>
+        
+        <!-- Album artwork -->
+        <div class="artwork-container" id="artworkContainer">
+            <div class="album-art-placeholder">🎵</div>
+        </div>
+        
+        <!-- Metadata display -->
+        <div class="metadata-section">
+            <div id="metadataDiv">
+                <div class="now-playing-label">NOW PLAYING</div>
+                <div class="no-metadata">Select a station to start streaming</div>
+            </div>
+        </div>
+        
+        <!-- Playback controls -->
+        <div class="controls">
+            <button id="playBtn" class="btn btn-play" disabled>Play</button>
+            <button id="stopBtn" class="btn btn-stop" disabled>Stop</button>
+        </div>
+        
+        <!-- Status indicator -->
+        <div id="statusDiv" class="status">Ready</div>
+    </div>
+    
+    <!-- Station selector modal -->
+    <div id="stationModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Select Station</h2>
+                <button class="modal-close" id="closeStationModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input 
+                    type="text" 
+                    id="stationSearch" 
+                    class="modal-search" 
+                    placeholder="Search stations..."
+                    autocomplete="off"
+                >
+                
+                <!-- Playlists section -->
+                <div id="playlistsSection" class="station-section" style="display: none;">
+                    <h3 class="section-title">📚 Playlists</h3>
+                    <div id="playlistsList" class="station-list"></div>
+                </div>
+                
+                <!-- All stations section -->
+                <div id="stationsSection" class="station-section">
+                    <h3 class="section-title">📻 All Stations</h3>
+                    <div id="stationsList" class="station-list"></div>
+                </div>
+                
+                <!-- Settings section -->
+                <div class="settings-section">
+                    <div class="settings-title">Settings</div>
+                    <div class="setting-item">
+                        <span class="setting-label">Use CORS Proxy</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="useCorsProxyStation">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Stream Quality</span>
+                        <div class="quality-selector">
+                            <button class="quality-btn" data-quality="low">Low</button>
+                            <button class="quality-btn active" data-quality="medium">Medium</button>
+                            <button class="quality-btn" data-quality="high">High</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add to playlist modal -->
+    <div id="addToPlaylistModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Add to Playlist</h2>
+                <button class="modal-close" id="closePlaylistModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="playlistSelection" class="playlist-selection">
+                    <!-- Playlist options will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create playlist modal -->
+    <div id="createPlaylistModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Create Playlist</h2>
+                <button class="modal-close" id="closeCreatePlaylistModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createPlaylistForm">
+                    <div class="form-group">
+                        <label class="form-label" for="playlistName">Playlist Name *</label>
+                        <input 
+                            type="text" 
+                            id="playlistName" 
+                            class="form-input" 
+                            placeholder="My Favorites"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="playlistDescription">Description</label>
+                        <textarea 
+                            id="playlistDescription" 
+                            class="form-input form-textarea" 
+                            placeholder="A collection of my favorite stations..."
+                        ></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelCreatePlaylist">Cancel</button>
+                        <button type="submit" class="btn-primary">Create Playlist</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ======================
+        // SUPABASE CONFIGURATION
+        // ======================
+        
+        // Replace these with your actual Supabase credentials
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // ======================
+        // STATE MANAGEMENT
+        // ======================
+        
+        let player = null;
+        let stations = [];
+        let playlists = [];
+        let filteredStations = [];
+        let currentStation = null;
+        let currentPlaylist = null;
+        let selectedQuality = 'medium';
+        let stationToAddToPlaylist = null;
+        
+        // ======================
+        // DOM ELEMENTS
+        // ======================
+        
+        const stationSelectorBtn = document.getElementById('stationSelectorBtn');
+        const stationDisplay = document.getElementById('stationDisplay');
+        const stationDisplayIcon = document.getElementById('stationDisplayIcon');
+        const stationDisplayName = document.getElementById('stationDisplayName');
+        const stationDisplayGenres = document.getElementById('stationDisplayGenres');
+        const stationModal = document.getElementById('stationModal');
+        const closeStationModalBtn = document.getElementById('closeStationModal');
+        const stationSearch = document.getElementById('stationSearch');
+        const playlistsSection = document.getElementById('playlistsSection');
+        const playlistsList = document.getElementById('playlistsList');
+        const stationsSection = document.getElementById('stationsSection');
+        const stationsList = document.getElementById('stationsList');
+        const artworkContainer = document.getElementById('artworkContainer');
+        const metadataDiv = document.getElementById('metadataDiv');
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const statusDiv = document.getElementById('statusDiv');
+        
+        // Playlist modals
+        const addToPlaylistModal = document.getElementById('addToPlaylistModal');
+        const closePlaylistModalBtn = document.getElementById('closePlaylistModal');
+        const playlistSelection = document.getElementById('playlistSelection');
+        const createPlaylistModal = document.getElementById('createPlaylistModal');
+        const closeCreatePlaylistModalBtn = document.getElementById('closeCreatePlaylistModal');
+        const createPlaylistForm = document.getElementById('createPlaylistForm');
+        const cancelCreatePlaylistBtn = document.getElementById('cancelCreatePlaylist');
+        
+        // ======================
+        // MODAL HANDLERS
+        // ======================
+        
+        stationSelectorBtn.addEventListener('click', () => {
+            stationModal.classList.add('active');
+            stationSearch.focus();
+        });
+        
+        stationDisplay.addEventListener('click', () => {
+            stationModal.classList.add('active');
+            stationSearch.focus();
+        });
+        
+        closeStationModalBtn.addEventListener('click', () => {
+            stationModal.classList.remove('active');
+        });
+        
+        closePlaylistModalBtn.addEventListener('click', () => {
+            addToPlaylistModal.classList.remove('active');
+        });
+        
+        closeCreatePlaylistModalBtn.addEventListener('click', () => {
+            createPlaylistModal.classList.remove('active');
+        });
+        
+        cancelCreatePlaylistBtn.addEventListener('click', () => {
+            createPlaylistModal.classList.remove('active');
+        });
+        
+        stationModal.addEventListener('click', (e) => {
+            if (e.target === stationModal) {
+                stationModal.classList.remove('active');
+            }
+        });
+        
+        addToPlaylistModal.addEventListener('click', (e) => {
+            if (e.target === addToPlaylistModal) {
+                addToPlaylistModal.classList.remove('active');
+            }
+        });
+        
+        createPlaylistModal.addEventListener('click', (e) => {
+            if (e.target === createPlaylistModal) {
+                createPlaylistModal.classList.remove('active');
+            }
+        });
+        
+        // ======================
+        // QUALITY SELECTOR
+        // ======================
+        
+        document.querySelectorAll('.quality-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.quality-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedQuality = btn.dataset.quality;
+            });
+        });
+        
+        // ======================
+        // DATABASE OPERATIONS
+        // ======================
+        
+        async function loadStations() {
+            try {
+                const { data, error } = await supabase
+                    .from('radio_stations')
+                    .select('*')
+                    .order('name');
+                
+                if (error) throw error;
+                
+                stations = data || [];
+                filteredStations = stations;
+                renderStations();
+                
+                if (stations.length > 0 && !currentStation) {
+                    selectStation(stations[0]);
+                }
+            } catch (error) {
+                console.error('Error loading stations:', error);
+                updateStatus('Error loading stations', 'error');
+            }
+        }
+        
+        async function loadPlaylists() {
+            try {
+                const { data, error } = await supabase
+                    .from('playlists')
+                    .select('*, playlist_stations(count)')
+                    .order('name');
+                
+                if (error) throw error;
+                
+                playlists = data || [];
+                renderPlaylists();
+            } catch (error) {
+                console.error('Error loading playlists:', error);
+            }
+        }
+        
+        async function getPlaylistStations(playlistId) {
+            try {
+                const { data, error } = await supabase
+                    .from('playlist_stations')
+                    .select('station_id, radio_stations(*)')
+                    .eq('playlist_id', playlistId)
+                    .order('position');
+                
+                if (error) throw error;
+                
+                return data.map(item => item.radio_stations);
+            } catch (error) {
+                console.error('Error loading playlist stations:', error);
+                return [];
+            }
+        }
+        
+        async function createPlaylist(name, description) {
+            try {
+                const { data, error } = await supabase
+                    .from('playlists')
+                    .insert([{ name, description }])
+                    .select()
+                    .single();
+                
+                if (error) throw error;
+                
+                await loadPlaylists();
+                return data;
+            } catch (error) {
+                console.error('Error creating playlist:', error);
+                throw error;
+            }
+        }
+        
+        async function addStationToPlaylist(playlistId, stationId) {
+            try {
+                // Get current max position
+                const { data: existing, error: countError } = await supabase
+                    .from('playlist_stations')
+                    .select('position')
+                    .eq('playlist_id', playlistId)
+                    .order('position', { ascending: false })
+                    .limit(1);
+                
+                if (countError) throw countError;
+                
+                const newPosition = existing.length > 0 ? existing[0].position + 1 : 0;
+                
+                const { error } = await supabase
+                    .from('playlist_stations')
+                    .insert([{
+                        playlist_id: playlistId,
+                        station_id: stationId,
+                        position: newPosition
+                    }]);
+                
+                if (error) {
+                    // Check if it's a duplicate error
+                    if (error.code === '23505') {
+                        throw new Error('Station already in playlist');
+                    }
+                    throw error;
+                }
+                
+                await loadPlaylists();
+            } catch (error) {
+                console.error('Error adding station to playlist:', error);
+                throw error;
+            }
+        }
+        
+        async function removeStationFromPlaylist(playlistId, stationId) {
+            try {
+                const { error } = await supabase
+                    .from('playlist_stations')
+                    .delete()
+                    .eq('playlist_id', playlistId)
+                    .eq('station_id', stationId);
+                
+                if (error) throw error;
+                
+                await loadPlaylists();
+            } catch (error) {
+                console.error('Error removing station from playlist:', error);
+                throw error;
+            }
+        }
+        
+        async function deletePlaylist(playlistId) {
+            try {
+                const { error } = await supabase
+                    .from('playlists')
+                    .delete()
+                    .eq('id', playlistId);
+                
+                if (error) throw error;
+                
+                if (currentPlaylist && currentPlaylist.id === playlistId) {
+                    currentPlaylist = null;
+                    filteredStations = stations;
+                    renderStations();
+                }
+                
+                await loadPlaylists();
+            } catch (error) {
+                console.error('Error deleting playlist:', error);
+                throw error;
+            }
+        }
+        
+        // ======================
+        // RENDERING FUNCTIONS
+        // ======================
+        
+        function renderPlaylists() {
+            if (playlists.length === 0) {
+                playlistsSection.style.display = 'none';
+                return;
+            }
+            
+            playlistsSection.style.display = 'block';
+            playlistsList.innerHTML = '';
+            
+            playlists.forEach(playlist => {
+                const stationCount = playlist.playlist_stations?.[0]?.count || 0;
+                
+                const card = document.createElement('div');
+                card.className = 'playlist-card';
+                card.innerHTML = `
+                    <div class="playlist-icon">📚</div>
+                    <div class="playlist-info">
+                        <div class="playlist-name">${escapeHtml(playlist.name)}</div>
+                        <div class="playlist-count">${stationCount} station${stationCount !== 1 ? 's' : ''}</div>
+                    </div>
+                    <button class="station-menu-btn" data-playlist-id="${playlist.id}">⋮</button>
+                `;
+                
+                // Click on playlist to view it
+                card.addEventListener('click', async (e) => {
+                    if (!e.target.closest('.station-menu-btn')) {
+                        await selectPlaylist(playlist);
+                    }
+                });
+                
+                // Menu button
+                const menuBtn = card.querySelector('.station-menu-btn');
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showPlaylistMenu(e, playlist);
+                });
+                
+                playlistsList.appendChild(card);
+            });
+        }
+        
+        function renderStations() {
+            if (filteredStations.length === 0) {
+                stationsList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <div class="empty-state-text">
+                            ${currentPlaylist 
+                                ? 'No stations in this playlist yet.<br>Add some from the All Stations list!' 
+                                : 'No stations found matching your search.'}
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Update section title
+            const sectionTitle = stationsSection.querySelector('.section-title');
+            if (currentPlaylist) {
+                sectionTitle.textContent = `📻 ${currentPlaylist.name}`;
+            } else {
+                sectionTitle.textContent = '📻 All Stations';
+            }
+            
+            stationsList.innerHTML = '';
+            
+            filteredStations.forEach(station => {
+                const card = document.createElement('div');
+                card.className = 'station-card';
+                if (currentStation && currentStation.id === station.id) {
+                    card.classList.add('active');
+                }
+                
+                card.innerHTML = `
+                    <img class="station-icon" src="${station.icon_url || ''}" alt="${escapeHtml(station.name)}">
+                    <div class="station-info">
+                        <div class="station-name">${escapeHtml(station.name)}</div>
+                        <div class="station-genres">${escapeHtml(station.genres || 'Various')}</div>
+                    </div>
+                    <button class="station-menu-btn" data-station-id="${station.id}">⋮</button>
+                `;
+                
+                // Click on station to select it
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.station-menu-btn')) {
+                        selectStation(station);
+                        stationModal.classList.remove('active');
+                    }
+                });
+                
+                // Menu button
+                const menuBtn = card.querySelector('.station-menu-btn');
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showStationMenu(e, station);
+                });
+                
+                stationsList.appendChild(card);
+            });
+        }
+        
+        function showStationMenu(event, station) {
+            // Remove any existing dropdowns
+            document.querySelectorAll('.station-dropdown').forEach(d => d.remove());
+            
+            const dropdown = document.createElement('div');
+            dropdown.className = 'station-dropdown active';
+            
+            const menuItems = [
+                { label: '➕ Add to Playlist', action: () => openAddToPlaylistModal(station) }
+            ];
+            
+            if (currentPlaylist) {
+                menuItems.push({
+                    label: '🗑️ Remove from Playlist',
+                    action: () => removeFromCurrentPlaylist(station),
+                    danger: true
+                });
+            }
+            
+            menuItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'dropdown-item' + (item.danger ? ' danger' : '');
+                menuItem.textContent = item.label;
+                menuItem.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    item.action();
+                    dropdown.remove();
+                });
+                dropdown.appendChild(menuItem);
+            });
+            
+            const card = event.target.closest('.station-card');
+            card.style.position = 'relative';
+            card.appendChild(dropdown);
+        }
+        
+        function showPlaylistMenu(event, playlist) {
+            // Remove any existing dropdowns
+            document.querySelectorAll('.station-dropdown').forEach(d => d.remove());
+            
+            const dropdown = document.createElement('div');
+            dropdown.className = 'station-dropdown active';
+            
+            const deleteItem = document.createElement('div');
+            deleteItem.className = 'dropdown-item danger';
+            deleteItem.textContent = '🗑️ Delete Playlist';
+            deleteItem.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                if (confirm(`Are you sure you want to delete "${playlist.name}"?`)) {
+                    await deletePlaylist(playlist.id);
+                }
+                dropdown.remove();
+            });
+            
+            dropdown.appendChild(deleteItem);
+            
+            const card = event.target.closest('.playlist-card');
+            card.style.position = 'relative';
+            card.appendChild(dropdown);
+        }
+        
+        async function selectPlaylist(playlist) {
+            currentPlaylist = playlist;
+            const playlistStations = await getPlaylistStations(playlist.id);
+            filteredStations = playlistStations;
+            stationSearch.value = '';
+            renderStations();
+        }
+        
+        async function removeFromCurrentPlaylist(station) {
+            if (!currentPlaylist) return;
+            
+            try {
+                await removeStationFromPlaylist(currentPlaylist.id, station.id);
+                await selectPlaylist(currentPlaylist); // Refresh the view
+                updateStatus('Removed from playlist', 'playing');
+            } catch (error) {
+                updateStatus('Error removing from playlist', 'error');
+            }
+        }
+        
+        function openAddToPlaylistModal(station) {
+            stationToAddToPlaylist = station;
+            
+            playlistSelection.innerHTML = '';
+            
+            // Create new playlist option
+            const createNew = document.createElement('div');
+            createNew.className = 'playlist-option create-new-playlist';
+            createNew.innerHTML = `
+                <div class="playlist-option-icon">➕</div>
+                <div class="playlist-option-info">
+                    <div class="playlist-option-name">Create New Playlist</div>
+                    <div class="playlist-option-count">Start a new collection</div>
+                </div>
+            `;
+            createNew.addEventListener('click', () => {
+                addToPlaylistModal.classList.remove('active');
+                createPlaylistModal.classList.add('active');
+            });
+            playlistSelection.appendChild(createNew);
+            
+            // Existing playlists
+            playlists.forEach(playlist => {
+                const stationCount = playlist.playlist_stations?.[0]?.count || 0;
+                
+                const option = document.createElement('div');
+                option.className = 'playlist-option';
+                option.innerHTML = `
+                    <div class="playlist-option-icon">📚</div>
+                    <div class="playlist-option-info">
+                        <div class="playlist-option-name">${escapeHtml(playlist.name)}</div>
+                        <div class="playlist-option-count">${stationCount} station${stationCount !== 1 ? 's' : ''}</div>
+                    </div>
+                `;
+                option.addEventListener('click', async () => {
+                    try {
+                        await addStationToPlaylist(playlist.id, station.id);
+                        addToPlaylistModal.classList.remove('active');
+                        updateStatus(`Added to ${playlist.name}`, 'playing');
+                    } catch (error) {
+                        if (error.message.includes('already in playlist')) {
+                            updateStatus('Station already in playlist', 'error');
+                        } else {
+                            updateStatus('Error adding to playlist', 'error');
+                        }
+                    }
+                });
+                playlistSelection.appendChild(option);
+            });
+            
+            addToPlaylistModal.classList.add('active');
+        }
+        
+        createPlaylistForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('playlistName').value.trim();
+            const description = document.getElementById('playlistDescription').value.trim();
+            
+            if (!name) return;
+            
+            try {
+                const newPlaylist = await createPlaylist(name, description);
+                
+                // If we have a station to add, add it to the new playlist
+                if (stationToAddToPlaylist) {
+                    await addStationToPlaylist(newPlaylist.id, stationToAddToPlaylist.id);
+                    stationToAddToPlaylist = null;
+                    updateStatus(`Created playlist and added station`, 'playing');
+                } else {
+                    updateStatus(`Created playlist "${name}"`, 'playing');
+                }
+                
+                createPlaylistModal.classList.remove('active');
+                createPlaylistForm.reset();
+            } catch (error) {
+                updateStatus('Error creating playlist', 'error');
+            }
+        });
+        
+        // ======================
+        // STATION SELECTION
+        // ======================
+        
+        function selectStation(station) {
+            currentStation = station;
+            
+            // Update station display
+            stationSelectorBtn.style.display = 'none';
+            stationDisplay.style.display = 'flex';
+            stationDisplayIcon.src = station.icon_url || '';
+            stationDisplayName.textContent = station.name;
+            stationDisplayGenres.textContent = station.genres || 'Various';
+            
+            // Enable play button
+            playBtn.disabled = false;
+            
+            // Update active state in list
+            renderStations();
+        }
+        
+        // ======================
+        // SEARCH FUNCTIONALITY
+        // ======================
+        
+        stationSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            // Reset to show all if searching
+            if (query && currentPlaylist) {
+                currentPlaylist = null;
+                filteredStations = stations;
+            }
+            
+            if (query === '') {
+                if (currentPlaylist) {
+                    // Keep playlist view
+                } else {
+                    filteredStations = stations;
+                }
+            } else {
+                const baseStations = currentPlaylist ? filteredStations : stations;
+                filteredStations = baseStations.filter(station => 
+                    station.name.toLowerCase().includes(query) ||
+                    (station.genres && station.genres.toLowerCase().includes(query))
+                );
+            }
+            
+            renderStations();
+        });
+        
+        // ======================
+        // STATUS UPDATES
+        // ======================
+        
+        function updateStatus(message, status = '') {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status';
+            if (status) {
+                statusDiv.classList.add(status);
+            }
+        }
+        
+        // ======================
+        // METADATA HANDLING
+        // ======================
+        
+        function displayMetadata(metadata) {
+            let title = 'Unknown Track';
+            let artist = '';
+            let album = '';
+            let artworkUrl = '';
+            
+            if (metadata.StreamTitle) {
+                const parts = metadata.StreamTitle.split(' - ');
+                if (parts.length >= 2) {
+                    artist = parts[0].trim();
+                    title = parts.slice(1).join(' - ').trim();
+                } else {
+                    title = metadata.StreamTitle.trim();
+                }
+            }
+            
+            metadataDiv.innerHTML = `
+                <div class="now-playing-label">NOW PLAYING</div>
+                <div class="song-title">${escapeHtml(title)}</div>
+                ${artist ? `<div class="artist-name">${escapeHtml(artist)}</div>` : ''}
+                ${album ? `<div class="album-name">${escapeHtml(album)}</div>` : ''}
+            `;
+            
+            if (currentStation && currentStation.icon_url) {
+                artworkContainer.innerHTML = `<img class="album-art" src="${currentStation.icon_url}" alt="Station artwork">`;
+            } else {
+                artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
+            }
+            
+            updateMediaSession(title, artist, album, artworkUrl);
+        }
+        
+        // Update Media Session API
+        function updateMediaSession(title, artist, album, artworkUrl) {
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: title || 'Unknown Track',
+                    artist: artist || (currentStation ? currentStation.name : 'Radio Stream'),
+                    album: album || '',
+                    artwork: artworkUrl ? [
+                        { src: artworkUrl, sizes: '600x600', type: 'image/jpeg' }
+                    ] : (currentStation && currentStation.icon_url ? [
+                        { src: currentStation.icon_url, sizes: '512x512', type: 'image/png' }
+                    ] : [])
+                });
+            }
+        }
+        
+        // Setup Media Session handlers
+        function setupMediaSessionHandlers() {
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.setActionHandler('play', () => {
+                    if (player) {
+                        player.play().catch(err => console.error('Play error:', err));
+                    } else {
+                        playBtn.click();
+                    }
+                });
+                
+                navigator.mediaSession.setActionHandler('pause', () => {
+                    if (player) player.stop();
+                });
+                
+                navigator.mediaSession.setActionHandler('stop', () => {
+                    if (player) player.stop();
+                });
+                
+                navigator.mediaSession.setActionHandler('nexttrack', () => {
+                    if (filteredStations.length > 0 && currentStation) {
+                        const currentIndex = filteredStations.findIndex(s => s.id === currentStation.id);
+                        const nextIndex = (currentIndex + 1) % filteredStations.length;
+                        selectStation(filteredStations[nextIndex]);
+                        setTimeout(() => playBtn.click(), 500);
+                    }
+                });
+                
+                navigator.mediaSession.setActionHandler('previoustrack', () => {
+                    if (filteredStations.length > 0 && currentStation) {
+                        const currentIndex = filteredStations.findIndex(s => s.id === currentStation.id);
+                        const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredStations.length - 1;
+                        selectStation(filteredStations[prevIndex]);
+                        setTimeout(() => playBtn.click(), 500);
+                    }
+                });
+            }
+        }
+        
+        // ======================
+        // PLAYER CONTROLS
+        // ======================
+        
+        // Play button handler
+        playBtn.addEventListener('click', async () => {
+            const rawUrl = currentStation 
+                ? (selectedQuality === 'low' && currentStation.url_low ? currentStation.url_low : 
+                   selectedQuality === 'high' && currentStation.url_high ? currentStation.url_high : currentStation.url)
+                : null;
+            
+            if (!rawUrl) {
+                updateStatus('Please select a station', 'error');
+                return;
+            }
+            
+            if (player) {
+                player.stop();
+            }
+            
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+            updateStatus('Connecting...', 'loading');
+            artworkContainer.innerHTML = `<div class="album-art-placeholder">🔄</div>`;
+            metadataDiv.innerHTML = `
+                <div class="now-playing-label">NOW PLAYING</div>
+                <div class="no-metadata">Loading stream...</div>
+            `;
+            
+            const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
+            
+            let attempts = [
+                { url: rawUrl, cors: false, metadata: ['icy', 'ogg'] },
+                { url: rawUrl, cors: false, metadata: ['ogg'] },
+                { url: rawUrl, cors: false, metadata: [] },
+                { url: rawUrl, cors: true, metadata: ['ogg'] },
+                { url: rawUrl, cors: true, metadata: [] }
+            ];
+            
+            if (useCorsProxy) {
+                attempts = [
+                    { url: rawUrl, cors: true, metadata: ['icy', 'ogg'] },
+                    { url: rawUrl, cors: true, metadata: ['ogg'] },
+                    { url: rawUrl, cors: true, metadata: [] },
+                    { url: rawUrl, cors: false, metadata: ['ogg'] },
+                    { url: rawUrl, cors: false, metadata: [] }
+                ];
+            }
+            
+            let lastError = null;
+            
+            for (let i = 0; i < attempts.length; i++) {
+                const attempt = attempts[i];
+                const streamUrl = attempt.cors 
+                    ? `https://corsproxy.io/?${encodeURIComponent(attempt.url)}`
+                    : attempt.url;
+                
+                try {
+                    if (i > 0) {
+                        const metadataDesc = attempt.metadata.includes('icy') ? 'full metadata' :
+                                           attempt.metadata.includes('ogg') ? 'OGG metadata' : 'no metadata';
+                        const statusMsg = attempt.cors 
+                            ? `Retrying with CORS proxy (${metadataDesc})...`
+                            : `Retrying (${metadataDesc})...`;
+                        updateStatus(statusMsg, 'loading');
+                    }
+                    
+                    player = new IcecastMetadataPlayer(streamUrl, {
+                        metadataTypes: attempt.metadata,
+                        enableLogging: false,
+                        
+                        onMetadata: (metadata) => {
+                            displayMetadata(metadata);
+                        },
+                        
+                        onPlay: () => {
+                            const statusMsg = attempt.metadata.length === 0 
+                                ? 'Playing (no metadata available)'
+                                : 'Playing';
+                            updateStatus(statusMsg, 'playing');
+                        },
+                        
+                        onStop: () => {
+                            updateStatus('Stopped', 'stopped');
+                            playBtn.disabled = false;
+                            stopBtn.disabled = true;
+                            artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
+                            metadataDiv.innerHTML = `
+                                <div class="now-playing-label">NOW PLAYING</div>
+                                <div class="no-metadata">Select a station to start streaming</div>
+                            `;
+                        },
+                        
+                        onError: (error) => {
+                            console.error(`Player error on attempt ${i + 1}:`, error);
+                        },
+                        
+                        bufferLength: 3,
+                        retryTimeout: 5,
+                        retryDelayRate: 0.5,
+                        retryDelayMin: 1,
+                        retryDelayMax: 10
+                    });
+                    
+                    await player.play();
+                    return;
+                    
+                } catch (error) {
+                    console.error(`Attempt ${i + 1}/${attempts.length} failed:`, error.message);
+                    lastError = error;
+                    
+                    if (player) {
+                        try {
+                            player.stop();
+                        } catch (e) {}
+                    }
+                    
+                    if (i < attempts.length - 1) {
+                        continue;
+                    }
+                }
+            }
+            
+            console.error('All connection attempts failed');
+            updateStatus('Error: Unable to connect to stream. Try enabling/disabling CORS proxy.', 'error');
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+        
+        // Stop button handler
+        stopBtn.addEventListener('click', () => {
+            if (player) {
+                player.stop();
+            }
+        });
+        
+        // Allow Enter key to search
+        stationSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && filteredStations.length === 1) {
+                selectStation(filteredStations[0]);
+                stationModal.classList.remove('active');
+            }
+        });
+        
+        // ======================
+        // UTILITY FUNCTIONS
+        // ======================
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // ======================
+        // INITIALIZATION
+        // ======================
+        
+        // Load data from Supabase on startup
+        loadStations();
+        loadPlaylists();
+        
+        // Setup Media Session handlers
+        setupMediaSessionHandlers();
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.station-menu-btn') && 
+                !e.target.closest('.station-dropdown')) {
+                document.querySelectorAll('.station-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
