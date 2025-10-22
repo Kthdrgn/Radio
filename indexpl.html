@@ -1207,8 +1207,15 @@
                 if (error) throw error;
                 
                 stations = data || [];
-                filteredStations = [...stations];
-                renderStationList();
+                
+                // Re-apply search filter if there's a search term
+                const searchTerm = stationSearch.value.trim();
+                if (searchTerm) {
+                    filterStations(searchTerm);
+                } else {
+                    filteredStations = [...stations];
+                    renderStationList();
+                }
                 
             } catch (error) {
                 console.error('Error loading stations:', error);
@@ -1859,11 +1866,15 @@
         
         // Filter stations
         function filterStations(query) {
+            console.log('filterStations called with query:', query);
+            console.log('Total stations:', stations.length);
             const lowerQuery = query.toLowerCase();
-            filteredStations = stations.filter(station => 
-                station.name.toLowerCase().includes(lowerQuery) ||
-                (station.genres && station.genres.toLowerCase().includes(lowerQuery))
-            );
+            filteredStations = stations.filter(station => {
+                const nameMatch = station.name && station.name.toLowerCase().includes(lowerQuery);
+                const genresMatch = station.genres && typeof station.genres === 'string' && station.genres.toLowerCase().includes(lowerQuery);
+                return nameMatch || genresMatch;
+            });
+            console.log('Filtered stations:', filteredStations.length);
             renderStationList();
         }
         
@@ -1992,7 +2003,9 @@
         });
         
         // Search stations
+        // Search input handler
         stationSearch.addEventListener('input', (e) => {
+            console.log('Search input event fired, value:', e.target.value);
             filterStations(e.target.value);
         });
         
