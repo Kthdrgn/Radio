@@ -1100,7 +1100,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-checkbox">
-                            <input type="checkbox" id="useCorsProxyStation">
+                            <input type="checkbox" id="useCorsProxyStation" checked>
                             <span>Use CORS Proxy</span>
                         </label>
                     </div>
@@ -2034,12 +2034,21 @@
             let artist = '';
             let album = '';
             
+            // Helper function to clean metadata text (remove XML attributes from iHeart and similar stations)
+            function cleanMetadataText(text) {
+                if (!text) return '';
+                // Remove everything after common attribute patterns like text=", song_spot=", etc.
+                // This matches patterns like: text="..." or attribute="value" or attribute='value'
+                const cleaned = text.replace(/\s+(text|song_spot|spotInstanceId|length|MediaBaseId|TAID|TPID|cartcutId|amgArtworkURL|spEventID|[a-zA-Z_]+)=["'][^"']*["'].*$/i, '');
+                return cleaned.trim();
+            }
+            
             if (streamTitle.includes(' - ')) {
                 const parts = streamTitle.split(' - ');
-                artist = parts[0].trim();
-                title = parts[1].trim();
+                artist = cleanMetadataText(parts[0].trim());
+                title = cleanMetadataText(parts[1].trim());
             } else {
-                title = streamTitle;
+                title = cleanMetadataText(streamTitle);
             }
             
             metadataDiv.innerHTML = `
