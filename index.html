@@ -333,6 +333,7 @@
             flex-direction: column;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
             overflow: hidden;
+            position: relative;
         }
         
         .modal-header {
@@ -526,12 +527,18 @@
             display: none;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 20px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: #2d2d2d;
             border-radius: 12px;
             max-height: 60vh;
             overflow-y: auto;
+            position: absolute;
+            top: 120px;
+            left: 30px;
+            right: 30px;
+            bottom: 80px;
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
         
         .add-form.active {
@@ -666,6 +673,10 @@
             
             .add-form {
                 max-height: 50vh;
+                top: 110px;
+                left: 20px;
+                right: 20px;
+                bottom: 70px;
             }
             
             .modal-header {
@@ -686,6 +697,10 @@
             .add-form {
                 padding: 15px;
                 gap: 12px;
+                top: 110px;
+                left: 20px;
+                right: 20px;
+                bottom: 70px;
             }
             
             .form-group {
@@ -735,7 +750,7 @@
         
         <div class="settings-section">
             <div class="settings-option">
-                <input type="checkbox" id="useCorsProxyStation">
+                <input type="checkbox" id="useCorsProxyStation" checked>
                 <label for="useCorsProxyStation">Use CORS Proxy (enable if stream won't play)</label>
             </div>
         </div>
@@ -823,10 +838,9 @@
         // ======================
         // SUPABASE CONFIGURATION
         // ======================
-        // TODO: Replace these with your actual Supabase credentials
-        const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co'; // e.g., 'https://xxxxx.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4'; // Your anon/public key
-         
+        const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4';
+        
         // Initialize Supabase client
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
