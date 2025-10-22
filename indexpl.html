@@ -934,8 +934,14 @@
         
         <!-- CORS Proxy Toggle -->
         <div class="form-checkbox" style="justify-content: center;">
-            <input type="checkbox" id="globalCorsProxy" checked>
+            <input type="checkbox" id="globalCorsProxy">
             <label for="globalCorsProxy" style="color: rgba(255, 255, 255, 0.6); font-size: 13px; cursor: pointer;">Use CORS Proxy</label>
+        </div>
+        
+        <!-- iTunes API Toggle -->
+        <div class="form-checkbox" style="justify-content: center;">
+            <input type="checkbox" id="useItunesApi" checked>
+            <label for="useItunesApi" style="color: rgba(255, 255, 255, 0.6); font-size: 13px; cursor: pointer;">Use iTunes API for Artwork</label>
         </div>
     </div>
     
@@ -2052,28 +2058,39 @@
             let artist = '';
             let album = '';
             
-            // Helper function to clean metadata text (remove XML attributes from iHeart and similar stations)
-            function cleanMetadataText(text) {
-                if (!text) return '';
-                
-                // First, check if the text starts with text="..." pattern and extract the value
-                const textMatch = text.match(/^text=["']([^"']+)["']/i);
-                if (textMatch) {
-                    return textMatch[1].trim();
+            // Check if metadata is in structured attribute format: title="...",artist="..."
+            const titleMatch = streamTitle.match(/title=["']([^"']+)["']/i);
+            const artistMatch = streamTitle.match(/artist=["']([^"']+)["']/i);
+            
+            if (titleMatch || artistMatch) {
+                // Structured format detected
+                title = titleMatch ? titleMatch[1].trim() : 'Unknown';
+                artist = artistMatch ? artistMatch[1].trim() : '';
+            } else {
+                // Helper function to clean metadata text (remove XML attributes from iHeart and similar stations)
+                function cleanMetadataText(text) {
+                    if (!text) return '';
+                    
+                    // First, check if the text starts with text="..." pattern and extract the value
+                    const textMatch = text.match(/^text=["']([^"']+)["']/i);
+                    if (textMatch) {
+                        return textMatch[1].trim();
+                    }
+                    
+                    // Otherwise, remove everything after common attribute patterns like text=", song_spot=", etc.
+                    // This matches patterns like: text="..." or attribute="value" or attribute='value'
+                    const cleaned = text.replace(/\s+(text|song_spot|spotInstanceId|length|MediaBaseId|TAID|TPID|cartcutId|amgArtworkURL|spEventID|[a-zA-Z_]+)=["'][^"']*["'].*$/i, '');
+                    return cleaned.trim();
                 }
                 
-                // Otherwise, remove everything after common attribute patterns like text=", song_spot=", etc.
-                // This matches patterns like: text="..." or attribute="value" or attribute='value'
-                const cleaned = text.replace(/\s+(text|song_spot|spotInstanceId|length|MediaBaseId|TAID|TPID|cartcutId|amgArtworkURL|spEventID|[a-zA-Z_]+)=["'][^"']*["'].*$/i, '');
-                return cleaned.trim();
-            }
-            
-            if (streamTitle.includes(' - ')) {
-                const parts = streamTitle.split(' - ');
-                artist = cleanMetadataText(parts[0].trim());
-                title = cleanMetadataText(parts[1].trim());
-            } else {
-                title = cleanMetadataText(streamTitle);
+                // Traditional format: "Artist - Title"
+                if (streamTitle.includes(' - ')) {
+                    const parts = streamTitle.split(' - ');
+                    artist = cleanMetadataText(parts[0].trim());
+                    title = cleanMetadataText(parts[1].trim());
+                } else {
+                    title = cleanMetadataText(streamTitle);
+                }
             }
             
             metadataDiv.innerHTML = `
@@ -2087,15 +2104,73 @@
             fetchAlbumArt(title, artist);
         }
         
-        // Fetch album art from MusicBrainz/Cover Art Archive
+        // Fetch album art from iTunes or MusicBrainz
         async function fetchAlbumArt(title, artist) {
             if (!artist || !title) {
                 artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
                 return;
             }
             
+            const useItunes = document.getElementById('useItunesApi').checked;
+            
+            if (useItunes) {
+                await fetchAlbumArtItunes(title, artist);
+            } else {
+                await fetchAlbumArtMusicBrainz(title, artist);
+            }
+        }
+        
+        // Fetch album art from iTunes API
+        async function fetchAlbumArtItunes(title, artist) {
             try {
-                const query = encodeURIComponent(`${artist} ${title}`);
+                // Clean up artist name - take first artist if multiple
+                let cleanArtist = artist.split(/[\/&]|feat\.|ft\./i)[0].trim();
+                
+                console.log(`Searching iTunes for: "${cleanArtist}" - "${title}"`);
+                
+                const query = encodeURIComponent(`${cleanArtist} ${title}`);
+                const itunesUrl = `https://itunes.apple.com/search?term=${query}&entity=song&limit=1`;
+                
+                const response = await fetch(itunesUrl);
+                const data = await response.json();
+                
+                if (data.results && data.results.length > 0) {
+                    const result = data.results[0];
+                    // iTunes returns 100x100 by default, we can get higher res by replacing with 600x600
+                    let artUrl = result.artworkUrl100;
+                    if (artUrl) {
+                        artUrl = artUrl.replace('100x100', '600x600');
+                        
+                        const img = new Image();
+                        img.onload = () => {
+                            artworkContainer.innerHTML = `<img src="${artUrl}" alt="Album Art" class="album-art">`;
+                            updateMediaSession(title, artist, result.collectionName || '', artUrl);
+                        };
+                        img.onerror = () => {
+                            artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
+                        };
+                        img.src = artUrl;
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching album art from iTunes:', error);
+            }
+            
+            artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
+            updateMediaSession(title, artist, '', null);
+        }
+        
+        // Fetch album art from MusicBrainz/Cover Art Archive
+        async function fetchAlbumArtMusicBrainz(title, artist) {
+            try {
+                // Clean up artist name - take first artist if multiple (separated by /, feat., &, etc.)
+                let cleanArtist = artist.split(/[\/&]|feat\.|ft\./i)[0].trim();
+                
+                // Log what we're searching for (helps with debugging)
+                console.log(`Searching MusicBrainz for: "${cleanArtist}" - "${title}"`);
+                
+                const query = encodeURIComponent(`${cleanArtist} ${title}`);
                 const mbUrl = `https://musicbrainz.org/ws/2/recording/?query=${query}&fmt=json&limit=1`;
                 
                 const mbResponse = await fetch(mbUrl);
@@ -2120,7 +2195,7 @@
                     }
                 }
             } catch (error) {
-                console.error('Error fetching album art:', error);
+                console.error('Error fetching album art from MusicBrainz:', error);
             }
             
             artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
