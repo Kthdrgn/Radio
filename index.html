@@ -8,6 +8,9 @@
     <!-- Load the icecast-metadata-player library from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/icecast-metadata-player@1.17.13/build/icecast-metadata-player-1.17.13.main.min.js"></script>
     
+    <!-- Load Supabase client library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <style>
         * {
             margin: 0;
@@ -656,7 +659,7 @@
         
         <div class="settings-section">
             <div class="settings-option">
-                <input type="checkbox" id="useCorsProxyStation">
+                <input type="checkbox" id="useCorsProxyStation" checked>
                 <label for="useCorsProxyStation">Use CORS Proxy (enable if stream won't play)</label>
             </div>
         </div>
@@ -684,6 +687,14 @@
                     <input type="text" class="form-input" id="formName" placeholder="e.g., Cool FM" required>
                 </div>
                 <div class="form-group">
+                    <label class="form-label">Call Letters</label>
+                    <input type="text" class="form-input" id="formCallLetters" placeholder="e.g., WFCR">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Frequency</label>
+                    <input type="text" class="form-input" id="formFrequency" placeholder="e.g., 95.5 FM">
+                </div>
+                <div class="form-group">
                     <label class="form-label">Stream URL *</label>
                     <input type="text" class="form-input" id="formUrl" placeholder="https://example.com/stream" required>
                 </div>
@@ -700,8 +711,12 @@
                     <input type="text" class="form-input" id="formIcon" placeholder="https://example.com/icon.png">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Frequency</label>
-                    <input type="text" class="form-input" id="formFrequency" placeholder="e.g., 95.5 FM">
+                    <label class="form-label">Website URL</label>
+                    <input type="text" class="form-input" id="formWebsiteUrl" placeholder="https://example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-input" id="formDescription" placeholder="Station description" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Genres (comma-separated)</label>
@@ -727,8 +742,21 @@
         </div>
     </div>
     
+    
     <script>
-        // Elements
+        // ======================
+        // SUPABASE CONFIGURATION
+        // ======================
+        // TODO: Replace these with your actual Supabase credentials
+        const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co'; // e.g., 'https://xxxxx.supabase.co'
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4'; // Your anon/public key
+        
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // ======================
+        // ELEMENTS
+        // ======================
         const stationSelectorBtn = document.getElementById('stationSelectorBtn');
         const stationDisplay = document.getElementById('stationDisplay');
         const stationDisplayIcon = document.getElementById('stationDisplayIcon');
@@ -756,28 +784,111 @@
         const exportBtn = document.getElementById('exportBtn');
         const fileInput = document.getElementById('fileInput');
         
-        // State
+        // Form inputs
+        const formName = document.getElementById('formName');
+        const formUrl = document.getElementById('formUrl');
+        const formUrlLow = document.getElementById('formUrlLow');
+        const formUrlHigh = document.getElementById('formUrlHigh');
+        const formIcon = document.getElementById('formIcon');
+        const formFrequency = document.getElementById('formFrequency');
+        const formGenres = document.getElementById('formGenres');
+        const formCallLetters = document.getElementById('formCallLetters');
+        const formWebsiteUrl = document.getElementById('formWebsiteUrl');
+        const formDescription = document.getElementById('formDescription');
+        
+        // ======================
+        // STATE
+        // ======================
         let stations = [];
         let filteredStations = [];
         let currentStation = null;
         let player = null;
         let selectedQuality = 'medium';
+        let editingStationId = null;
         
-        // Load stations from JSON file
+        // ======================
+        // SUPABASE FUNCTIONS
+        // ======================
+        
+        // Load stations from Supabase
         async function loadStations() {
             try {
-                const response = await fetch('stations.json');
-                stations = await response.json();
+                updateStatus('Loading stations...', 'loading');
+                
+                const { data, error } = await supabase
+                    .from('radio_stations')
+                    .select('*')
+                    .order('name', { ascending: true });
+                
+                if (error) throw error;
+                
+                stations = data || [];
                 filteredStations = [...stations];
                 renderStations();
+                updateStatus('Ready to play', '');
+                
+                console.log(`Loaded ${stations.length} stations from Supabase`);
             } catch (error) {
                 console.error('Error loading stations:', error);
-                updateStatus('Error loading stations', 'error');
-                // Initialize with empty array if file not found
+                updateStatus('Error loading stations from database', 'error');
                 stations = [];
                 filteredStations = [];
             }
         }
+        
+        // Save a new station to Supabase
+        async function saveStationToSupabase(stationData) {
+            try {
+                const { data, error } = await supabase
+                    .from('radio_stations')
+                    .insert([stationData])
+                    .select();
+                
+                if (error) throw error;
+                
+                return data[0];
+            } catch (error) {
+                console.error('Error saving station:', error);
+                throw error;
+            }
+        }
+        
+        // Update an existing station in Supabase
+        async function updateStationInSupabase(id, stationData) {
+            try {
+                const { data, error } = await supabase
+                    .from('radio_stations')
+                    .update(stationData)
+                    .eq('id', id)
+                    .select();
+                
+                if (error) throw error;
+                
+                return data[0];
+            } catch (error) {
+                console.error('Error updating station:', error);
+                throw error;
+            }
+        }
+        
+        // Delete a station from Supabase
+        async function deleteStationFromSupabase(id) {
+            try {
+                const { error } = await supabase
+                    .from('radio_stations')
+                    .delete()
+                    .eq('id', id);
+                
+                if (error) throw error;
+            } catch (error) {
+                console.error('Error deleting station:', error);
+                throw error;
+            }
+        }
+        
+        // ======================
+        // STATION MANAGEMENT
+        // ======================
         
         // Render stations list
         function renderStations() {
@@ -788,10 +899,10 @@
                 return;
             }
             
-            filteredStations.forEach((station, index) => {
+            filteredStations.forEach((station) => {
                 const stationItem = document.createElement('div');
                 stationItem.className = 'station-item';
-                if (currentStation && currentStation.name === station.name) {
+                if (currentStation && currentStation.id === station.id) {
                     stationItem.classList.add('selected');
                 }
                 
@@ -810,11 +921,19 @@
                         <div class="station-name">${station.name}${frequency}</div>
                         <div class="station-details">${genres}</div>
                     </div>
-                    <button class="delete-btn" onclick="deleteStation(${stations.indexOf(station)}); event.stopPropagation();">Delete</button>
+                    <button class="delete-btn" data-station-id="${station.id}">Delete</button>
                 `;
                 
-                stationItem.addEventListener('click', () => {
-                    selectStation(station);
+                stationItem.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('delete-btn')) {
+                        selectStation(station);
+                    }
+                });
+                
+                const deleteBtn = stationItem.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteStation(station.id);
                 });
                 
                 stationList.appendChild(stationItem);
@@ -857,15 +976,46 @@
             stationOverlay.classList.remove('active');
             
             // Auto-start playback
-            // Stop current player if it exists
             if (player) {
                 player.stop();
             }
             
-            // Wait a moment for the stop to complete, then start playing
             setTimeout(() => {
                 playBtn.click();
             }, 300);
+        }
+        
+        // Delete a station
+        async function deleteStation(stationId) {
+            if (!confirm('Are you sure you want to delete this station?')) {
+                return;
+            }
+            
+            try {
+                updateStatus('Deleting station...', 'loading');
+                
+                await deleteStationFromSupabase(stationId);
+                
+                // Remove from local array
+                stations = stations.filter(s => s.id !== stationId);
+                filteredStations = filteredStations.filter(s => s.id !== stationId);
+                
+                // If we deleted the current station, clear it
+                if (currentStation && currentStation.id === stationId) {
+                    currentStation = null;
+                    stationSelectorBtn.textContent = 'Select a Station';
+                    stationSelectorBtn.style.display = 'block';
+                    stationDisplay.style.display = 'none';
+                    if (player) player.stop();
+                }
+                
+                renderStations();
+                updateStatus('Station deleted', 'playing');
+                setTimeout(() => updateStatus('Ready to play', ''), 2000);
+            } catch (error) {
+                console.error('Error deleting station:', error);
+                updateStatus('Error deleting station', 'error');
+            }
         }
         
         // Update quality buttons based on available streams
@@ -881,6 +1031,10 @@
             qualityMedium.disabled = false;
             qualityHigh.disabled = !currentStation.url_high;
         }
+        
+        // ======================
+        // EVENT HANDLERS
+        // ======================
         
         // Quality button handlers
         qualityLow.addEventListener('click', () => {
@@ -926,12 +1080,14 @@
         closeModalBtn.addEventListener('click', () => {
             stationOverlay.classList.remove('active');
             addForm.classList.remove('active');
+            clearForm();
         });
         
         stationOverlay.addEventListener('click', (e) => {
             if (e.target === stationOverlay) {
                 stationOverlay.classList.remove('active');
                 addForm.classList.remove('active');
+                clearForm();
             }
         });
         
@@ -953,87 +1109,87 @@
             renderStations();
         }
         
-        // Add station functionality
+        // Add station button
         addStationBtn.addEventListener('click', () => {
+            editingStationId = null;
+            clearForm();
             addForm.classList.add('active');
-            document.getElementById('formName').focus();
+            formName.focus();
         });
         
+        // Cancel add/edit
         cancelAddBtn.addEventListener('click', () => {
             addForm.classList.remove('active');
             clearForm();
         });
         
-        saveStationBtn.addEventListener('click', () => {
-            const name = document.getElementById('formName').value.trim();
-            const url = document.getElementById('formUrl').value.trim();
+        // Save station
+        saveStationBtn.addEventListener('click', async () => {
+            const name = formName.value.trim();
+            const url = formUrl.value.trim();
             
             if (!name || !url) {
-                alert('Station name and URL are required!');
+                alert('Station name and URL are required');
                 return;
             }
             
-            const genres = document.getElementById('formGenres').value
-                .split(',')
-                .map(g => g.trim())
-                .filter(g => g.length > 0);
-            
-            const newStation = {
+            const stationData = {
                 name: name,
                 url: url,
-                url_low: document.getElementById('formUrlLow').value.trim() || null,
-                url_high: document.getElementById('formUrlHigh').value.trim() || null,
-                website_url: null,
-                description: null,
-                genres: genres,
-                call_letters: null,
-                frequency: document.getElementById('formFrequency').value.trim() || null,
-                icon_url: document.getElementById('formIcon').value.trim() || null
+                url_low: formUrlLow.value.trim() || null,
+                url_high: formUrlHigh.value.trim() || null,
+                icon_url: formIcon.value.trim() || null,
+                frequency: formFrequency.value.trim() || null,
+                genres: formGenres.value.trim() ? formGenres.value.split(',').map(g => g.trim()) : [],
+                call_letters: formCallLetters.value.trim() || null,
+                website_url: formWebsiteUrl.value.trim() || null,
+                description: formDescription.value.trim() || null
             };
             
-            stations.push(newStation);
-            filteredStations = [...stations];
-            renderStations();
-            addForm.classList.remove('active');
-            clearForm();
-            
-            updateStatus(`Added station: ${name}`, 'playing');
-            setTimeout(() => updateStatus('Ready to play', ''), 3000);
-        });
-        
-        function clearForm() {
-            document.getElementById('formName').value = '';
-            document.getElementById('formUrl').value = '';
-            document.getElementById('formUrlLow').value = '';
-            document.getElementById('formUrlHigh').value = '';
-            document.getElementById('formIcon').value = '';
-            document.getElementById('formFrequency').value = '';
-            document.getElementById('formGenres').value = '';
-        }
-        
-        // Delete station functionality
-        function deleteStation(index) {
-            if (confirm(`Delete station "${stations[index].name}"?`)) {
-                const deletedName = stations[index].name;
-                stations.splice(index, 1);
+            try {
+                updateStatus('Saving station...', 'loading');
                 
-                // Update current station if it was deleted
-                if (currentStation && currentStation.name === deletedName) {
-                    currentStation = null;
-                    stationSelectorBtn.textContent = 'Select a Station';
-                    stationSelectorBtn.style.display = 'block';
-                    stationDisplay.style.display = 'none';
-                    if (player) {
-                        player.stop();
+                if (editingStationId) {
+                    // Update existing station
+                    const updatedStation = await updateStationInSupabase(editingStationId, stationData);
+                    const index = stations.findIndex(s => s.id === editingStationId);
+                    if (index !== -1) {
+                        stations[index] = updatedStation;
                     }
+                    updateStatus('Station updated', 'playing');
+                } else {
+                    // Add new station
+                    const newStation = await saveStationToSupabase(stationData);
+                    stations.push(newStation);
+                    updateStatus('Station added', 'playing');
                 }
                 
                 filteredStations = [...stations];
                 renderStations();
+                addForm.classList.remove('active');
+                clearForm();
                 
-                updateStatus(`Deleted station: ${deletedName}`, 'error');
-                setTimeout(() => updateStatus('Ready to play', ''), 3000);
+                setTimeout(() => updateStatus('Ready to play', ''), 2000);
+            } catch (error) {
+                console.error('Error saving station:', error);
+                alert('Error saving station. Please try again.');
+                updateStatus('Error saving station', 'error');
             }
+        });
+        
+        // Clear form
+        function clearForm() {
+            formName.value = '';
+            formUrl.value = '';
+            formUrlLow.value = '';
+            formUrlHigh.value = '';
+            formIcon.value = '';
+            formFrequency.value = '';
+            formGenres.value = '';
+            formCallLetters.value = '';
+            formWebsiteUrl.value = '';
+            formDescription.value = '';
+            editingStationId = null;
         }
         
         // Export stations to JSON
@@ -1044,9 +1200,7 @@
             const link = document.createElement('a');
             link.href = url;
             link.download = 'stations.json';
-            document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
             URL.revokeObjectURL(url);
             
             updateStatus('Stations exported to stations.json', 'playing');
@@ -1058,26 +1212,52 @@
             fileInput.click();
         });
         
-        fileInput.addEventListener('change', (e) => {
+        fileInput.addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
             
             const reader = new FileReader();
-            reader.onload = (event) => {
+            reader.onload = async (event) => {
                 try {
                     const importedStations = JSON.parse(event.target.result);
-                    if (Array.isArray(importedStations)) {
-                        stations = importedStations;
-                        filteredStations = [...stations];
-                        renderStations();
-                        updateStatus(`Imported ${stations.length} stations`, 'playing');
-                        setTimeout(() => updateStatus('Ready to play', ''), 3000);
-                    } else {
+                    if (!Array.isArray(importedStations)) {
                         throw new Error('Invalid JSON format');
                     }
+                    
+                    updateStatus(`Importing ${importedStations.length} stations...`, 'loading');
+                    
+                    // Import each station to Supabase
+                    let successCount = 0;
+                    for (const station of importedStations) {
+                        try {
+                            // Remove id and timestamp fields if they exist (let Supabase generate new ones)
+                            const { id, created_at, updated_at, stationuuid, favicon, ...stationData } = station;
+                            
+                            // Ensure genres is an array
+                            if (stationData.genres && typeof stationData.genres === 'string') {
+                                try {
+                                    stationData.genres = JSON.parse(stationData.genres);
+                                } catch (e) {
+                                    stationData.genres = [];
+                                }
+                            }
+                            
+                            await saveStationToSupabase(stationData);
+                            successCount++;
+                        } catch (error) {
+                            console.error('Error importing station:', station.name, error);
+                        }
+                    }
+                    
+                    // Reload stations from database
+                    await loadStations();
+                    
+                    updateStatus(`Imported ${successCount} of ${importedStations.length} stations`, 'playing');
+                    setTimeout(() => updateStatus('Ready to play', ''), 3000);
                 } catch (error) {
                     console.error('Error importing stations:', error);
                     alert('Error importing stations. Please check the JSON file format.');
+                    updateStatus('Error importing stations', 'error');
                 }
                 fileInput.value = '';
             };
@@ -1093,9 +1273,12 @@
             }
         }
         
+        // ======================
+        // METADATA & ARTWORK
+        // ======================
+        
         // Get artwork from iTunes API
         async function getArtwork(artist, title, streamUrl = null) {
-            // If stream provides artwork URL, try that first
             if (streamUrl) {
                 try {
                     const img = new Image();
@@ -1111,7 +1294,6 @@
                 }
             }
             
-            // Fall back to iTunes search
             if (!artist || !title) return null;
             
             try {
@@ -1136,24 +1318,19 @@
             let album = '';
             let streamArtworkUrl = null;
             
-            // Parse metadata
             if (metadata) {
-                // Handle iHeartRadio extended metadata format
                 if (metadata.StreamTitle) {
                     const streamTitle = metadata.StreamTitle;
                     
-                    // Check for iHeartRadio format with text= and artist=
                     const textMatch = streamTitle.match(/text="([^"]+)"/);
                     const artistMatch = streamTitle.match(/artist="([^"]+)"/);
                     const artworkMatch = streamTitle.match(/amgArtworkURL="([^"]+)"/);
                     
                     if (textMatch || artistMatch) {
-                        // iHeartRadio format
                         if (textMatch) title = textMatch[1].trim();
                         if (artistMatch) artist = artistMatch[1].trim();
                         if (artworkMatch) streamArtworkUrl = artworkMatch[1].trim();
                     } else {
-                        // Standard format: Artist - Title
                         const parts = streamTitle.split(' - ');
                         if (parts.length >= 2) {
                             artist = parts[0].trim();
@@ -1164,28 +1341,23 @@
                     }
                 }
                 
-                // Check for stream-provided artwork (if not already found)
                 if (!streamArtworkUrl && metadata.StreamUrl) {
                     streamArtworkUrl = metadata.StreamUrl;
                 }
                 
-                // Check for OGG metadata (overrides if present)
                 if (metadata.ARTIST) artist = metadata.ARTIST;
                 if (metadata.TITLE) title = metadata.TITLE;
                 if (metadata.ALBUM) album = metadata.ALBUM;
             }
             
-            // Check if we should search for artwork
             const shouldSearchArtwork = artist && title && 
                 !artist.toLowerCase().includes('unknown') && 
                 !title.toLowerCase().includes('unknown');
             
-            // Show loading state in artwork container
             if (shouldSearchArtwork || streamArtworkUrl) {
                 artworkContainer.innerHTML = `<div class="album-art-placeholder">🔍</div>`;
             }
             
-            // Update metadata text
             metadataDiv.innerHTML = `
                 <div class="now-playing-label">NOW PLAYING</div>
                 ${title ? `<div class="song-title">${title}</div>` : ''}
@@ -1194,84 +1366,41 @@
                 ${!title && !artist ? `<div class="no-metadata">Streaming...</div>` : ''}
             `;
             
-            // Get artwork (async) - only if we should search
             const artworkUrl = (shouldSearchArtwork || streamArtworkUrl) 
                 ? await getArtwork(artist, title, streamArtworkUrl)
                 : null;
             
-            // Update artwork container
             if (artworkUrl) {
-                artworkContainer.innerHTML = `
-                    <img src="${artworkUrl}" alt="Album Art" class="album-art" 
-                         onerror="this.innerHTML='<div class=\\'album-art-placeholder\\'>🎵</div>'">
-                `;
+                artworkContainer.innerHTML = `<img src="${artworkUrl}" class="album-art" alt="Album Art">`;
+            } else if (currentStation && currentStation.icon_url) {
+                artworkContainer.innerHTML = `<img src="${currentStation.icon_url}" class="album-art" alt="Station Icon">`;
             } else {
                 artworkContainer.innerHTML = `<div class="album-art-placeholder">🎵</div>`;
             }
             
-            // Update Media Session API
             updateMediaSession(title, artist, album, artworkUrl);
         }
         
-        // Media Session API - Update notification metadata
+        // Update Media Session API
         function updateMediaSession(title, artist, album, artworkUrl) {
             if ('mediaSession' in navigator) {
-                // Determine which artwork to use: track artwork, station favicon, or default
-                let finalArtwork;
-                
-                if (artworkUrl) {
-                    // Use track artwork if available
-                    finalArtwork = [
-                        { src: artworkUrl, sizes: '96x96', type: 'image/jpeg' },
-                        { src: artworkUrl, sizes: '128x128', type: 'image/jpeg' },
-                        { src: artworkUrl, sizes: '192x192', type: 'image/jpeg' },
-                        { src: artworkUrl, sizes: '256x256', type: 'image/jpeg' },
-                        { src: artworkUrl, sizes: '384x384', type: 'image/jpeg' },
-                        { src: artworkUrl, sizes: '512x512', type: 'image/jpeg' }
-                    ];
-                } else if (currentStation && currentStation.favicon) {
-                    // Use station favicon if no track artwork
-                    finalArtwork = [
-                        { src: currentStation.favicon, sizes: '96x96', type: 'image/png' },
-                        { src: currentStation.favicon, sizes: '128x128', type: 'image/png' },
-                        { src: currentStation.favicon, sizes: '192x192', type: 'image/png' },
-                        { src: currentStation.favicon, sizes: '256x256', type: 'image/png' },
-                        { src: currentStation.favicon, sizes: '384x384', type: 'image/png' },
-                        { src: currentStation.favicon, sizes: '512x512', type: 'image/png' }
-                    ];
-                } else {
-                    // Use default icon as last resort
-                    finalArtwork = [
-                        { src: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzY2N2VlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IiNmZmYiPjwvdGV4dD48L3N2Zz4=', 
-                          sizes: '512x512', 
-                          type: 'image/svg+xml' 
-                        }
-                    ];
-                }
-                
-                // Set metadata
                 navigator.mediaSession.metadata = new MediaMetadata({
                     title: title || 'Unknown Track',
                     artist: artist || (currentStation ? currentStation.name : 'Radio Stream'),
-                    album: album || (currentStation ? currentStation.name : 'Live Radio'),
-                    artwork: finalArtwork
-                });
-                
-                console.log('Media Session updated:', {
-                    title: title || 'Unknown Track',
-                    artist: artist || (currentStation ? currentStation.name : 'Radio Stream'),
-                    album: album || (currentStation ? currentStation.name : 'Live Radio'),
-                    artworkSource: artworkUrl ? 'track' : (currentStation && currentStation.favicon ? 'station' : 'default')
+                    album: album || '',
+                    artwork: artworkUrl ? [
+                        { src: artworkUrl, sizes: '600x600', type: 'image/jpeg' }
+                    ] : (currentStation && currentStation.icon_url ? [
+                        { src: currentStation.icon_url, sizes: '512x512', type: 'image/png' }
+                    ] : [])
                 });
             }
         }
         
-        // Setup Media Session action handlers
+        // Setup Media Session handlers
         function setupMediaSessionHandlers() {
             if ('mediaSession' in navigator) {
-                // Play action
                 navigator.mediaSession.setActionHandler('play', () => {
-                    console.log('Media Session: Play action');
                     if (player) {
                         player.play().catch(err => console.error('Play error:', err));
                     } else {
@@ -1279,51 +1408,37 @@
                     }
                 });
                 
-                // Pause action (for radio, we'll stop instead)
                 navigator.mediaSession.setActionHandler('pause', () => {
-                    console.log('Media Session: Pause action');
-                    if (player) {
-                        player.stop();
-                    }
+                    if (player) player.stop();
                 });
                 
-                // Stop action
                 navigator.mediaSession.setActionHandler('stop', () => {
-                    console.log('Media Session: Stop action');
-                    if (player) {
-                        player.stop();
-                    }
+                    if (player) player.stop();
                 });
                 
-                // Seek forward (skip to next station if available)
                 navigator.mediaSession.setActionHandler('nexttrack', () => {
-                    console.log('Media Session: Next track action');
-                    // Find next station in the list
                     if (stations.length > 0 && currentStation) {
-                        const currentIndex = stations.findIndex(s => s.stationuuid === currentStation.stationuuid);
+                        const currentIndex = stations.findIndex(s => s.id === currentStation.id);
                         const nextIndex = (currentIndex + 1) % stations.length;
                         selectStation(stations[nextIndex]);
                         setTimeout(() => playBtn.click(), 500);
                     }
                 });
                 
-                // Seek backward (skip to previous station if available)
                 navigator.mediaSession.setActionHandler('previoustrack', () => {
-                    console.log('Media Session: Previous track action');
-                    // Find previous station in the list
                     if (stations.length > 0 && currentStation) {
-                        const currentIndex = stations.findIndex(s => s.stationuuid === currentStation.stationuuid);
+                        const currentIndex = stations.findIndex(s => s.id === currentStation.id);
                         const prevIndex = currentIndex > 0 ? currentIndex - 1 : stations.length - 1;
                         selectStation(stations[prevIndex]);
                         setTimeout(() => playBtn.click(), 500);
                     }
                 });
-                
-                console.log('Media Session handlers setup complete');
-            } else {
-                console.log('Media Session API not supported in this browser');
             }
         }
+        
+        // ======================
+        // PLAYER CONTROLS
+        // ======================
         
         // Play button handler
         playBtn.addEventListener('click', async () => {
@@ -1337,12 +1452,10 @@
                 return;
             }
             
-            // Stop existing player if running
             if (player) {
                 player.stop();
             }
             
-            // Update UI
             playBtn.disabled = true;
             stopBtn.disabled = false;
             updateStatus('Connecting...', 'loading');
@@ -1352,7 +1465,6 @@
                 <div class="no-metadata">Loading stream...</div>
             `;
             
-            // Retry strategy: try different configurations
             const useCorsProxy = document.getElementById('useCorsProxyStation').checked;
             
             let attempts = [
@@ -1363,7 +1475,6 @@
                 { url: rawUrl, cors: true, metadata: [] }
             ];
             
-            // If user explicitly enabled CORS proxy, prioritize those attempts
             if (useCorsProxy) {
                 attempts = [
                     { url: rawUrl, cors: true, metadata: ['icy', 'ogg'] },
@@ -1390,7 +1501,6 @@
                             ? `Retrying with CORS proxy (${metadataDesc})...`
                             : `Retrying (${metadataDesc})...`;
                         updateStatus(statusMsg, 'loading');
-                        console.log(`Attempt ${i + 1}/${attempts.length}: ${statusMsg}`);
                     }
                     
                     player = new IcecastMetadataPlayer(streamUrl, {
@@ -1431,7 +1541,6 @@
                     });
                     
                     await player.play();
-                    // If we get here, playback started successfully
                     return;
                     
                 } catch (error) {
@@ -1441,19 +1550,15 @@
                     if (player) {
                         try {
                             player.stop();
-                        } catch (e) {
-                            // Ignore stop errors
-                        }
+                        } catch (e) {}
                     }
                     
-                    // If this isn't the last attempt, continue to next
                     if (i < attempts.length - 1) {
                         continue;
                     }
                 }
             }
             
-            // All attempts failed
             console.error('All connection attempts failed');
             updateStatus('Error: Unable to connect to stream. Try enabling/disabling CORS proxy.', 'error');
             playBtn.disabled = false;
@@ -1467,17 +1572,21 @@
             }
         });
         
-        // Allow Enter key to search in station overlay
+        // Allow Enter key to search
         stationSearch.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && filteredStations.length === 1) {
                 selectStation(filteredStations[0]);
             }
         });
         
-        // Initialize: Load stations
+        // ======================
+        // INITIALIZATION
+        // ======================
+        
+        // Load stations from Supabase on startup
         loadStations();
         
-        // Initialize Media Session API handlers
+        // Setup Media Session handlers
         setupMediaSessionHandlers();
     </script>
 </body>
