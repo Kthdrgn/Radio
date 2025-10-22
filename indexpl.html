@@ -1141,8 +1141,8 @@
         // ======================
         
         // Initialize Supabase - Replace with your credentials
-        const SUPABASE_URL = 'https://zwrunupvlkhnwbylzizj.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnVudXB2bGtobndieWx6aXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMTIxNzEsImV4cCI6MjA3NjY4ODE3MX0.WBTLcTNWgGZ-I6o_Dd7ObfS2avmJc_iiIEpDp8-VuQ4';
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
         
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -1418,14 +1418,14 @@
                         </div>
                         <button class="playlist-menu-btn" data-id="${playlist.id}">⋮</button>
                         <div class="playlist-dropdown">
-                            <div class="dropdown-item" onclick="openPlaylist(${playlist.id})">
+                            <div class="dropdown-item" data-action="view" data-playlist-id="${playlist.id}">
                                 <span>📻</span> View Playlist
                             </div>
-                            <div class="dropdown-item" onclick="editPlaylist(${playlist.id})">
+                            <div class="dropdown-item" data-action="edit" data-playlist-id="${playlist.id}">
                                 <span>✏️</span> Rename
                             </div>
                             <div class="dropdown-divider"></div>
-                            <div class="dropdown-item danger" onclick="confirmDeletePlaylist(${playlist.id})">
+                            <div class="dropdown-item danger" data-action="delete" data-playlist-id="${playlist.id}">
                                 <span>🗑️</span> Delete
                             </div>
                         </div>
@@ -1436,8 +1436,8 @@
             // Add event listeners for playlist items
             document.querySelectorAll('.playlist-item').forEach(item => {
                 item.addEventListener('click', (e) => {
-                    if (!e.target.closest('.playlist-menu-btn')) {
-                        const id = parseInt(item.dataset.id);
+                    if (!e.target.closest('.playlist-menu-btn') && !e.target.closest('.playlist-dropdown')) {
+                        const id = item.dataset.id;
                         openPlaylist(id);
                     }
                 });
@@ -1455,6 +1455,28 @@
                     });
                     
                     dropdown.classList.toggle('active');
+                });
+            });
+            
+            // Add event listeners for dropdown items
+            document.querySelectorAll('.playlist-dropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const action = item.dataset.action;
+                    const playlistId = item.dataset.playlistId;
+                    
+                    if (!action || !playlistId) return;
+                    
+                    // Close dropdown
+                    item.closest('.playlist-dropdown').classList.remove('active');
+                    
+                    if (action === 'view') {
+                        openPlaylist(playlistId);
+                    } else if (action === 'edit') {
+                        editPlaylist(playlistId);
+                    } else if (action === 'delete') {
+                        confirmDeletePlaylist(playlistId);
+                    }
                 });
             });
         }
@@ -1491,11 +1513,11 @@
                             </div>
                             <div class="dropdown-submenu-content">
                                 ${playlists.length === 0 ? 
-                                    `<div class="dropdown-item" onclick="showPlaylistForm()">
+                                    `<div class="dropdown-item" data-action="create-playlist">
                                         <span>📝</span> Create Playlist
                                     </div>` :
                                     playlists.map(playlist => `
-                                        <div class="dropdown-item" onclick="addToPlaylist(${playlist.id}, ${station.id})">
+                                        <div class="dropdown-item" data-action="add-to-playlist" data-playlist-id="${playlist.id}" data-station-id="${station.id}">
                                             ${escapeHtml(playlist.name)}
                                         </div>
                                     `).join('')
@@ -1503,10 +1525,10 @@
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <div class="dropdown-item" onclick="editStation(${station.id})">
+                        <div class="dropdown-item" data-action="edit-station" data-station-id="${station.id}">
                             <span>✏️</span> Edit Station
                         </div>
-                        <div class="dropdown-item danger" onclick="confirmDeleteStation(${station.id})">
+                        <div class="dropdown-item danger" data-action="delete-station" data-station-id="${station.id}">
                             <span>🗑️</span> Delete Station
                         </div>
                     </div>
@@ -1538,6 +1560,32 @@
                     dropdown.classList.toggle('active');
                 });
             });
+            
+            // Add event listeners for dropdown actions
+            document.querySelectorAll('.station-dropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const action = item.dataset.action;
+                    
+                    if (action === 'create-playlist') {
+                        showPlaylistForm();
+                        document.querySelectorAll('.station-dropdown').forEach(d => d.classList.remove('active'));
+                    } else if (action === 'add-to-playlist') {
+                        const playlistId = item.dataset.playlistId;
+                        const stationId = parseInt(item.dataset.stationId);
+                        addToPlaylist(playlistId, stationId);
+                        document.querySelectorAll('.station-dropdown').forEach(d => d.classList.remove('active'));
+                    } else if (action === 'edit-station') {
+                        const stationId = parseInt(item.dataset.stationId);
+                        editStation(stationId);
+                        document.querySelectorAll('.station-dropdown').forEach(d => d.classList.remove('active'));
+                    } else if (action === 'delete-station') {
+                        const stationId = parseInt(item.dataset.stationId);
+                        confirmDeleteStation(stationId);
+                        document.querySelectorAll('.station-dropdown').forEach(d => d.classList.remove('active'));
+                    }
+                });
+            });
         }
         
         // Render playlist stations
@@ -1564,7 +1612,7 @@
                     </div>
                     <button class="station-menu-btn" data-id="${station.id}">⋮</button>
                     <div class="station-dropdown">
-                        <div class="dropdown-item danger" onclick="removeFromPlaylist(${currentPlaylist.id}, ${station.id})">
+                        <div class="dropdown-item danger" data-action="remove-from-playlist" data-playlist-id="${currentPlaylist.id}" data-station-id="${station.id}">
                             <span>➖</span> Remove from Playlist
                         </div>
                     </div>
@@ -1595,6 +1643,21 @@
                     });
                     
                     dropdown.classList.toggle('active');
+                });
+            });
+            
+            // Add event listeners for dropdown actions
+            document.querySelectorAll('#playlistStationList .dropdown-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const action = item.dataset.action;
+                    
+                    if (action === 'remove-from-playlist') {
+                        const playlistId = item.dataset.playlistId;
+                        const stationId = parseInt(item.dataset.stationId);
+                        removeFromPlaylist(playlistId, stationId);
+                        document.querySelectorAll('.station-dropdown').forEach(d => d.classList.remove('active'));
+                    }
                 });
             });
         }
