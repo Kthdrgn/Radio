@@ -1274,14 +1274,14 @@
             stationOverlay.classList.add('active');
             stationSearch.value = '';
             filterStations('');
-            stationSearch.focus();
+            // Removed auto-focus to prevent mobile keyboard from blocking station list
         });
         
         stationDisplay.addEventListener('click', () => {
             stationOverlay.classList.add('active');
             stationSearch.value = '';
             filterStations('');
-            stationSearch.focus();
+            // Removed auto-focus to prevent mobile keyboard from blocking station list
         });
         
         closeModalBtn.addEventListener('click', () => {
