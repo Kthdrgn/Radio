@@ -1107,12 +1107,6 @@
                             placeholder="https://example.com/icon.png"
                         >
                     </div>
-                    <div class="form-group">
-                        <label class="form-checkbox">
-                            <input type="checkbox" id="useCorsProxyStation" checked>
-                            <span>Use CORS Proxy</span>
-                        </label>
-                    </div>
                     <div class="form-actions">
                         <button type="button" class="form-btn form-btn-secondary" id="cancelStationForm">
                             Cancel
@@ -1849,7 +1843,6 @@
                 document.getElementById('stationFormUrlHigh').value = station.url_high || '';
                 document.getElementById('stationFormGenres').value = station.genres || '';
                 document.getElementById('stationFormIconUrl').value = station.icon_url || '';
-                document.getElementById('useCorsProxyStation').checked = station.use_cors_proxy || false;
             } else {
                 stationFormTitle.textContent = 'Add Station';
                 stationForm.reset();
@@ -1996,8 +1989,7 @@
                 url_low: document.getElementById('stationFormUrlLow').value.trim() || null,
                 url_high: document.getElementById('stationFormUrlHigh').value.trim() || null,
                 genres: document.getElementById('stationFormGenres').value.trim() || null,
-                icon_url: document.getElementById('stationFormIconUrl').value.trim() || null,
-                use_cors_proxy: document.getElementById('useCorsProxyStation').checked
+                icon_url: document.getElementById('stationFormIconUrl').value.trim() || null
             };
             
             if (editingStationId) {
@@ -2294,7 +2286,7 @@
                 <div class="no-metadata">Loading stream...</div>
             `;
             
-            const useCorsProxy = currentStation.use_cors_proxy || document.getElementById('globalCorsProxy').checked;
+            const useCorsProxy = document.getElementById('globalCorsProxy').checked;
             
             let attempts = [
                 { url: rawUrl, cors: false, metadata: ['icy', 'ogg'] },
